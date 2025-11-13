@@ -144,8 +144,8 @@ h2,
 h3,
 h4,
 h5,
-h6{
-  color: #FFFFFF;
+h6 {
+  color: #ffffff;
   font-size: 1.4em;
   margin-bottom: 15px;
 }
@@ -159,36 +159,35 @@ h6{
   margin-bottom: 12px;
   padding-left: 20px;
   position: relative;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .section li::before {
   content: "→";
   position: absolute;
   left: 0;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: bold;
 }
 
 .section li strong {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .section p {
   margin-bottom: 15px;
   text-align: justify;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .section a {
   margin-bottom: 15px;
   text-align: justify;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .section-title span {
   font-size: 16px;
-  /* color: #f36100;; */
   color: #ed3331;
   text-transform: uppercase;
   font-weight: 700;
@@ -846,9 +845,213 @@ h6{
   margin-bottom: 56px;
 }
 
+/* ============================================
+   APP DOWNLOAD SECTION
+   ============================================ */
+
 .app-download-section {
   background: #151515;
-  /* background: #000000; */
+  padding: 80px 0;
+  color: #fff;
+}
+
+.app-download-section .row {
+  display: flex;
+  align-items: center;
+}
+
+/* Content Area */
+.app-download-section .ad-content {
+  padding-right: 30px;
+}
+
+.app-download-section .section-title {
+  margin-bottom: 30px;
+}
+
+.app-download-section .ad-label {
+  color: #ed3331;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.app-download-section .section-title h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.app-download-section .ad-description {
+  color: #b8b8b8;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* Download Buttons */
+.app-download-section .ad-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.app-download-section .app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ed3331;
+  color: #ffffff;
+  padding: 15px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(243, 97, 0, 0.3);
+}
+
+.app-download-section .app-btn:hover {
+  background: #a00b0b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(243, 97, 0, 0.4);
+  color: #ffffff;
+}
+
+.app-download-section .app-btn i {
+  font-size: 32px;
+}
+
+.app-download-section .app-btn .btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.app-download-section .app-btn .btn-text small {
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.app-download-section .app-btn .btn-text strong {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Image Container */
+.app-download-section .ad-pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.app-download-section .ad-pic img {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 991px) {
+  .app-download-section {
+    padding: 60px 0;
+  }
+
+  .app-download-section .ad-content {
+    padding-right: 0;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .app-download-section .section-title h2 {
+    font-size: 28px;
+  }
+
+  .app-download-section .ad-buttons {
+    justify-content: center;
+  }
+
+  .app-download-section .ad-pic img {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-download-section {
+    padding: 50px 0;
+  }
+
+  .app-download-section .section-title h2 {
+    font-size: 24px;
+  }
+
+  .app-download-section .ad-description {
+    font-size: 15px;
+  }
+
+  .app-download-section .ad-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .app-download-section .app-btn {
+    justify-content: center;
+    padding: 18px 25px;
+  }
+
+  .app-download-section .ad-pic img {
+    max-height: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .app-download-section {
+    padding: 40px 0;
+  }
+
+  .app-download-section .section-title h2 {
+    font-size: 20px;
+  }
+
+  .app-download-section .ad-description {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .app-download-section .app-btn {
+    padding: 15px 20px;
+  }
+
+  .app-download-section .app-btn i {
+    font-size: 28px;
+  }
+
+  .app-download-section .app-btn .btn-text strong {
+    font-size: 14px;
+  }
+
+  .app-download-section .ad-pic img {
+    max-height: 280px;
+  }
 }
 
 .ps-item {
