@@ -846,6 +846,11 @@ h6{
   margin-bottom: 56px;
 }
 
+.app-download-section {
+  background: #151515;
+  /* background: #000000; */
+}
+
 .ps-item {
   text-align: center;
   padding: 40px 30px 52px;
