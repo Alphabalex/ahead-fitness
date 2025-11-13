@@ -861,7 +861,7 @@ h6 {
 }
 
 /* Content Area */
-.app-download-section .ad-content {
+.app-download-section .app-download-content {
   padding-right: 30px;
 }
 
@@ -869,7 +869,7 @@ h6 {
   margin-bottom: 30px;
 }
 
-.app-download-section .ad-label {
+.app-download-section .app-download-label {
   color: #ed3331;
   font-size: 14px;
   font-weight: 700;
@@ -888,7 +888,7 @@ h6 {
   text-transform: uppercase;
 }
 
-.app-download-section .ad-description {
+.app-download-section .app-download-description {
   color: #b8b8b8;
   font-size: 16px;
   line-height: 1.8;
@@ -896,7 +896,7 @@ h6 {
 }
 
 /* Download Buttons */
-.app-download-section .ad-buttons {
+.app-download-section .app-download-buttons {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
@@ -949,16 +949,15 @@ h6 {
   letter-spacing: 0.5px;
 }
 
-
 /* Image Container */
-.app-download-section .ad-pic {
+.app-download-section .app-download-pic {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
 
-.app-download-section .ad-pic img {
+.app-download-section .app-download-pic img {
   max-width: 100%;
   height: auto;
   max-height: 500px;
@@ -977,7 +976,7 @@ h6 {
     padding: 60px 0;
   }
 
-  .app-download-section .ad-content {
+  .app-download-section .app-download-content {
     padding-right: 0;
     margin-bottom: 40px;
     text-align: center;
@@ -987,11 +986,11 @@ h6 {
     font-size: 28px;
   }
 
-  .app-download-section .ad-buttons {
+  .app-download-section .app-download-buttons {
     justify-content: center;
   }
 
-  .app-download-section .ad-pic img {
+  .app-download-section .app-download-pic img {
     max-height: 400px;
   }
 }
@@ -1005,11 +1004,11 @@ h6 {
     font-size: 24px;
   }
 
-  .app-download-section .ad-description {
+  .app-download-section .app-download-description {
     font-size: 15px;
   }
 
-  .app-download-section .ad-buttons {
+  .app-download-section .app-download-buttons {
     flex-direction: column;
     align-items: stretch;
   }
@@ -1019,7 +1018,7 @@ h6 {
     padding: 18px 25px;
   }
 
-  .app-download-section .ad-pic img {
+  .app-download-section .app-download-pic img {
     max-height: 350px;
   }
 }
@@ -1033,7 +1032,7 @@ h6 {
     font-size: 20px;
   }
 
-  .app-download-section .ad-description {
+  .app-download-section .app-download-description {
     font-size: 14px;
     margin-bottom: 30px;
   }
@@ -1050,7 +1049,7 @@ h6 {
     font-size: 14px;
   }
 
-  .app-download-section .ad-pic img {
+  .app-download-section .app-download-pic img {
     max-height: 280px;
   }
 }
