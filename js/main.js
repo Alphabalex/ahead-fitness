@@ -125,8 +125,34 @@
     /*------------------
         Image Popup
     --------------------*/
-    $('.image-popup').magnificPopup({
+    $('.image-popup').not('.gallery .image-popup').magnificPopup({
         type: 'image'
+    });
+
+    $('.gallery .image-popup').magnificPopup({
+        type: 'image',
+        focus: '.mfp-close',
+        gallery: {
+            enabled: true,
+            preload: [0, 1],
+            tPrev: 'Previous image (Left arrow key)',
+            tNext: 'Next image (Right arrow key)',
+            tCounter: '%curr% of %total%'
+        },
+        image: {
+            titleSrc: function (item) {
+                return item.el.attr('aria-label');
+            }
+        },
+        callbacks: {
+            open: function () {
+                this.wrap.attr({
+                    role: 'dialog',
+                    'aria-modal': 'true',
+                    'aria-label': 'Gallery image viewer'
+                });
+            }
+        }
     });
 
     /*------------------
