@@ -50,7 +50,7 @@
     });
 
     //Masonary
-    $('.gallery').masonry({
+    $('.gallery').not('.gallery--balanced').masonry({
         itemSelector: '.gs-item',
         columnWidth: '.grid-sizer',
         gutter: 10
