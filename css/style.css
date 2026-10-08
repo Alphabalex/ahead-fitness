@@ -1240,7 +1240,7 @@ h6 {
   width: calc(50% - 10px);
 }
 
-/* Palmall uses fixed tracks so each complete row is predictably filled. */
+/* Palmall and Danglo use fixed tracks to keep gallery rows predictable. */
 .gallery.gallery--balanced {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -3573,6 +3573,10 @@ h6 {
 
   .gallery.gallery--balanced .gs-item.grid-wide {
     grid-column: span 1;
+  }
+
+  .gallery.gallery--balanced .gs-item:last-child {
+    grid-column: 1 / -1;
   }
 
   .about-text {
