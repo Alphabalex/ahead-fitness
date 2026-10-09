@@ -70,6 +70,13 @@
         if (href === '#locations' || href === '#') {
             event.preventDefault();
             var parentItem = $(this).closest('li');
+            if (parentItem.is('[data-location-category]')) {
+                var categoryExpander = parentItem.children('.slicknav_parent-link').children('.slicknav_item').get(0);
+                if (categoryExpander) {
+                    $(categoryExpander).trigger('click');
+                }
+                return;
+            }
             var expander = parentItem.children('.slicknav_parent-link').children('.slicknav_item').get(0);
             if (expander) {
                 $(expander).trigger('click');
@@ -86,7 +93,6 @@
 
     $menuWrapper.on('click', '#mobile-menu-wrap .slicknav_parent-link > .slicknav_item', function (event) {
         event.preventDefault();
-        event.stopPropagation();
     });
 
     $menuWrapper.on('click', '.canvas-search', function () {

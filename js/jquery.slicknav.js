@@ -143,9 +143,23 @@
                 data = {};
             data.children = item.children('ul').attr('role', 'menu');
             item.data('menu', data);
+            var isLocationMenu = item.attr('data-location-menu') === 'true';
+            if (isLocationMenu && !settings.showChildren) {
+                item.data('locationMenu', true);
+            }
 
             // if a list item has a nested menu
             if (data.children.length > 0) {
+
+                // A category heading is an expander, never a destination link.
+                var isLocationCategory = Boolean(item.attr('data-location-category') &&
+                    data.children.hasClass('location-submenu') &&
+                    item.parent().closest('ul[data-location-menu="true"]').length > 0);
+                item.data('locationCategory', isLocationCategory);
+                item.data('locationMenu', isLocationMenu);
+                if (isLocationCategory) {
+                    data.locationCategory = true;
+                }
 
                 // select all text before the child menu
                 // check for anchors
@@ -171,7 +185,7 @@
                 );
 
                 // wrap item text with tag and add classes unless we are separating parent links
-                if ((!settings.allowParentLinks || settings.nestedParentLinks) || !containsAnchor) {
+                if (((!settings.allowParentLinks || settings.nestedParentLinks) || !containsAnchor) && !isLocationCategory) {
                     var $wrap = $(nodes).wrapAll(wrapElement).parent();
                     $wrap.addClass(prefix+'_row');
                 } else
@@ -193,7 +207,10 @@
 
                 //append arrow
                 $(nodes).last().after(arrowElement);
-
+                if (isLocationCategory) {
+                    item.children('.slicknav_parent-link').children('.' + prefix + '_item')
+                        .attr('aria-expanded', String(Boolean(settings.showChildren)));
+                }
 
             } else if ( item.children().length === 0) {
                  item.addClass(prefix+'_txtnode');
@@ -228,6 +245,10 @@
             if (!settings.showChildren){
                 $this._visibilityToggle(data.children, null, false, null, true);
             }
+            if ($(this).data('locationCategory')) {
+                $(this).children('.slicknav_parent-link').children('.' + prefix + '_item')
+                    .attr('aria-expanded', String($(this).hasClass(prefix + '_open')));
+            }
         });
 
         // finally toggle entire menu
@@ -251,7 +272,7 @@
             $this._menuToggle();
         });
 
-        // click on menu parent
+        // Click on menu parent.
         $this.mobileNav.on('click', '.' + prefix + '_item', function (e) {
             e.preventDefault();
             $this._itemClick($(this));
@@ -276,6 +297,45 @@
 
             
         });
+
+        function handleLocationCategoryKeydown(event) {
+            var $control = $(event.currentTarget);
+            var $category = $control.closest('li');
+            if (!$category.data('locationCategory')) {
+                return;
+            }
+
+            var $expander = $category.children('.slicknav_parent-link').children('.' + prefix + '_item');
+            var key = event.keyCode;
+            if (key !== Keyboard.ENTER && key !== Keyboard.SPACE && key !== Keyboard.DOWN &&
+                key !== Keyboard.RIGHT && key !== Keyboard.LEFT) {
+                return;
+            }
+
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            var $submenu = $category.children('ul.location-submenu');
+            if (key === Keyboard.DOWN || key === Keyboard.RIGHT) {
+                if ($category.hasClass(prefix + '_collapsed')) {
+                    $this._itemClick($expander);
+                }
+                var $firstLink = $submenu.find('a[href]').filter(':visible').first();
+                if ($firstLink.length) {
+                    $firstLink.focus();
+                }
+            } else if (key === Keyboard.LEFT) {
+                if ($category.hasClass(prefix + '_open')) {
+                    $this._itemClick($expander);
+                }
+                $control.focus();
+            } else {
+                $this._itemClick($expander);
+            }
+        }
+
+        $this.mobileNav.on('keydown', '[data-location-category] > .slicknav_parent-link > a:first-child', handleLocationCategoryKeydown);
+        $this.mobileNav.on('keydown', '[data-location-category] > .slicknav_parent-link > .slicknav_item', handleLocationCategoryKeydown);
+
 
         $this.mobileNav.on('keydown', '.'+prefix+'_item', function(e) {
             var ev = e || event;
@@ -376,11 +436,37 @@
                 data.parent = el.parent().parent();
                 data.ul = el.parent().next('ul');
             }
+            if (!data.ul.length && el.hasClass(prefix+'_item')) {
+                data.parent = el.closest('li');
+                data.ul = data.parent.children('ul');
+            }
             el.data('menu', data);
         }
         if (data.parent.hasClass(prefix+'_collapsed')) {
+            var isLocationCategory = data.parent.is('[data-location-category]') &&
+                data.ul.hasClass('location-submenu');
+            if (isLocationCategory) {
+                data.parent.data('locationCategory', true);
+                data.parent.siblings('[data-location-category]').each(function () {
+                    var $category = $(this);
+                    if ($category.hasClass(prefix+'_open')) {
+                        var $trigger = $category.children('.slicknav_parent-link').children('.' + prefix + '_item');
+                        var $submenu = $category.children('ul.location-submenu');
+                        $category.removeClass(prefix+'_open').addClass(prefix+'_collapsed');
+                        $category.children('.slicknav_parent-link').find('.slicknav_arrow').html(settings.closedSymbol);
+                        $category.children('.slicknav_parent-link').children('.' + prefix + '_item').attr('aria-expanded', 'false');
+                        $submenu.addClass(prefix+'_hidden').attr('aria-hidden', 'true').hide();
+                        $this._getActionItems($submenu).attr('tabindex', '-1');
+                    }
+                });
+            }
             data.arrow.html(settings.openedSymbol);
             data.parent.removeClass(prefix+'_collapsed');
+            if (isLocationCategory) {
+                data.ul.closest('[data-location-menu="true"]')
+                    .removeClass(prefix + '_hidden').attr('aria-hidden', 'false').show();
+            }
+
             data.parent.addClass(prefix+'_open');
             data.parent.addClass(prefix+'_animating');
             $this._visibilityToggle(data.ul, data.parent, true, el);
@@ -390,6 +476,16 @@
             data.parent.removeClass(prefix+'_open');
             data.parent.addClass(prefix+'_animating');
             $this._visibilityToggle(data.ul, data.parent, true, el);
+        }
+        if (data.parent.data('locationCategory')) {
+            el.attr('aria-expanded', String(data.parent.hasClass(prefix + '_open')));
+        }
+        if (data.parent.data('locationMenu')) {
+            data.parent.find('[data-location-category]').each(function () {
+                var $category = $(this);
+                $category.children('.slicknav_parent-link').children('.' + prefix + '_item')
+                    .attr('aria-expanded', String($category.hasClass(prefix + '_open')));
+            });
         }
     };
 
@@ -451,6 +547,9 @@
             }
             el.attr('aria-hidden','false');
             items.attr('tabindex', '0');
+            if (el.hasClass('location-submenu')) {
+                el.find('a[href]').attr('tabindex', '0');
+            }
             $this._setVisAttr(el, false);
         } else {
             el.addClass(prefix+'_hidden');

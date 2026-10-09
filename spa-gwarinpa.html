@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -39,15 +39,18 @@
   </div>
 
   <!-- Offcanvas Menu Section Begin -->
-  <div class="offcanvas-menu-overlay"></div>
-  <div class="offcanvas-menu-wrapper">
-    <div class="canvas-close">
+  <button type="button" class="offcanvas-menu-overlay" aria-label="Close navigation menu"></button>
+  <div class="offcanvas-menu-wrapper" aria-hidden="true">
+    <a class="mobile-menu-brand" href="./index.html" aria-label="Ahead Fitness home"><img src="img/logo2.png"
+        alt="" /><span>AHEAD FITNESS<small>TRAIN · MOVE · THRIVE</small></span></a>
+    <button type="button" class="canvas-close" aria-label="Close navigation menu">
       <i class="fa fa-close"></i>
-    </div>
-    <div class="canvas-search search-switch">
+    </button>
+    <button type="button" class="canvas-search search-switch" aria-label="Search the website"
+      aria-controls="site-search">
       <i class="fa fa-search"></i>
-    </div>
-    <nav class="canvas-menu mobile-menu">
+    </button>
+    <nav id="mobile-menu" class="canvas-menu mobile-menu" aria-label="Mobile navigation">
       <ul>
         <li><a href="./index.html">Home</a></li>
         <li><a href="./index.html#about">About Us</a></li>
@@ -57,20 +60,40 @@
         <li><a href="#contact">Contact</a></li>
         <li>
           <a href="#locations">Locations</a>
-          <ul class="dropdown">
-            <li>
-              <a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a>
+          <ul class="dropdown" data-location-menu="true">
+            <li class="location-category" data-location-category="GYM">
+              <a href="#">GYM</a>
+              <ul class="location-submenu">
+                <li><a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a></li>
+                <li><a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a></li>
+                <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
+                <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
+                <li><a href="./karu.html">Karu, Abuja</a></li>
+              </ul>
             </li>
-            <li>
-              <a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a>
+            <li class="location-category" data-location-category="SALON">
+              <a href="#">SALON</a>
+              <ul class="location-submenu">
+                <li><a href="./ahead-barbers-nadrem.html">Ahead Barbers Unisex Salon, Nadrem</a></li>
+                <li><a href="./ahead-barbers-beauty-kubwa.html">AHEAD Barbers &amp; Beauty Salon, Kubwa</a></li>
+              </ul>
             </li>
-            <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
-            <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
-            <li><a href="./karu.html">Karu, Abuja</a></li>
-            <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
-            <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
-            <li><a href="./spa.html">Ahead Fitness SPA, Karu</a></li>
-            <li><a href="./spa-gwarinpa.html" aria-current="page">Ahead Fitness SPA Gwarinpa</a></li>
+            <li class="location-category" data-location-category="SPA">
+              <a href="#">SPA</a>
+              <ul class="location-submenu">
+                <li><a href="./spa-karu.html">Ahead Fitness SPA, Karu</a></li>
+                <li><a href="./spa-gwarinpa.html" aria-current="page">Ahead Fitness SPA Gwarinpa</a></li>
+                <li><a href="./spa-dantata.html">Ahead Fitness SPA Dantata</a></li>
+              </ul>
+            </li>
+            <li class="location-category" data-location-category="FOOD">
+              <a href="#">FOOD</a>
+              <ul class="location-submenu">
+                <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
+                <li><a href="./ahead-fitness-grills-karu.html">AHEAD FITNESS GRILLS Karu</a></li>
+                <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a href="./careers.html">Careers</a></li>
@@ -106,20 +129,40 @@
               <li><a href="#contact">Contact</a></li>
               <li>
                 <a href="#locations">Locations</a>
-                <ul class="dropdown">
-                  <li>
-                    <a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a>
+                <ul class="dropdown" data-location-menu="true">
+                  <li class="location-category" data-location-category="GYM">
+                    <a href="#">GYM</a>
+                    <ul class="location-submenu">
+                      <li><a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a></li>
+                      <li><a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a></li>
+                      <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
+                      <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
+                      <li><a href="./karu.html">Karu, Abuja</a></li>
+                    </ul>
                   </li>
-                  <li>
-                    <a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a>
+                  <li class="location-category" data-location-category="SALON">
+                    <a href="#">SALON</a>
+                    <ul class="location-submenu">
+                      <li><a href="./ahead-barbers-nadrem.html">Ahead Barbers Unisex Salon, Nadrem</a></li>
+                      <li><a href="./ahead-barbers-beauty-kubwa.html">AHEAD Barbers &amp; Beauty Salon, Kubwa</a></li>
+                    </ul>
                   </li>
-                  <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
-                  <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
-                  <li><a href="./karu.html">Karu, Abuja</a></li>
-                  <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
-                  <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
-                  <li><a href="./spa.html">Ahead Fitness SPA, Karu</a></li>
-                  <li><a href="./spa-gwarinpa.html" aria-current="page">Ahead Fitness SPA Gwarinpa</a></li>
+                  <li class="location-category" data-location-category="SPA">
+                    <a href="#">SPA</a>
+                    <ul class="location-submenu">
+                      <li><a href="./spa-karu.html">Ahead Fitness SPA, Karu</a></li>
+                      <li><a href="./spa-gwarinpa.html" aria-current="page">Ahead Fitness SPA Gwarinpa</a></li>
+                      <li><a href="./spa-dantata.html">Ahead Fitness SPA Dantata</a></li>
+                    </ul>
+                  </li>
+                  <li class="location-category" data-location-category="FOOD">
+                    <a href="#">FOOD</a>
+                    <ul class="location-submenu">
+                      <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
+                      <li><a href="./ahead-fitness-grills-karu.html">AHEAD FITNESS GRILLS Karu</a></li>
+                      <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li><a href="./careers.html">Careers</a></li>
@@ -128,18 +171,20 @@
         </div>
         <div class="col-lg-2">
           <div class="top-option">
-            <div class="to-search search-switch">
+            <button type="button" class="to-search search-switch" aria-label="Search the website"
+              aria-controls="site-search">
               <i class="fa fa-search"></i>
-            </div>
+            </button>
             <div class="to-social">
               <a href="https://www.instagram.com/ahead_fitness301"><i class="fa fa-instagram"></i></a>
             </div>
           </div>
         </div>
       </div>
-      <div class="canvas-open">
+      <button type="button" class="canvas-open" aria-label="Open navigation menu" aria-controls="mobile-menu"
+        aria-expanded="false">
         <i class="fa fa-bars"></i>
-      </div>
+      </button>
     </div>
   </header>
   <!-- Header End -->
@@ -183,151 +228,188 @@
       <div class="grid-sizer"></div>
       <div class="gs-item grid-wide">
         <img src="img/Gwarimpa_Spa/GWS1.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS1.webp" class="thumb-icon image-popup" aria-label="Open image 1 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS1.webp" class="thumb-icon image-popup" aria-label="Open image 1 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS2.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS2.webp" class="thumb-icon image-popup" aria-label="Open image 2 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS2.webp" class="thumb-icon image-popup" aria-label="Open image 2 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS3.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS3.webp" class="thumb-icon image-popup" aria-label="Open image 3 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS3.webp" class="thumb-icon image-popup" aria-label="Open image 3 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item grid-wide">
         <img src="img/Gwarimpa_Spa/GWS4.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS4.webp" class="thumb-icon image-popup" aria-label="Open image 4 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS4.webp" class="thumb-icon image-popup" aria-label="Open image 4 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS5.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS5.webp" class="thumb-icon image-popup" aria-label="Open image 5 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS5.webp" class="thumb-icon image-popup" aria-label="Open image 5 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS6.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS6.webp" class="thumb-icon image-popup" aria-label="Open image 6 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS6.webp" class="thumb-icon image-popup" aria-label="Open image 6 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item grid-wide">
         <img src="img/Gwarimpa_Spa/GWS7.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS7.webp" class="thumb-icon image-popup" aria-label="Open image 7 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS7.webp" class="thumb-icon image-popup" aria-label="Open image 7 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS8.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS8.webp" class="thumb-icon image-popup" aria-label="Open image 8 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS8.webp" class="thumb-icon image-popup" aria-label="Open image 8 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS9.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS9.webp" class="thumb-icon image-popup" aria-label="Open image 9 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS9.webp" class="thumb-icon image-popup" aria-label="Open image 9 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS10.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS10.webp" class="thumb-icon image-popup" aria-label="Open image 10 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS10.webp" class="thumb-icon image-popup" aria-label="Open image 10 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS11.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS11.webp" class="thumb-icon image-popup" aria-label="Open image 11 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS11.webp" class="thumb-icon image-popup" aria-label="Open image 11 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS12.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS12.webp" class="thumb-icon image-popup" aria-label="Open image 12 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS12.webp" class="thumb-icon image-popup" aria-label="Open image 12 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS13.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS13.webp" class="thumb-icon image-popup" aria-label="Open image 13 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS13.webp" class="thumb-icon image-popup" aria-label="Open image 13 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS14.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS14.webp" class="thumb-icon image-popup" aria-label="Open image 14 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS14.webp" class="thumb-icon image-popup" aria-label="Open image 14 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS15.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS15.webp" class="thumb-icon image-popup" aria-label="Open image 15 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS15.webp" class="thumb-icon image-popup" aria-label="Open image 15 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS16.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS16.webp" class="thumb-icon image-popup" aria-label="Open image 16 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS16.webp" class="thumb-icon image-popup" aria-label="Open image 16 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS17.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS17.webp" class="thumb-icon image-popup" aria-label="Open image 17 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS17.webp" class="thumb-icon image-popup" aria-label="Open image 17 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS18.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS18.webp" class="thumb-icon image-popup" aria-label="Open image 18 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS18.webp" class="thumb-icon image-popup" aria-label="Open image 18 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS19.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS19.webp" class="thumb-icon image-popup" aria-label="Open image 19 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS19.webp" class="thumb-icon image-popup" aria-label="Open image 19 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS20.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS20.webp" class="thumb-icon image-popup" aria-label="Open image 20 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS20.webp" class="thumb-icon image-popup" aria-label="Open image 20 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS21.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS21.webp" class="thumb-icon image-popup" aria-label="Open image 21 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS21.webp" class="thumb-icon image-popup" aria-label="Open image 21 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS22.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS22.webp" class="thumb-icon image-popup" aria-label="Open image 22 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS22.webp" class="thumb-icon image-popup" aria-label="Open image 22 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS23.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS23.webp" class="thumb-icon image-popup" aria-label="Open image 23 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS23.webp" class="thumb-icon image-popup" aria-label="Open image 23 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS24.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS24.webp" class="thumb-icon image-popup" aria-label="Open image 24 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS24.webp" class="thumb-icon image-popup" aria-label="Open image 24 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS25.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS25.webp" class="thumb-icon image-popup" aria-label="Open image 25 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS25.webp" class="thumb-icon image-popup" aria-label="Open image 25 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS26.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS26.webp" class="thumb-icon image-popup" aria-label="Open image 26 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS26.webp" class="thumb-icon image-popup" aria-label="Open image 26 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS27.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS27.webp" class="thumb-icon image-popup" aria-label="Open image 27 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS27.webp" class="thumb-icon image-popup" aria-label="Open image 27 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS28.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS28.webp" class="thumb-icon image-popup" aria-label="Open image 28 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS28.webp" class="thumb-icon image-popup" aria-label="Open image 28 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS29.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS29.webp" class="thumb-icon image-popup" aria-label="Open image 29 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS29.webp" class="thumb-icon image-popup" aria-label="Open image 29 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS30.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS30.webp" class="thumb-icon image-popup" aria-label="Open image 30 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS30.webp" class="thumb-icon image-popup" aria-label="Open image 30 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS31.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS31.webp" class="thumb-icon image-popup" aria-label="Open image 31 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS31.webp" class="thumb-icon image-popup" aria-label="Open image 31 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS32.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS32.webp" class="thumb-icon image-popup" aria-label="Open image 32 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS32.webp" class="thumb-icon image-popup" aria-label="Open image 32 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS33.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS33.webp" class="thumb-icon image-popup" aria-label="Open image 33 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS33.webp" class="thumb-icon image-popup" aria-label="Open image 33 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS34.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS34.webp" class="thumb-icon image-popup" aria-label="Open image 34 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS34.webp" class="thumb-icon image-popup" aria-label="Open image 34 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS35.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS35.webp" class="thumb-icon image-popup" aria-label="Open image 35 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS35.webp" class="thumb-icon image-popup" aria-label="Open image 35 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS36.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS36.webp" class="thumb-icon image-popup" aria-label="Open image 36 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS36.webp" class="thumb-icon image-popup" aria-label="Open image 36 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
       <div class="gs-item">
         <img src="img/Gwarimpa_Spa/GWS37.webp" alt="" loading="lazy" decoding="async" />
-        <a href="img/Gwarimpa_Spa/GWS37.webp" class="thumb-icon image-popup" aria-label="Open image 37 of 37"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+        <a href="img/Gwarimpa_Spa/GWS37.webp" class="thumb-icon image-popup" aria-label="Open image 37 of 37"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -532,7 +614,9 @@
             <a href="tel:08025310435">
               <div class="cw-text">
                 <i class="fa fa-phone"></i>
-                <ul><li>08025310435</li></ul>
+                <ul>
+                  <li>08025310435</li>
+                </ul>
               </div>
             </a>
             <div class="cw-text email">
@@ -658,11 +742,20 @@
   <!-- Footer Section End -->
 
   <!-- Search model Begin -->
-  <div class="search-model">
+  <div class="search-model" id="site-search" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title"
+    aria-hidden="true" hidden>
     <div class="h-100 d-flex align-items-center justify-content-center">
-      <div class="search-close-switch">+</div>
-      <form class="search-model-form">
-        <input type="text" id="search-input" placeholder="Search here....." />
+      <button type="button" class="search-close-switch" aria-label="Close search">×</button>
+      <form class="search-model-form" role="search">
+        <h2 id="search-dialog-title">Search Ahead Fitness</h2>
+        <label class="visually-hidden" for="search-input">Search the website</label>
+        <div class="search-input-row"><input type="search" id="search-input"
+            placeholder="Search services, locations, and more…" autocomplete="off" />
+          <button type="submit" class="search-submit">Search</button>
+        </div>
+        <div class="search-results" id="search-results" aria-live="polite">
+          <p class="search-hint">Start typing to find pages and sections.</p>
+        </div>
       </form>
     </div>
   </div>
@@ -677,6 +770,7 @@
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
   <!-- Start of aheadfitness Zendesk Widget script -->
   <script id="ze-snippet"
     src="https://static.zdassets.com/ekr/snippet.js?key=86f19125-0ca9-456a-a678-3fa52e054c9b"> </script>

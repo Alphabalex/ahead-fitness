@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -39,15 +39,18 @@
   </div>
 
   <!-- Offcanvas Menu Section Begin -->
-  <div class="offcanvas-menu-overlay"></div>
-  <div class="offcanvas-menu-wrapper">
-    <div class="canvas-close">
+  <button type="button" class="offcanvas-menu-overlay" aria-label="Close navigation menu"></button>
+  <div class="offcanvas-menu-wrapper" aria-hidden="true">
+    <a class="mobile-menu-brand" href="./index.html" aria-label="Ahead Fitness home"><img src="img/logo2.png"
+        alt="" /><span>AHEAD FITNESS<small>TRAIN · MOVE · THRIVE</small></span></a>
+    <button type="button" class="canvas-close" aria-label="Close navigation menu">
       <i class="fa fa-close"></i>
-    </div>
-    <div class="canvas-search search-switch">
+    </button>
+    <button type="button" class="canvas-search search-switch" aria-label="Search the website"
+      aria-controls="site-search">
       <i class="fa fa-search"></i>
-    </div>
-    <nav class="canvas-menu mobile-menu">
+    </button>
+    <nav id="mobile-menu" class="canvas-menu mobile-menu" aria-label="Mobile navigation">
       <ul>
         <li><a href="./index.html">Home</a></li>
         <li><a href="./index.html#about">About Us</a></li>
@@ -57,17 +60,40 @@
         <li><a href="#contact">Contact</a></li>
         <li>
           <a href="#locations">Locations</a>
-          <ul class="dropdown">
-            <li>
-              <a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a>
+          <ul class="dropdown" data-location-menu="true">
+            <li class="location-category" data-location-category="GYM">
+              <a href="#">GYM</a>
+              <ul class="location-submenu">
+                <li><a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a></li>
+                <li><a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a></li>
+                <li><a href="./kubwa.html" aria-current="page">Kubwa (Chikakore), Abuja</a></li>
+                <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
+                <li><a href="./karu.html">Karu, Abuja</a></li>
+              </ul>
             </li>
-            <li>
-              <a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a>
+            <li class="location-category" data-location-category="SALON">
+              <a href="#">SALON</a>
+              <ul class="location-submenu">
+                <li><a href="./ahead-barbers-nadrem.html">Ahead Barbers Unisex Salon, Nadrem</a></li>
+                <li><a href="./ahead-barbers-beauty-kubwa.html">AHEAD Barbers &amp; Beauty Salon, Kubwa</a></li>
+              </ul>
             </li>
-            <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
-            <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
-            <li><a href="./karu.html">Karu, Abuja</a></li>
-            <li><a href="./spa.html">Ahead Fitness SPA</a></li>
+            <li class="location-category" data-location-category="SPA">
+              <a href="#">SPA</a>
+              <ul class="location-submenu">
+                <li><a href="./spa-karu.html">Ahead Fitness SPA, Karu</a></li>
+                <li><a href="./spa-gwarinpa.html">Ahead Fitness SPA Gwarinpa</a></li>
+                <li><a href="./spa-dantata.html">Ahead Fitness SPA Dantata</a></li>
+              </ul>
+            </li>
+            <li class="location-category" data-location-category="FOOD">
+              <a href="#">FOOD</a>
+              <ul class="location-submenu">
+                <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
+                <li><a href="./ahead-fitness-grills-karu.html">AHEAD FITNESS GRILLS Karu</a></li>
+                <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a href="./careers.html">Careers</a></li>
@@ -103,17 +129,40 @@
               <li><a href="#contact">Contact</a></li>
               <li>
                 <a href="#locations">Locations</a>
-                <ul class="dropdown">
-                  <li>
-                    <a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a>
+                <ul class="dropdown" data-location-menu="true">
+                  <li class="location-category" data-location-category="GYM">
+                    <a href="#">GYM</a>
+                    <ul class="location-submenu">
+                      <li><a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a></li>
+                      <li><a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a></li>
+                      <li><a href="./kubwa.html" aria-current="page">Kubwa (Chikakore), Abuja</a></li>
+                      <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
+                      <li><a href="./karu.html">Karu, Abuja</a></li>
+                    </ul>
                   </li>
-                  <li>
-                    <a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a>
+                  <li class="location-category" data-location-category="SALON">
+                    <a href="#">SALON</a>
+                    <ul class="location-submenu">
+                      <li><a href="./ahead-barbers-nadrem.html">Ahead Barbers Unisex Salon, Nadrem</a></li>
+                      <li><a href="./ahead-barbers-beauty-kubwa.html">AHEAD Barbers &amp; Beauty Salon, Kubwa</a></li>
+                    </ul>
                   </li>
-                  <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
-                  <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
-                  <li><a href="./karu.html">Karu, Abuja</a></li>
-                  <li><a href="./spa.html">Ahead Fitness SPA</a></li>
+                  <li class="location-category" data-location-category="SPA">
+                    <a href="#">SPA</a>
+                    <ul class="location-submenu">
+                      <li><a href="./spa-karu.html">Ahead Fitness SPA, Karu</a></li>
+                      <li><a href="./spa-gwarinpa.html">Ahead Fitness SPA Gwarinpa</a></li>
+                      <li><a href="./spa-dantata.html">Ahead Fitness SPA Dantata</a></li>
+                    </ul>
+                  </li>
+                  <li class="location-category" data-location-category="FOOD">
+                    <a href="#">FOOD</a>
+                    <ul class="location-submenu">
+                      <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
+                      <li><a href="./ahead-fitness-grills-karu.html">AHEAD FITNESS GRILLS Karu</a></li>
+                      <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li><a href="./careers.html">Careers</a></li>
@@ -122,18 +171,20 @@
         </div>
         <div class="col-lg-2">
           <div class="top-option">
-            <div class="to-search search-switch">
+            <button type="button" class="to-search search-switch" aria-label="Search the website"
+              aria-controls="site-search">
               <i class="fa fa-search"></i>
-            </div>
+            </button>
             <div class="to-social">
               <a href="https://www.instagram.com/ahead_fitness301"><i class="fa fa-instagram"></i></a>
             </div>
           </div>
         </div>
       </div>
-      <div class="canvas-open">
+      <button type="button" class="canvas-open" aria-label="Open navigation menu" aria-controls="mobile-menu"
+        aria-expanded="false">
         <i class="fa fa-bars"></i>
-      </div>
+      </button>
     </div>
   </header>
   <!-- Header End -->
@@ -173,70 +224,242 @@
 
   <!-- Gallery Section Begin -->
   <div class="gallery-section">
-    <div class="gallery">
+    <div class="gallery gallery--balanced">
       <div class="grid-sizer"></div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k1.jpeg">
-        <a href="img/gallery/k1.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK1.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK1.webp" class="thumb-icon image-popup" aria-label="Open image 1 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k2.jpeg">
-        <a href="img/gallery/k2.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK2.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK2.webp" class="thumb-icon image-popup" aria-label="Open image 2 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k3.jpeg">
-        <a href="img/gallery/k3.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK3.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK3.webp" class="thumb-icon image-popup" aria-label="Open image 3 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k4.jpeg">
-        <a href="img/gallery/k4.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK4.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK4.webp" class="thumb-icon image-popup" aria-label="Open image 4 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k5.jpeg">
-        <a href="img/gallery/k5.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK5.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK5.webp" class="thumb-icon image-popup" aria-label="Open image 5 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k6.jpeg">
-        <a href="img/gallery/k6.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK6.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK6.webp" class="thumb-icon image-popup" aria-label="Open image 6 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k7.jpeg">
-        <a href="img/gallery/k7.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK7.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK7.webp" class="thumb-icon image-popup" aria-label="Open image 7 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k8.jpeg">
-        <a href="img/gallery/k8.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK8.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK8.webp" class="thumb-icon image-popup" aria-label="Open image 8 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k9.jpeg">
-        <a href="img/gallery/k9.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK9.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK9.webp" class="thumb-icon image-popup" aria-label="Open image 9 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k10.jpeg">
-        <a href="img/gallery/k10.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK10.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK10.webp" class="thumb-icon image-popup" aria-label="Open image 10 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k11.jpeg">
-        <a href="img/gallery/k11.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK11.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK11.webp" class="thumb-icon image-popup" aria-label="Open image 11 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k12.jpeg">
-        <a href="img/gallery/k12.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK12.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK12.webp" class="thumb-icon image-popup" aria-label="Open image 12 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k13.jpeg">
-        <a href="img/gallery/k13.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK13.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK13.webp" class="thumb-icon image-popup" aria-label="Open image 13 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item set-bg" data-setbg="img/gallery/k14.jpeg">
-        <a href="img/gallery/k14.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK14.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK14.webp" class="thumb-icon image-popup" aria-label="Open image 14 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/k15.jpeg">
-        <a href="img/gallery/k15.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK15.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK15.webp" class="thumb-icon image-popup" aria-label="Open image 15 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/k16.jpeg">
-        <a href="img/gallery/k16.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK16.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK16.webp" class="thumb-icon image-popup" aria-label="Open image 16 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/k17.jpeg">
-        <a href="img/gallery/k17.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK17.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK17.webp" class="thumb-icon image-popup" aria-label="Open image 17 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/k18.jpeg">
-        <a href="img/gallery/k18.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK18.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK18.webp" class="thumb-icon image-popup" aria-label="Open image 18 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/k19.jpeg">
-        <a href="img/gallery/k19.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK19.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK19.webp" class="thumb-icon image-popup" aria-label="Open image 19 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/k20.jpeg">
-        <a href="img/gallery/k20.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK20.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK20.webp" class="thumb-icon image-popup" aria-label="Open image 20 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
-      <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/k21.jpeg">
-        <a href="img/gallery/k21.jpeg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK21.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK21.webp" class="thumb-icon image-popup" aria-label="Open image 21 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK22.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK22.webp" class="thumb-icon image-popup" aria-label="Open image 22 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK23.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK23.webp" class="thumb-icon image-popup" aria-label="Open image 23 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK24.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK24.webp" class="thumb-icon image-popup" aria-label="Open image 24 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK25.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK25.webp" class="thumb-icon image-popup" aria-label="Open image 25 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK26.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK26.webp" class="thumb-icon image-popup" aria-label="Open image 26 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK27.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK27.webp" class="thumb-icon image-popup" aria-label="Open image 27 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK28.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK28.webp" class="thumb-icon image-popup" aria-label="Open image 28 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK29.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK29.webp" class="thumb-icon image-popup" aria-label="Open image 29 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK30.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK30.webp" class="thumb-icon image-popup" aria-label="Open image 30 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK31.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK31.webp" class="thumb-icon image-popup" aria-label="Open image 31 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK32.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK32.webp" class="thumb-icon image-popup" aria-label="Open image 32 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK33.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK33.webp" class="thumb-icon image-popup" aria-label="Open image 33 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK34.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK34.webp" class="thumb-icon image-popup" aria-label="Open image 34 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK35.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK35.webp" class="thumb-icon image-popup" aria-label="Open image 35 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK36.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK36.webp" class="thumb-icon image-popup" aria-label="Open image 36 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK37.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK37.webp" class="thumb-icon image-popup" aria-label="Open image 37 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK38.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK38.webp" class="thumb-icon image-popup" aria-label="Open image 38 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK39.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK39.webp" class="thumb-icon image-popup" aria-label="Open image 39 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK40.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK40.webp" class="thumb-icon image-popup" aria-label="Open image 40 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK41.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK41.webp" class="thumb-icon image-popup" aria-label="Open image 41 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK42.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK42.webp" class="thumb-icon image-popup" aria-label="Open image 42 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK43.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK43.webp" class="thumb-icon image-popup" aria-label="Open image 43 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK44.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK44.webp" class="thumb-icon image-popup" aria-label="Open image 44 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK45.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK45.webp" class="thumb-icon image-popup" aria-label="Open image 45 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item">
+        <img src="img/Gym_Chikakore/CK46.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK46.webp" class="thumb-icon image-popup" aria-label="Open image 46 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="gs-item grid-wide">
+        <img src="img/Gym_Chikakore/CK47.webp" alt="" loading="lazy" decoding="async" />
+        <a href="img/Gym_Chikakore/CK47.webp" class="thumb-icon image-popup" aria-label="Open image 47 of 47"><i
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -417,11 +640,20 @@
   <!-- Footer Section End -->
 
   <!-- Search model Begin -->
-  <div class="search-model">
+  <div class="search-model" id="site-search" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title"
+    aria-hidden="true" hidden>
     <div class="h-100 d-flex align-items-center justify-content-center">
-      <div class="search-close-switch">+</div>
-      <form class="search-model-form">
-        <input type="text" id="search-input" placeholder="Search here....." />
+      <button type="button" class="search-close-switch" aria-label="Close search">×</button>
+      <form class="search-model-form" role="search">
+        <h2 id="search-dialog-title">Search Ahead Fitness</h2>
+        <label class="visually-hidden" for="search-input">Search the website</label>
+        <div class="search-input-row"><input type="search" id="search-input"
+            placeholder="Search services, locations, and more…" autocomplete="off" />
+          <button type="submit" class="search-submit">Search</button>
+        </div>
+        <div class="search-results" id="search-results" aria-live="polite">
+          <p class="search-hint">Start typing to find pages and sections.</p>
+        </div>
       </form>
     </div>
   </div>
@@ -436,6 +668,7 @@
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
   <!-- Start of aheadfitness Zendesk Widget script -->
   <script id="ze-snippet"
     src="https://static.zdassets.com/ekr/snippet.js?key=86f19125-0ca9-456a-a678-3fa52e054c9b"> </script>

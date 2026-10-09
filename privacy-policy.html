@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -87,15 +87,18 @@
   </div>
 
   <!-- Offcanvas Menu Section Begin -->
-  <div class="offcanvas-menu-overlay"></div>
-  <div class="offcanvas-menu-wrapper">
-    <div class="canvas-close">
+  <button type="button" class="offcanvas-menu-overlay" aria-label="Close navigation menu"></button>
+  <div class="offcanvas-menu-wrapper" aria-hidden="true">
+    <a class="mobile-menu-brand" href="./index.html" aria-label="Ahead Fitness home"><img src="img/logo2.png"
+        alt="" /><span>AHEAD FITNESS<small>TRAIN · MOVE · THRIVE</small></span></a>
+    <button type="button" class="canvas-close" aria-label="Close navigation menu">
       <i class="fa fa-close"></i>
-    </div>
-    <div class="canvas-search search-switch">
+    </button>
+    <button type="button" class="canvas-search search-switch" aria-label="Search the website"
+      aria-controls="site-search">
       <i class="fa fa-search"></i>
-    </div>
-    <nav class="canvas-menu mobile-menu">
+    </button>
+    <nav id="mobile-menu" class="canvas-menu mobile-menu" aria-label="Mobile navigation">
       <ul>
         <li><a href="./index.html">Home</a></li>
         <li><a href="./index.html#about">About Us</a></li>
@@ -104,17 +107,40 @@
         <li><a href="./index.html#bmi">BMI</a></li>
         <li>
           <a href="#locations">Locations</a>
-          <ul class="dropdown">
-            <li>
-              <a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a>
+          <ul class="dropdown" data-location-menu="true">
+            <li class="location-category" data-location-category="GYM">
+              <a href="#">GYM</a>
+              <ul class="location-submenu">
+                <li><a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a></li>
+                <li><a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a></li>
+                <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
+                <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
+                <li><a href="./karu.html">Karu, Abuja</a></li>
+              </ul>
             </li>
-            <li>
-              <a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a>
+            <li class="location-category" data-location-category="SALON">
+              <a href="#">SALON</a>
+              <ul class="location-submenu">
+                <li><a href="./ahead-barbers-nadrem.html">Ahead Barbers Unisex Salon, Nadrem</a></li>
+                <li><a href="./ahead-barbers-beauty-kubwa.html">AHEAD Barbers &amp; Beauty Salon, Kubwa</a></li>
+              </ul>
             </li>
-            <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
-            <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
-            <li><a href="./karu.html">Karu, Abuja</a></li>
-            <li><a href="./spa.html">Ahead Fitness SPA</a></li>
+            <li class="location-category" data-location-category="SPA">
+              <a href="#">SPA</a>
+              <ul class="location-submenu">
+                <li><a href="./spa-karu.html">Ahead Fitness SPA, Karu</a></li>
+                <li><a href="./spa-gwarinpa.html">Ahead Fitness SPA Gwarinpa</a></li>
+                <li><a href="./spa-dantata.html">Ahead Fitness SPA Dantata</a></li>
+              </ul>
+            </li>
+            <li class="location-category" data-location-category="FOOD">
+              <a href="#">FOOD</a>
+              <ul class="location-submenu">
+                <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
+                <li><a href="./ahead-fitness-grills-karu.html">AHEAD FITNESS GRILLS Karu</a></li>
+                <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a href="./careers.html">Careers</a></li>
@@ -149,17 +175,40 @@
               <li><a href="./index.html#bmi">BMI</a></li>
               <li>
                 <a href="#locations">Locations</a>
-                <ul class="dropdown">
-                  <li>
-                    <a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a>
+                <ul class="dropdown" data-location-menu="true">
+                  <li class="location-category" data-location-category="GYM">
+                    <a href="#">GYM</a>
+                    <ul class="location-submenu">
+                      <li><a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a></li>
+                      <li><a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a></li>
+                      <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
+                      <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
+                      <li><a href="./karu.html">Karu, Abuja</a></li>
+                    </ul>
                   </li>
-                  <li>
-                    <a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a>
+                  <li class="location-category" data-location-category="SALON">
+                    <a href="#">SALON</a>
+                    <ul class="location-submenu">
+                      <li><a href="./ahead-barbers-nadrem.html">Ahead Barbers Unisex Salon, Nadrem</a></li>
+                      <li><a href="./ahead-barbers-beauty-kubwa.html">AHEAD Barbers &amp; Beauty Salon, Kubwa</a></li>
+                    </ul>
                   </li>
-                  <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
-                  <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
-                  <li><a href="./karu.html">Karu, Abuja</a></li>
-                  <li><a href="./spa.html">Ahead Fitness SPA</a></li>
+                  <li class="location-category" data-location-category="SPA">
+                    <a href="#">SPA</a>
+                    <ul class="location-submenu">
+                      <li><a href="./spa-karu.html">Ahead Fitness SPA, Karu</a></li>
+                      <li><a href="./spa-gwarinpa.html">Ahead Fitness SPA Gwarinpa</a></li>
+                      <li><a href="./spa-dantata.html">Ahead Fitness SPA Dantata</a></li>
+                    </ul>
+                  </li>
+                  <li class="location-category" data-location-category="FOOD">
+                    <a href="#">FOOD</a>
+                    <ul class="location-submenu">
+                      <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
+                      <li><a href="./ahead-fitness-grills-karu.html">AHEAD FITNESS GRILLS Karu</a></li>
+                      <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li><a href="./careers.html">Careers</a></li>
@@ -168,18 +217,20 @@
         </div>
         <div class="col-lg-3">
           <div class="top-option">
-            <div class="to-search search-switch">
+            <button type="button" class="to-search search-switch" aria-label="Search the website"
+              aria-controls="site-search">
               <i class="fa fa-search"></i>
-            </div>
+            </button>
             <div class="to-social">
               <a href="https://www.instagram.com/ahead_fitness301"><i class="fa fa-instagram"></i></a>
             </div>
           </div>
         </div>
       </div>
-      <div class="canvas-open">
+      <button type="button" class="canvas-open" aria-label="Open navigation menu" aria-controls="mobile-menu"
+        aria-expanded="false">
         <i class="fa fa-bars"></i>
-      </div>
+      </button>
     </div>
   </header>
   <!-- Header End -->
@@ -228,7 +279,8 @@
             <p><strong>Effective date:</strong> 01 October 2026 &middot; <strong>Version:</strong> 3.0</p>
             <p>
               This Privacy Policy explains how Ahead Fitness Limited
-              (&quot;Ahead Fitness&quot;, &quot;we&quot;, &quot;us&quot;) collects, uses, shares and protects your personal data
+              (&quot;Ahead Fitness&quot;, &quot;we&quot;, &quot;us&quot;) collects, uses, shares and protects your
+              personal data
               when you use the Ahead Fitness mobile app, our website aheadfitness.ng, and our services at our branches
               in Abuja.
             </p>
@@ -269,7 +321,8 @@
                   </tr>
                   <tr>
                     <td>Body composition</td>
-                    <td>Weight, height, body fat, visceral fat, muscle and lean mass by body segment, fitness score and scan history</td>
+                    <td>Weight, height, body fat, visceral fat, muscle and lean mass by body segment, fitness score and
+                      scan history</td>
                     <td>Body composition scans you take at a branch</td>
                   </tr>
                   <tr>
@@ -289,7 +342,8 @@
                   </tr>
                   <tr>
                     <td>Wallet, points and payments</td>
-                    <td>Wallet top-ups and spend, points earned and used, transaction records. We do not store your full card details</td>
+                    <td>Wallet top-ups and spend, points earned and used, transaction records. We do not store your full
+                      card details</td>
                     <td>You, our systems and our payment processor</td>
                   </tr>
                   <tr>
@@ -568,7 +622,8 @@
             <h3>8. Security</h3>
             <p>
               We protect your data with encryption in transit, access controls limited by staff role, and encryption at
-              rest, regular backups and audit logs. No system is completely secure. If a breach puts your rights at risk,
+              rest, regular backups and audit logs. No system is completely secure. If a breach puts your rights at
+              risk,
               we will notify the NDPC within 72 hours and tell you without undue delay.
             </p>
           </div>
@@ -584,7 +639,8 @@
               <li>Receive your data in a portable format</li>
               <li>Withdraw consent at any time, without affecting what we did before</li>
               <li>Not be subject to a decision based only on automated processing that significantly affects you</li>
-              <li>Complain to the Nigeria Data Protection Commission (<a href="https://ndpc.gov.ng">ndpc.gov.ng</a>)</li>
+              <li>Complain to the Nigeria Data Protection Commission (<a href="https://ndpc.gov.ng">ndpc.gov.ng</a>)
+              </li>
             </ul>
             <p>
               To use these rights, email <a href="mailto:info@aheadfitness.ng">info@aheadfitness.ng</a>. We will
@@ -737,11 +793,20 @@
   <!-- Footer Section End -->
 
   <!-- Search model Begin -->
-  <div class="search-model">
+  <div class="search-model" id="site-search" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title"
+    aria-hidden="true" hidden>
     <div class="h-100 d-flex align-items-center justify-content-center">
-      <div class="search-close-switch">+</div>
-      <form class="search-model-form">
-        <input type="text" id="search-input" placeholder="Search here....." />
+      <button type="button" class="search-close-switch" aria-label="Close search">×</button>
+      <form class="search-model-form" role="search">
+        <h2 id="search-dialog-title">Search Ahead Fitness</h2>
+        <label class="visually-hidden" for="search-input">Search the website</label>
+        <div class="search-input-row"><input type="search" id="search-input"
+            placeholder="Search services, locations, and more…" autocomplete="off" />
+          <button type="submit" class="search-submit">Search</button>
+        </div>
+        <div class="search-results" id="search-results" aria-live="polite">
+          <p class="search-hint">Start typing to find pages and sections.</p>
+        </div>
       </form>
     </div>
   </div>
@@ -756,6 +821,7 @@
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
   <!-- Start of aheadfitness Zendesk Widget script -->
   <script id="ze-snippet"
     src="https://static.zdassets.com/ekr/snippet.js?key=86f19125-0ca9-456a-a678-3fa52e054c9b"> </script>

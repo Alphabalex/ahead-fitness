@@ -457,6 +457,56 @@ h6 {
   display: none;
 }
 
+.nav-menu .dropdown[data-location-menu="true"] > .location-category {
+  position: relative;
+}
+
+.nav-menu .dropdown[data-location-menu="true"] > .location-category > a {
+  color: #ed3331;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  padding: 9px 18px;
+}
+
+.nav-menu .dropdown[data-location-menu="true"] > .location-category > a:after {
+  content: "\f105";
+  display: inline-block;
+  position: absolute;
+  left: auto;
+  top: 50%;
+  right: 14px;
+  width: auto;
+  height: auto;
+  background: none;
+  font-family: FontAwesome;
+  font-size: 15px;
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.nav-menu .dropdown[data-location-menu="true"] > .location-category > .location-submenu {
+  position: absolute;
+  top: -13px;
+  left: 100%;
+  width: 230px;
+  padding: 10px 0;
+  background: #252525;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+.nav-menu .dropdown[data-location-menu="true"] > .location-category:hover > .location-submenu,
+.nav-menu .dropdown[data-location-menu="true"] > .location-category:focus-within > .location-submenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-menu .dropdown[data-location-menu="true"] > .location-category > .location-submenu li a {
+  padding: 7px 18px;
+}
+
 .nav-menu ul li:last-child {
   margin-right: 0;
 }
@@ -477,7 +527,7 @@ h6 {
   opacity: 1;
 }
 
-.nav-menu ul li:hover .dropdown {
+.nav-menu ul li:hover > .dropdown {
   opacity: 1;
   visibility: visible;
 }
@@ -4020,6 +4070,23 @@ h6 {
     margin: 0;
     padding: 0 0 0 15px;
     border-left: 1px solid rgba(237, 51, 49, .4);
+  }
+
+  .offcanvas-menu-wrapper .slicknav_nav .location-submenu {
+    padding-left: 12px;
+    border-left-color: rgba(255, 255, 255, .14);
+  }
+
+  .offcanvas-menu-wrapper .slicknav_nav .location-category > .slicknav_parent-link > a:first-child {
+    color: #ff7774;
+    font-family: "Oswald", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .1em;
+  }
+
+  .offcanvas-menu-wrapper .slicknav_nav .location-category > .slicknav_parent-link > .slicknav_item {
+    color: #ff7774;
   }
 
   .offcanvas-menu-wrapper .slicknav_nav li {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -39,15 +39,18 @@
   </div>
 
   <!-- Offcanvas Menu Section Begin -->
-  <div class="offcanvas-menu-overlay"></div>
-  <div class="offcanvas-menu-wrapper">
-    <div class="canvas-close">
+  <button type="button" class="offcanvas-menu-overlay" aria-label="Close navigation menu"></button>
+  <div class="offcanvas-menu-wrapper" aria-hidden="true">
+    <a class="mobile-menu-brand" href="./index.html" aria-label="Ahead Fitness home"><img src="img/logo2.png"
+        alt="" /><span>AHEAD FITNESS<small>TRAIN · MOVE · THRIVE</small></span></a>
+    <button type="button" class="canvas-close" aria-label="Close navigation menu">
       <i class="fa fa-close"></i>
-    </div>
-    <div class="canvas-search search-switch">
+    </button>
+    <button type="button" class="canvas-search search-switch" aria-label="Search the website"
+      aria-controls="site-search">
       <i class="fa fa-search"></i>
-    </div>
-    <nav class="canvas-menu mobile-menu">
+    </button>
+    <nav id="mobile-menu" class="canvas-menu mobile-menu" aria-label="Mobile navigation">
       <ul>
         <li><a href="./index.html">Home</a></li>
         <li><a href="./index.html#about">About Us</a></li>
@@ -56,17 +59,40 @@
         <li><a href="./index.html#bmi">BMI</a></li>
         <li>
           <a href="#locations">Locations</a>
-          <ul class="dropdown">
-            <li>
-              <a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a>
+          <ul class="dropdown" data-location-menu="true">
+            <li class="location-category" data-location-category="GYM">
+              <a href="#">GYM</a>
+              <ul class="location-submenu">
+                <li><a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a></li>
+                <li><a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a></li>
+                <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
+                <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
+                <li><a href="./karu.html">Karu, Abuja</a></li>
+              </ul>
             </li>
-            <li>
-              <a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a>
+            <li class="location-category" data-location-category="SALON">
+              <a href="#">SALON</a>
+              <ul class="location-submenu">
+                <li><a href="./ahead-barbers-nadrem.html">Ahead Barbers Unisex Salon, Nadrem</a></li>
+                <li><a href="./ahead-barbers-beauty-kubwa.html">AHEAD Barbers &amp; Beauty Salon, Kubwa</a></li>
+              </ul>
             </li>
-            <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
-            <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
-            <li><a href="./karu.html">Karu, Abuja</a></li>
-            <li><a href="./spa.html">Ahead Fitness SPA</a></li>
+            <li class="location-category" data-location-category="SPA">
+              <a href="#">SPA</a>
+              <ul class="location-submenu">
+                <li><a href="./spa-karu.html">Ahead Fitness SPA, Karu</a></li>
+                <li><a href="./spa-gwarinpa.html">Ahead Fitness SPA Gwarinpa</a></li>
+                <li><a href="./spa-dantata.html">Ahead Fitness SPA Dantata</a></li>
+              </ul>
+            </li>
+            <li class="location-category" data-location-category="FOOD">
+              <a href="#">FOOD</a>
+              <ul class="location-submenu">
+                <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
+                <li><a href="./ahead-fitness-grills-karu.html">AHEAD FITNESS GRILLS Karu</a></li>
+                <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a href="./careers.html">Careers</a></li>
@@ -101,17 +127,40 @@
               <li><a href="./index.html#bmi">BMI</a></li>
               <li>
                 <a href="#locations">Locations</a>
-                <ul class="dropdown">
-                  <li>
-                    <a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a>
+                <ul class="dropdown" data-location-menu="true">
+                  <li class="location-category" data-location-category="GYM">
+                    <a href="#">GYM</a>
+                    <ul class="location-submenu">
+                      <li><a href="./danglo-plaza.html">Danglo Plaza, Gwarinpa, Abuja</a></li>
+                      <li><a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a></li>
+                      <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
+                      <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
+                      <li><a href="./karu.html">Karu, Abuja</a></li>
+                    </ul>
                   </li>
-                  <li>
-                    <a href="./palmall.html">All Female Gym, Gwarinpa, Abuja</a>
+                  <li class="location-category" data-location-category="SALON">
+                    <a href="#">SALON</a>
+                    <ul class="location-submenu">
+                      <li><a href="./ahead-barbers-nadrem.html">Ahead Barbers Unisex Salon, Nadrem</a></li>
+                      <li><a href="./ahead-barbers-beauty-kubwa.html">AHEAD Barbers &amp; Beauty Salon, Kubwa</a></li>
+                    </ul>
                   </li>
-                  <li><a href="./kubwa.html">Kubwa (Chikakore), Abuja</a></li>
-                  <li><a href="./kubwa-dantata.html">Kubwa (Dantata), Abuja</a></li>
-                  <li><a href="./karu.html">Karu, Abuja</a></li>
-                  <li><a href="./spa.html">Ahead Fitness SPA</a></li>
+                  <li class="location-category" data-location-category="SPA">
+                    <a href="#">SPA</a>
+                    <ul class="location-submenu">
+                      <li><a href="./spa-karu.html">Ahead Fitness SPA, Karu</a></li>
+                      <li><a href="./spa-gwarinpa.html">Ahead Fitness SPA Gwarinpa</a></li>
+                      <li><a href="./spa-dantata.html">Ahead Fitness SPA Dantata</a></li>
+                    </ul>
+                  </li>
+                  <li class="location-category" data-location-category="FOOD">
+                    <a href="#">FOOD</a>
+                    <ul class="location-submenu">
+                      <li><a href="./healthy-meals-karu.html">Healthy Meals Karu</a></li>
+                      <li><a href="./ahead-fitness-grills-karu.html">AHEAD FITNESS GRILLS Karu</a></li>
+                      <li><a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li><a href="./careers.html">Careers</a></li>
@@ -120,18 +169,20 @@
         </div>
         <div class="col-lg-3">
           <div class="top-option">
-            <div class="to-search search-switch">
+            <button type="button" class="to-search search-switch" aria-label="Search the website"
+              aria-controls="site-search">
               <i class="fa fa-search"></i>
-            </div>
+            </button>
             <div class="to-social">
               <a href="https://www.instagram.com/ahead_fitness301"><i class="fa fa-instagram"></i></a>
             </div>
           </div>
         </div>
       </div>
-      <div class="canvas-open">
+      <button type="button" class="canvas-open" aria-label="Open navigation menu" aria-controls="mobile-menu"
+        aria-expanded="false">
         <i class="fa fa-bars"></i>
-      </div>
+      </button>
     </div>
   </header>
   <!-- Header End -->
@@ -180,7 +231,8 @@
             <p><strong>Effective date:</strong> 01 October 2026 &middot; <strong>Version:</strong> 3.0</p>
             <p>
               These Terms of Use are an agreement between you and Ahead Fitness Limited (RC 8320744), 1, Pall Mall
-              Plaza, Gwarinpa, Abuja (&quot;Ahead Fitness&quot;, &quot;we&quot;, &quot;us&quot;). They cover the Ahead Fitness
+              Plaza, Gwarinpa, Abuja (&quot;Ahead Fitness&quot;, &quot;we&quot;, &quot;us&quot;). They cover the Ahead
+              Fitness
               mobile app on Android and iOS, our website aheadfitness.ng, and anything you buy through them.
             </p>
             <p>
@@ -194,7 +246,8 @@
               branch. Our <a href="privacy-policy.html">Privacy Policy</a>
               (https://aheadfitness.ng/privacy-policy.html) explains how we handle your data.
             </p>
-            <p>By creating an account or using the app or website, you accept these terms. If you do not accept them, do not use the app.</p>
+            <p>By creating an account or using the app or website, you accept these terms. If you do not accept them, do
+              not use the app.</p>
           </div>
 
           <div class="section">
@@ -215,12 +268,17 @@
           <div class="section">
             <h3>3. Memberships and payments</h3>
             <ol>
-              <li>Membership plans, prices and branch access are shown in the app and at our branches. Prices are in Nigerian Naira (NGN).</li>
-              <li>You can pay by card or bank through Paystack, by Ahead Wallet, or with points where the app offers it. We do not sell memberships through the Apple App Store or Google Play.</li>
+              <li>Membership plans, prices and branch access are shown in the app and at our branches. Prices are in
+                Nigerian Naira (NGN).</li>
+              <li>You can pay by card or bank through Paystack, by Ahead Wallet, or with points where the app offers it.
+                We do not sell memberships through the Apple App Store or Google Play.</li>
               <li>Plans do not renew automatically.</li>
-              <li>A membership runs from its start date for the period you bought. Freezes are allowed up to 30 days in a calendar year, requested in the app or at the front desk.</li>
-              <li>Refunds: Memberships are non-refundable once started, except where we cannot provide the service or the law requires a refund. Refunds go back to the original payment method or to your Ahead Wallet.</li>
-              <li>We may change prices. A change will not affect a plan you have already paid for, and we will give notice before any renewal at a new price.</li>
+              <li>A membership runs from its start date for the period you bought. Freezes are allowed up to 30 days in
+                a calendar year, requested in the app or at the front desk.</li>
+              <li>Refunds: Memberships are non-refundable once started, except where we cannot provide the service or
+                the law requires a refund. Refunds go back to the original payment method or to your Ahead Wallet.</li>
+              <li>We may change prices. A change will not affect a plan you have already paid for, and we will give
+                notice before any renewal at a new price.</li>
             </ol>
           </div>
 
@@ -260,7 +318,8 @@
               starting exercise or a meal plan if you have a health condition, are pregnant, or are unsure.
             </p>
             <p>
-              Body composition results and bands are estimates, not a diagnosis. Meal plan outcomes, such as the expected
+              Body composition results and bands are estimates, not a diagnosis. Meal plan outcomes, such as the
+              expected
               weight change on the Lean Plan, are typical ranges, not guarantees. Results depend on your body, activity
               and what else you eat.
             </p>
@@ -283,11 +342,15 @@
             </p>
             <p>Otherwise, to the extent the law allows:</p>
             <ul>
-              <li>We provide the app and website &quot;as available&quot; and do not promise they will always be error-free or uninterrupted</li>
-              <li>We are not liable for indirect or consequential loss, or for loss caused by events outside our control</li>
-              <li>Our total liability to you for any claim about the app is limited to the amount you paid us in the 12 months before the claim</li>
+              <li>We provide the app and website &quot;as available&quot; and do not promise they will always be
+                error-free or uninterrupted</li>
+              <li>We are not liable for indirect or consequential loss, or for loss caused by events outside our control
+              </li>
+              <li>Our total liability to you for any claim about the app is limited to the amount you paid us in the 12
+                months before the claim</li>
             </ul>
-            <p>Your rights as a consumer under the Federal Competition and Consumer Protection Act 2018 are not affected.</p>
+            <p>Your rights as a consumer under the Federal Competition and Consumer Protection Act 2018 are not
+              affected.</p>
           </div>
 
           <div class="section">
@@ -343,15 +406,20 @@
             <ol>
               <li>Your QR code is personal. Only you may use it to enter.</li>
               <li>Staff compare you with your profile photo at check-in and may refuse entry if they do not match.</li>
-              <li>Your account can be signed in on one device at a time. Signing in on a new device signs out the old one.</li>
-              <li>If your code is shared or misused, we may suspend check-in while we investigate it and, for repeated misuse, end the membership without refund.</li>
+              <li>Your account can be signed in on one device at a time. Signing in on a new device signs out the old
+                one.</li>
+              <li>If your code is shared or misused, we may suspend check-in while we investigate it and, for repeated
+                misuse, end the membership without refund.</li>
             </ol>
             <h4>Guest passes</h4>
             <ol>
-              <li>Guest passes are available on the plans shown in the app, in the number shown there. Unused passes expire at the end of the plan / do not carry over.</li>
-              <li>You issue a pass to your guest's phone number. The guest verifies it with a one-time code before the visit.</li>
+              <li>Guest passes are available on the plans shown in the app, in the number shown there. Unused passes
+                expire at the end of the plan / do not carry over.</li>
+              <li>You issue a pass to your guest's phone number. The guest verifies it with a one-time code before the
+                visit.</li>
               <li>You must not be at the branch with your guest when they check in.</li>
-              <li>Guests must be 18 or over, follow house rules, and accept the guest terms and safety waiver shown during verification.</li>
+              <li>Guests must be 18 or over, follow house rules, and accept the guest terms and safety waiver shown
+                during verification.</li>
               <li>You are responsible for your guest's conduct while they are with you.</li>
               <li>Passes have no cash value and cannot be sold or exchanged.</li>
             </ol>
@@ -361,25 +429,33 @@
             <h3>Schedule B: Wallet, points and referrals</h3>
             <h4>Ahead Wallet</h4>
             <ol>
-              <li>The wallet holds prepaid credit in Naira that you can spend only on Ahead Fitness products and services. It is not a bank account or e-money account.</li>
-              <li>Wallet credit earns no interest, cannot be transferred to another person, and cannot be withdrawn as cash, except as set out in point 4.</li>
+              <li>The wallet holds prepaid credit in Naira that you can spend only on Ahead Fitness products and
+                services. It is not a bank account or e-money account.</li>
+              <li>Wallet credit earns no interest, cannot be transferred to another person, and cannot be withdrawn as
+                cash, except as set out in point 4.</li>
               <li>Wallet credit cannot be converted into points, and points cannot be converted into wallet credit.</li>
               <li>We may freeze a wallet while we investigate suspected fraud or a payment reversal.</li>
             </ol>
             <h4>Points</h4>
             <ol>
-              <li>You earn points on eligible purchases, including memberships and meal plans, at the rates shown in the app.</li>
+              <li>You earn points on eligible purchases, including memberships and meal plans, at the rates shown in the
+                app.</li>
               <li>You can use points where the app offers it, including to pay for a meal plan in full.</li>
               <li>Points have no cash value and cannot be sold or transferred.</li>
-              <li>Points never expire but all members lose access to any unused points upon deletion / closure of your account with us.</li>
-              <li>We may cancel points earned through fraud, fake accounts, refunded purchases or abuse of the programme.</li>
-              <li>We may change earning rates or rewards with 30 days' notice in the app. Points already earned keep their value for at least that notice period.</li>
+              <li>Points never expire but all members lose access to any unused points upon deletion / closure of your
+                account with us.</li>
+              <li>We may cancel points earned through fraud, fake accounts, refunded purchases or abuse of the
+                programme.</li>
+              <li>We may change earning rates or rewards with 30 days' notice in the app. Points already earned keep
+                their value for at least that notice period.</li>
             </ol>
             <h4>Referrals</h4>
             <ol>
               <li>You get a personal referral code in the app. Your code is not your member ID.</li>
-              <li>When someone joins using your code and pays for their first membership, you earn points at 5 times the normal rate on that first membership.</li>
-              <li>Self-referrals, fake accounts and paid or spam promotion of codes are not allowed. Rewards earned this way will be cancelled.</li>
+              <li>When someone joins using your code and pays for their first membership, you earn points at 5 times the
+                normal rate on that first membership.</li>
+              <li>Self-referrals, fake accounts and paid or spam promotion of codes are not allowed. Rewards earned this
+                way will be cancelled.</li>
               <li>The new member must use the code at sign-up. We cannot add a code afterwards.</li>
             </ol>
           </div>
@@ -388,30 +464,43 @@
             <h3>Schedule C: Shop, meal plans and delivery</h3>
             <h4>Orders</h4>
             <ol>
-              <li>The shop sells Healthy Meals, Grills and Merchandise. Prices and availability are shown in the app and may differ by branch.</li>
-              <li>An order is accepted when you receive a confirmation in the app. If an item becomes unavailable, we will offer a replacement or a refund.</li>
-              <li>Food is prepared fresh and cannot be returned once prepared. If an order is wrong, missing items or not fit to eat, tell us within 2 hours of delivery or collection, with a photo, and we will replace it or refund it.</li>
-              <li>Merchandise can be returned unused within 3 days with proof of purchase, unless faulty, in which case the normal consumer law rules apply.</li>
+              <li>The shop sells Healthy Meals, Grills and Merchandise. Prices and availability are shown in the app and
+                may differ by branch.</li>
+              <li>An order is accepted when you receive a confirmation in the app. If an item becomes unavailable, we
+                will offer a replacement or a refund.</li>
+              <li>Food is prepared fresh and cannot be returned once prepared. If an order is wrong, missing items or
+                not fit to eat, tell us within 2 hours of delivery or collection, with a photo, and we will replace it
+                or refund it.</li>
+              <li>Merchandise can be returned unused within 3 days with proof of purchase, unless faulty, in which case
+                the normal consumer law rules apply.</li>
             </ol>
             <h4>Allergies and dietary needs</h4>
             <ol>
-              <li>Tell us about allergies and dietary needs before you order. For meal plans this is a required step before payment.</li>
-              <li>Our kitchens handle common allergens, including nuts, peanuts, dairy, eggs, gluten, fish, shellfish, sesame, soy. We take care to avoid cross-contact but cannot guarantee any item is allergen-free.</li>
+              <li>Tell us about allergies and dietary needs before you order. For meal plans this is a required step
+                before payment.</li>
+              <li>Our kitchens handle common allergens, including nuts, peanuts, dairy, eggs, gluten, fish, shellfish,
+                sesame, soy. We take care to avoid cross-contact but cannot guarantee any item is allergen-free.</li>
               <li>Nutrition figures shown in the app are approximate.</li>
             </ol>
             <h4>Meal plans</h4>
             <ol>
-              <li>The Lean Plan and the Build Plan are sold as 2-week or 4-week plans. Each follows a fixed meal rotation for the whole plan period.</li>
-              <li>You must pay the full price with one method: card or bank through Paystack, Ahead Wallet, or points. Payments cannot be split.</li>
-              <li>You cannot upgrade from a 2-week to a 4-week plan part-way through. Buy a 4-week plan for your next cycle instead.</li>
-              <li>Expected results, such as the typical 3 to 5 kg weight change on the 4-week Lean Plan, are not guaranteed.</li>
-              <li>Cancellation: You can cancel before the first delivery for a full refund. After that, the plan is non-refundable except for missed deliveries, which will be rescheduled.</li>
+              <li>The Lean Plan and the Build Plan are sold as 2-week or 4-week plans. Each follows a fixed meal
+                rotation for the whole plan period.</li>
+              <li>You must pay the full price with one method: card or bank through Paystack, Ahead Wallet, or points.
+                Payments cannot be split.</li>
+              <li>You cannot upgrade from a 2-week to a 4-week plan part-way through. Buy a 4-week plan for your next
+                cycle instead.</li>
+              <li>Expected results, such as the typical 3 to 5 kg weight change on the 4-week Lean Plan, are not
+                guaranteed.</li>
+              <li>Cancellation: You can cancel before the first delivery for a full refund. After that, the plan is
+                non-refundable except for missed deliveries, which will be rescheduled.</li>
             </ol>
             <h4>Delivery</h4>
             <ol>
               <li>We deliver within the areas shown in the app. Orders are prepared by the nearest branch.</li>
               <li>Delivery fees are based on road distance and shown before you pay.</li>
-              <li>Delivery times are estimates. Someone must be available to receive the order. If a delivery fails because no one is available or the address is wrong, we may charge for re-delivery.</li>
+              <li>Delivery times are estimates. Someone must be available to receive the order. If a delivery fails
+                because no one is available or the address is wrong, we may charge for re-delivery.</li>
               <li>Risk in the goods passes to you on delivery.</li>
             </ol>
           </div>
@@ -535,11 +624,20 @@
   <!-- Footer Section End -->
 
   <!-- Search model Begin -->
-  <div class="search-model">
+  <div class="search-model" id="site-search" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title"
+    aria-hidden="true" hidden>
     <div class="h-100 d-flex align-items-center justify-content-center">
-      <div class="search-close-switch">+</div>
-      <form class="search-model-form">
-        <input type="text" id="search-input" placeholder="Search here....." />
+      <button type="button" class="search-close-switch" aria-label="Close search">×</button>
+      <form class="search-model-form" role="search">
+        <h2 id="search-dialog-title">Search Ahead Fitness</h2>
+        <label class="visually-hidden" for="search-input">Search the website</label>
+        <div class="search-input-row"><input type="search" id="search-input"
+            placeholder="Search services, locations, and more…" autocomplete="off" />
+          <button type="submit" class="search-submit">Search</button>
+        </div>
+        <div class="search-results" id="search-results" aria-live="polite">
+          <p class="search-hint">Start typing to find pages and sections.</p>
+        </div>
       </form>
     </div>
   </div>
@@ -554,6 +652,7 @@
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
   <!-- Start of aheadfitness Zendesk Widget script -->
   <script id="ze-snippet"
     src="https://static.zdassets.com/ekr/snippet.js?key=86f19125-0ca9-456a-a678-3fa52e054c9b"> </script>
