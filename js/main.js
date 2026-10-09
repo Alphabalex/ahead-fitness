@@ -65,12 +65,6 @@
     $('.canvas-close, .offcanvas-menu-overlay').on('click', function () {
         setMobileMenuOpen(false);
     });
-    $menuWrapper.on('click', '#mobile-menu-wrap a[href]:not(.slicknav_item)', function () {
-        if ($(this).attr('href') !== '#') {
-            setMobileMenuOpen(false);
-        }
-    });
-
     $menuWrapper.on('click', '#mobile-menu-wrap .slicknav_parent-link > a:first-child', function (event) {
         var href = $(this).attr('href');
         if (href === '#locations' || href === '#') {
@@ -80,6 +74,13 @@
             if (expander) {
                 $(expander).trigger('click');
             }
+        }
+    });
+
+    $menuWrapper.on('click', '#mobile-menu-wrap a[href]:not(.slicknav_item)', function () {
+        var href = $(this).attr('href');
+        if (href !== '#' && href !== '#locations') {
+            setMobileMenuOpen(false);
         }
     });
 
