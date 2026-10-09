@@ -657,6 +657,20 @@ h6 {
   opacity: 0;
 }
 
+/* Keep the bright Kubwa salon photos legible beneath the hero copy. */
+.hero-section.hero-section--kubwa .hs-item {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-section.hero-section--kubwa .hs-item::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .08) 48%, rgba(0, 0, 0, .32));
+  content: "";
+}
+
 /*---------------------
   ChoseUs Section
 -----------------------*/
@@ -1270,6 +1284,10 @@ h6 {
 @media only screen and (min-width: 768px) {
   .gallery.gallery--balanced.gallery--nadrem .gs-item:last-child {
     grid-column: span 2;
+  }
+
+  .gallery.gallery--balanced.gallery--kubwa .gs-item:last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -3630,6 +3648,10 @@ h6 {
 
   /* Even six-tile Dantata and eighteen-tile Karu SPA galleries already complete two-column rows. */
   .gallery.gallery--balanced.gallery--nadrem .gs-item:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .gallery.gallery--balanced.gallery--kubwa .gs-item:last-child {
     grid-column: 1 / -1;
   }
 
