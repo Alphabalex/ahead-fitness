@@ -578,12 +578,47 @@ function renderSpaRitual(filename) {
   ].join('');
 }
 
+function menuSearchSections(filename, brand, placeName) {
+  return catalog.MENUS[brand].map(function (group) {
+    var lines = group.items.map(function (item) {
+      return [item.name, catalog.formatNaira(item.price), item.detail].filter(Boolean).join(' · ');
+    });
+    return {
+      title: placeName + ' · ' + group.title,
+      href: filename + '#menu-panel-' + slugify(group.title),
+      text: (group.note ? group.note + ' ' : '') + lines.join('. ')
+    };
+  });
+}
+
+function withMenuSearch(entry) {
+  var spec = FOOD_PAGES[entry && entry.href];
+  if (!spec) {
+    return entry;
+  }
+  var sections = menuSearchSections(entry.href, spec.brand, spec.shortPlace);
+  var menuText = sections.map(function (section) {
+    return section.title + '. ' + section.text;
+  }).join(' ');
+  var baseText = String(entry.text || '').replace(/\s*Menu:[\s\S]*$/, '');
+  var kept = (entry.sections || []).filter(function (section) {
+    return String(section.href).indexOf('#menu-panel-') === -1;
+  });
+  return {
+    title: entry.title,
+    href: entry.href,
+    text: (baseText + ' Menu: ' + menuText).replace(/\s+/g, ' ').trim(),
+    sections: kept.concat(sections)
+  };
+}
+
 module.exports = {
   FOOD_PAGES: FOOD_PAGES,
   SALON_PAGES: SALON_PAGES,
   SPA_PAGES: SPA_PAGES,
   SPA_RITUALS: SPA_RITUALS,
   slugify: slugify,
+  withMenuSearch: withMenuSearch,
   renderTicker: renderTicker,
   renderKitchenHero: function (filename) {
     return renderKitchenHero(foodSpec(filename));

@@ -17,7 +17,8 @@ const {
   SPA_PAGES,
   renderSpaHero,
   renderSpaFilms,
-  renderSpaRitual
+  renderSpaRitual,
+  withMenuSearch
 } = require('../js/brand-pages');
 
 const root = path.join(__dirname, '..');
@@ -297,9 +298,10 @@ const mealPlansEntry = {
   ]
 };
 const existingIndex = searchIndex.findIndex((entry) => entry.href === 'meal-plans.html');
-const nextIndex = existingIndex === -1
+const nextIndex = (existingIndex === -1
   ? searchIndex.concat([mealPlansEntry])
-  : searchIndex.map((entry, index) => (index === existingIndex ? mealPlansEntry : entry));
+  : searchIndex.map((entry, index) => (index === existingIndex ? mealPlansEntry : entry))
+).map(withMenuSearch);
 const serializedIndex = JSON.stringify(nextIndex, null, 4) + '\n';
 if (serializedIndex !== fs.readFileSync(indexPath, 'utf8')) {
   fs.writeFileSync(indexPath, serializedIndex);
