@@ -261,37 +261,13 @@ var KITCHEN_PLATES = [
 var PLANS = {
   build: {
     name: 'The Build Plan',
-    aim: 'Muscle and protein',
     twoWeek: 290000,
-    fourWeek: 550000,
-    signal: 'About 121g protein a day, a daily whey shake, and 12 grill nights in 4 weeks.',
-    estimate: 'Muscle change is gradual and is tracked on a re-scan.',
-    recommend: 'Recommended when a BIA scan flags low muscle or low protein.',
-    week: [
-      ['Mon', 'Sweet Potato Porridge', 'Grilled Chicken Salad'],
-      ['Tue', 'Turkey Sandwich', 'Grilled Catfish'],
-      ['Wed', 'Chicken Sandwich', 'Chicken Stir Fry'],
-      ['Thu', 'Tuna Sandwich', 'Grilled Tilapia'],
-      ['Fri', 'Chicken Wrap', 'Quinoa Stir Fry'],
-      ['Sat', 'Avocado & Egg Sandwich', 'Grilled Turkey']
-    ]
+    fourWeek: 550000
   },
   lean: {
     name: 'The Lean Plan',
-    aim: 'Weight loss and fat reduction',
     twoWeek: 270000,
-    fourWeek: 530000,
-    signal: 'About 1,272 calories a day.',
-    estimate: 'About 1.9kg in 2 weeks, about 3.8kg in 4 weeks, from diet alone.',
-    recommend: 'Recommended when a scan flags high fat, excess visceral fat, or a high metabolic-age gap.',
-    week: [
-      ['Mon', 'Scrambled Eggs & Veggies', 'Plantain Porridge'],
-      ['Tue', 'Quinoa Stir Fry', 'Grilled Catfish'],
-      ['Wed', 'Omelette', 'Ofada Rice & Veg Sauce'],
-      ['Thu', 'Chicken Sandwich', 'Grilled Tilapia'],
-      ['Fri', 'Chicken Wrap', 'Grilled Fish Salad'],
-      ['Sat', 'Protein Pancake', 'Grilled Turkey']
-    ]
+    fourWeek: 530000
   }
 };
 
@@ -337,54 +313,6 @@ function renderWorlds() {
   ].join('');
 }
 
-function renderPlanCard(plan) {
-  return [
-    '<article class="plan-card plan-card--' + (plan.name.indexOf('Build') !== -1 ? 'build' : 'lean') + '">',
-    '<p class="plan-card__aim">' + escapeHtml(plan.aim) + '</p>',
-    '<h2>' + escapeHtml(plan.name) + '</h2>',
-    '<p>' + escapeHtml(plan.signal) + '</p>',
-    '<p>' + escapeHtml(plan.estimate) + '</p>',
-    '<p>' + escapeHtml(plan.recommend) + '</p>',
-    '<ul class="plan-card__prices">',
-    '<li><span>2 weeks</span><strong>' + formatNaira(plan.twoWeek) + '</strong></li>',
-    '<li><span>4 weeks</span><strong>' + formatNaira(plan.fourWeek) + '</strong></li>',
-    '</ul>',
-    '<p class="plan-card__rhythm">2 meals + 2 drinks, 6 days a week, Monday–Saturday.</p>',
-    '<a class="primary-btn" href="' + escapeHtml(subscribeHref(plan.name)) + '" target="_blank" rel="noopener noreferrer">Subscribe on WhatsApp</a>',
-    '</article>'
-  ].join('');
-}
-
-function renderWeek(plan) {
-  var rows = plan.week.map(function (day) {
-    return '<tr><th scope="row">' + day[0] + '</th><td>' + escapeHtml(day[1]) + '</td><td>' + escapeHtml(day[2]) + '</td></tr>';
-  }).join('');
-  return '<section class="plan-week"><h3>' + escapeHtml(plan.name) + ' · Week 1</h3>' +
-    '<table><thead><tr><th scope="col">Day</th><th scope="col">Breakfast</th><th scope="col">Dinner</th></tr></thead><tbody>' +
-    rows + '</tbody></table></section>';
-}
-
-function renderMealPlansMain() {
-  return [
-    '<section class="plan-hero">',
-    '<p class="plan-hero__kicker">Ahead Fitness · Healthy Bites</p>',
-    '<h1>Meals that follow the goal.</h1>',
-    '<p>Subscribe, tell us where you are, and we deliver. Two meals and two drinks, six days a week, Monday to Saturday.</p>',
-    '</section>',
-    '<section class="plan-grid" id="plans">' + renderPlanCard(PLANS.build) + renderPlanCard(PLANS.lean) + '</section>',
-    '<section class="plan-steps"><h2>How it works</h2><ol>',
-    '<li>Choose the 2-week or 4-week plan. Plans start on Monday. Pay by the Sunday before.</li>',
-    '<li>Send a delivery address and a good time. Delivery is home, office, or gym.</li>',
-    '<li>Meals and drinks arrive together, six days a week.</li>',
-    '<li>Re-scan on the Bio Impedance Analyser at any Ahead Fitness location every 2–4 weeks.</li>',
-    '</ol>',
-    '<p>You can pause for up to 5 days in a plan period, with at least 24 hours’ notice. Paused days are added to the end. Results vary, and training at Ahead Fitness is what these plans are built to sit beside.</p>',
-    '<p>Call <a href="tel:08066203522">08066203522</a> or subscribe on WhatsApp.</p>',
-    '</section>',
-    '<section class="plan-weeks" aria-label="Sample weeks">' + renderWeek(PLANS.build) + renderWeek(PLANS.lean) + '</section>'
-  ].join('');
-}
-
 module.exports = {
   MENUS: MENUS,
   DISH_SLIDES: DISH_SLIDES,
@@ -397,6 +325,5 @@ module.exports = {
   assertBrand: assertBrand,
   photoFor: photoFor,
   renderWorlds: renderWorlds,
-  renderMealPlansMain: renderMealPlansMain,
   subscribeHref: subscribeHref
 };

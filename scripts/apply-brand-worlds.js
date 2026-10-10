@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const { renderNavItems, brandClassFor } = require('../js/world-nav');
 const { renderSocialLinks } = require('../js/social-links');
-const { renderWorlds, renderMealPlansMain } = require('../js/food-catalog');
+const { renderWorlds } = require('../js/food-catalog');
+const { renderMealPlansMain } = require('../js/meal-plans');
 const {
   FOOD_PAGES,
   SALON_PAGES,
@@ -173,7 +174,7 @@ function mealPlansDocument() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Subscribe to an Ahead Fitness meal plan. The Build Plan is for muscle and protein. The Lean Plan is for weight loss. Meals are delivered six days a week." />
+  <meta name="description" content="Ahead Fitness meal plans: the Build Plan for muscle and the Lean Plan for weight loss. See all four weeks of meals, prices, and how to subscribe." />
   <title>Meal Plans | Ahead Fitness</title>
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
@@ -245,6 +246,7 @@ ${renderMealPlansMain()}
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/plan-switch.js"></script>
   <div class="search-model" id="site-search" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title" aria-hidden="true" hidden>
     <div class="h-100 d-flex align-items-center justify-content-center">
       <button type="button" class="search-close-switch" aria-label="Close search">×</button>
@@ -284,16 +286,22 @@ console.log('wrote meal-plans.html');
 
 const indexPath = path.join(root, 'search-index.json');
 const searchIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
-if (!searchIndex.some((entry) => entry.href === 'meal-plans.html')) {
-  searchIndex.push({
-    title: 'Meal Plans | Ahead Fitness',
-    href: 'meal-plans.html',
-    text: 'Meal Plans The Build Plan The Lean Plan muscle protein weight loss delivered meals WhatsApp 08066203522',
-    sections: [
-      { title: 'The Build Plan', href: 'meal-plans.html#plans', text: 'Muscle and protein. ₦290,000 for 2 weeks. ₦550,000 for 4 weeks.' },
-      { title: 'The Lean Plan', href: 'meal-plans.html#plans', text: 'Weight loss and fat reduction. ₦270,000 for 2 weeks. ₦530,000 for 4 weeks.' }
-    ]
-  });
-  fs.writeFileSync(indexPath, JSON.stringify(searchIndex, null, 4) + '\n');
+const mealPlansEntry = {
+  title: 'Meal Plans | Ahead Fitness',
+  href: 'meal-plans.html',
+  text: 'Meal Plans The Build Plan The Lean Plan muscle protein weight loss delivered meals four week menu grill nights WhatsApp 08066203522',
+  sections: [
+    { title: 'The Build Plan', href: 'meal-plans.html#build', text: 'Muscle and protein. ₦290,000 for 2 weeks. ₦550,000 for 4 weeks.' },
+    { title: 'The Lean Plan', href: 'meal-plans.html#lean', text: 'Weight loss and fat reduction. ₦270,000 for 2 weeks. ₦530,000 for 4 weeks.' },
+    { title: 'Four-week meal rotation', href: 'meal-plans.html#rotation', text: 'Every breakfast, dinner, and drink for all four weeks, with calories and protein.' }
+  ]
+};
+const existingIndex = searchIndex.findIndex((entry) => entry.href === 'meal-plans.html');
+const nextIndex = existingIndex === -1
+  ? searchIndex.concat([mealPlansEntry])
+  : searchIndex.map((entry, index) => (index === existingIndex ? mealPlansEntry : entry));
+const serializedIndex = JSON.stringify(nextIndex, null, 4) + '\n';
+if (serializedIndex !== fs.readFileSync(indexPath, 'utf8')) {
+  fs.writeFileSync(indexPath, serializedIndex);
   console.log('updated search index');
 }

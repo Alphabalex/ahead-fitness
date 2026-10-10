@@ -1425,17 +1425,22 @@
     {
         "title": "Meal Plans | Ahead Fitness",
         "href": "meal-plans.html",
-        "text": "Meal Plans The Build Plan The Lean Plan muscle protein weight loss delivered meals WhatsApp 08066203522",
+        "text": "Meal Plans The Build Plan The Lean Plan muscle protein weight loss delivered meals four week menu grill nights WhatsApp 08066203522",
         "sections": [
             {
                 "title": "The Build Plan",
-                "href": "meal-plans.html#plans",
+                "href": "meal-plans.html#build",
                 "text": "Muscle and protein. ₦290,000 for 2 weeks. ₦550,000 for 4 weeks."
             },
             {
                 "title": "The Lean Plan",
-                "href": "meal-plans.html#plans",
+                "href": "meal-plans.html#lean",
                 "text": "Weight loss and fat reduction. ₦270,000 for 2 weeks. ₦530,000 for 4 weeks."
+            },
+            {
+                "title": "Four-week meal rotation",
+                "href": "meal-plans.html#rotation",
+                "text": "Every breakfast, dinner, and drink for all four weeks, with calories and protein."
             }
         ]
     }
