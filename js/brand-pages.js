@@ -229,17 +229,18 @@ function renderPhotoDish(entry, photo) {
     '<figure><img src="' + escapeHtml(photo.image) + '" alt="' + escapeHtml(entry.name) + '" loading="lazy" decoding="async" />',
     '<span class="menu-dish__price">' + catalog.formatNaira(entry.price) + '</span>' + bestBadge(entry) + '</figure>',
     '<div class="menu-dish__body"><h4>' + escapeHtml(entry.name) + '</h4>',
-    '<p>' + escapeHtml(photo.detail) + '</p>',
+    '<p>' + escapeHtml(entry.detail || photo.detail) + '</p>',
     '<a ' + external(catalog.orderHref(entry.name)) + '>Order <i class="fa fa-whatsapp" aria-hidden="true"></i></a></div>',
     '</article>'
   ].join('');
 }
 
 function renderMenuRow(entry) {
-  return '<li class="menu-row"><span class="menu-row__name">' + escapeHtml(entry.name) + bestBadge(entry) + '</span>' +
+  var detail = entry.detail ? '<p class="menu-row__detail">' + escapeHtml(entry.detail) + '</p>' : '';
+  return '<li class="menu-row"><div class="menu-row__line"><span class="menu-row__name">' + escapeHtml(entry.name) + bestBadge(entry) + '</span>' +
     '<span class="menu-row__dots" aria-hidden="true"></span><strong>' + catalog.formatNaira(entry.price) + '</strong>' +
     '<a class="menu-row__order" ' + external(catalog.orderHref(entry.name)) + ' aria-label="Order ' + escapeHtml(entry.name) +
-    ' on WhatsApp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>';
+    ' on WhatsApp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></div>' + detail + '</li>';
 }
 
 function renderPictureMenu(brand, placeName) {

@@ -92,7 +92,7 @@ Slides use verified photos only, starting with labeled drinks in `img/Food_Pictu
 
 **Menu**
 
-Grouped as on the flyers, with name and price on every item. Each group is a tab. A group shows a cover photo only when a real photo of that kind of dish exists; otherwise it gets a typographic red cover. Items with an identified photo show as picture cards; every other item is a priced row with a WhatsApp order button. Without JavaScript all groups stay visible.
+Grouped as on the flyers, with name and price on every item, plus the flyer’s own line under it: calories and protein, “chicken or fish”, “no sausage”, “3 pieces”, platter contents, and combo contents. A drink or side with no line on the flyer stays bare. Each group is a tab. A group shows a cover photo only when a real photo of that kind of dish exists; otherwise it gets a typographic red cover. Items with an identified photo show as picture cards; every other item is a priced row with a WhatsApp order button. Without JavaScript all groups stay visible.
 
 Healthy Meals: Breakfast, Salads, Mains, Sides, Shawarma, Smoothies, Fresh Juices, Combos.
 

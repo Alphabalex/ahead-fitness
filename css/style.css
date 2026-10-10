@@ -5565,12 +5565,23 @@ body.search-open {
 }
 
 .menu-row {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
   padding: 16px 20px;
   border-bottom: 1px solid #ececec;
   transition: background 0.2s;
+}
+
+.menu-row__line {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.menu-row__detail {
+  max-width: 640px;
+  margin: 4px 46px 0 0;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .menu-row:hover {

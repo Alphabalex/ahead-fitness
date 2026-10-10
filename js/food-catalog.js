@@ -24,8 +24,8 @@ function subscribeHref(planName) {
     encodeURIComponent('Hello Ahead Fitness, I would like to subscribe to ' + planName + '.');
 }
 
-function item(name, price, best) {
-  return { name: name, price: price, best: Boolean(best) };
+function item(name, price, best, detail) {
+  return { name: name, price: price, best: Boolean(best), detail: detail || '' };
 }
 
 function cover(file, alt) {
@@ -37,15 +37,15 @@ var DRINKS = [
     title: 'Smoothies',
     cover: cover('FD3.webp', 'Tropical Blast smoothie'),
     items: [
-      item('Flat Tummy Flush', 3000),
-      item('Tropical Blast', 3000),
-      item('Beet Berry Boost', 3000),
-      item('Pineapple & Orange', 3000),
-      item('Watermelon Mix', 3000),
-      item('Banana Yoghurt Smoothie', 3000, true),
-      item('Pineapple Yoghurt Smoothie', 3000),
-      item('Pineapple Energy Rush', 3000),
-      item('Power Booster', 4000, true)
+      item('Flat Tummy Flush', 3000, false, 'Watermelon, cucumber, lemon, mint · 91 cal · Plant-based'),
+      item('Tropical Blast', 3000, false, 'Banana, watermelon, pineapple, dates · 450 cal · Plant-based'),
+      item('Beet Berry Boost', 3000, false, 'Watermelon, pineapple, beetroot, dates · 422 cal · Plant-based'),
+      item('Pineapple & Orange', 3000, false, 'Pineapple, orange, dates · 590 cal · 21g fiber · Plant-based'),
+      item('Watermelon Mix', 3000, false, 'Watermelon, banana, pineapple, dates · 478 cal · Plant-based'),
+      item('Banana Yoghurt Smoothie', 3000, true, '358 cal · 10g protein'),
+      item('Pineapple Yoghurt Smoothie', 3000, false, '295 cal · 10g protein'),
+      item('Pineapple Energy Rush', 3000, false, '192 cal · 1g protein'),
+      item('Power Booster', 4000, true, '818 cal · 21g protein · 18g fiber')
     ]
   },
   {
@@ -75,67 +75,67 @@ var MENUS = {
       title: 'Breakfast',
       cover: cover('FD27.webp', 'Avocado and egg sandwich'),
       items: [
-        item('Scrambled Eggs with Veggies', 5000),
-        item('Omelette', 6000),
-        item('Protein Pancake', 6000),
-        item('Chicken Sandwich', 4000, true),
-        item('Chicken Wrap', 8000),
-        item('Turkey Sandwich', 6000),
-        item('Tuna Sandwich', 6500),
-        item('Egg Sandwich', 4000),
-        item('Avocado & Egg Sandwich', 5000)
+        item('Scrambled Eggs with Veggies', 5000, false, '315 cal · 15g protein · Contains egg'),
+        item('Omelette', 6000, false, '343 cal · 20g protein · Contains egg'),
+        item('Protein Pancake', 6000, false, '741 cal · 27g protein · 7g fiber'),
+        item('Chicken Sandwich', 4000, true, '405 cal · 25g protein'),
+        item('Chicken Wrap', 8000, false, '598 cal · 28g protein'),
+        item('Turkey Sandwich', 6000, false, '501 cal · 25g protein'),
+        item('Tuna Sandwich', 6500, false, '406 cal · 31g protein · Contains fish'),
+        item('Egg Sandwich', 4000, false, '358 cal · 13g protein · Contains egg'),
+        item('Avocado & Egg Sandwich', 5000, false, '544 cal · 21g protein · 9g fiber · Contains egg')
       ]
     },
     {
       title: 'Salads',
       cover: cover('FD23.webp', 'Green salad'),
       items: [
-        item('Grilled Chicken Salad', 9000),
-        item('Chicken Salad', 6000, true),
-        item('Ahead Combo Salad', 9000, true),
-        item('Grilled Fish Salad', 9000),
-        item('Tuna Salad', 7500),
-        item('Thai Beef Salad', 7500),
-        item('Egg & Veggies Salad', 7500),
-        item('Greek Salad', 7500)
+        item('Grilled Chicken Salad', 9000, false, '362 cal · 47g protein · 5g fiber'),
+        item('Chicken Salad', 6000, true, '324 cal · 47g protein'),
+        item('Ahead Combo Salad', 9000, true, '494 cal · 41g protein · 8g fiber'),
+        item('Grilled Fish Salad', 9000, false, '515 cal · 32g protein · Contains fish'),
+        item('Tuna Salad', 7500, false, '247 cal · 25g protein · Contains fish'),
+        item('Thai Beef Salad', 7500, false, '484 cal · 34g protein'),
+        item('Egg & Veggies Salad', 7500, false, '363 cal · 27g protein · Contains egg'),
+        item('Greek Salad', 7500, false, '384 cal · 5g protein · 7g fiber · Plant-based')
       ]
     },
     {
       title: 'Mains',
       cover: cover('FD26.webp', 'Jollof rice with chicken'),
       items: [
-        item('Chicken Stir Fry', 10000),
-        item('Quinoa Stir Fry', 12500),
-        item('Stir Fried Basmati Rice', 10000),
-        item('Chicken Platter', 10000),
-        item('Brown Basmati Rice Jollof', 10000),
-        item('Ahead Protein Rice', 10000),
-        item('Fried Rice & Mixed Veggies', 12000),
-        item('Ofada Rice & Vegetable Sauce', 12000),
-        item('Boiled Plantain & Veggie Sauce', 9500, true),
-        item('Boiled Plantain & Egg Sauce', 9000, true),
-        item('Plantain Porridge', 10000),
-        item('Sweet Potato Porridge', 7000, true),
-        item('Boiled Sweet Potatoes & Vegetable Sauce', 9000)
+        item('Chicken Stir Fry', 10000, false, '735 cal · 41g protein · 8g fiber'),
+        item('Quinoa Stir Fry', 12500, false, 'Chicken or fish · 917 cal · 58g protein · 15g fiber'),
+        item('Stir Fried Basmati Rice', 10000, false, 'Chicken or fish · 973 cal · 50g protein · 6g fiber'),
+        item('Chicken Platter', 10000, false, '1084 cal · 67g protein · 16g fiber'),
+        item('Brown Basmati Rice Jollof', 10000, false, 'Chicken or fish · 952 cal · 50g protein · 11g fiber'),
+        item('Ahead Protein Rice', 10000, false, '1209 cal · 60g protein · 5g fiber'),
+        item('Fried Rice & Mixed Veggies', 12000, false, '1211 cal · 53g protein · 10g fiber'),
+        item('Ofada Rice & Vegetable Sauce', 12000, false, '1155 cal · 69g protein · 12g fiber'),
+        item('Boiled Plantain & Veggie Sauce', 9500, true, 'Chicken or fish · 700 cal · 19g protein · 9g fiber'),
+        item('Boiled Plantain & Egg Sauce', 9000, true, '721 cal · 34g protein · 6g fiber · Contains egg'),
+        item('Plantain Porridge', 10000, false, '1121 cal · 98g protein · 9g fiber · Contains fish'),
+        item('Sweet Potato Porridge', 7000, true, 'Chicken or fish · 938 cal · 60g protein · 21g fiber'),
+        item('Boiled Sweet Potatoes & Vegetable Sauce', 9000, false, '1000 cal · 48g protein · 19g fiber')
       ]
     },
     {
       title: 'Sides',
       items: [
-        item('Plantain', 1000),
-        item('Sweet Potatoes', 1000),
-        item('Irish Potatoes', 2000),
-        item('Basmati Rice', 2000),
-        item('Brown Rice', 2000)
+        item('Plantain', 1000, false, '183 cal boiled · 298 cal air fried'),
+        item('Sweet Potatoes', 1000, false, '129 cal boiled · 244 cal air fried'),
+        item('Irish Potatoes', 2000, false, '116 cal boiled · 230 cal air fried'),
+        item('Basmati Rice', 2000, false, '363 cal · 8g protein'),
+        item('Brown Rice', 2000, false, '362 cal · 8g protein')
       ]
     },
     {
       title: 'Shawarma',
       items: [
-        item('Chicken Shawarma', 4000),
+        item('Chicken Shawarma', 4000, false, 'No sausage'),
         item('Chicken Shawarma + 1 Sausage', 4500),
         item('Chicken Shawarma + 2 Sausage', 5000),
-        item('Beef Shawarma', 4000),
+        item('Beef Shawarma', 4000, false, 'No sausage'),
         item('Beef Shawarma + 1 Sausage', 4500),
         item('Beef Shawarma + 2 Sausage', 5000),
         item('Combo Shawarma', 5000),
@@ -148,10 +148,10 @@ var MENUS = {
     {
       title: 'Combos',
       items: [
-        item('Quick Bite Combo', 6500),
-        item('Protein Boost Combo', 8500),
-        item('Power Lunch Combo', 11500),
-        item('Buddy Combo', 16000)
+        item('Quick Bite Combo', 6500, false, 'Chicken Sandwich + Flat Tummy Flush'),
+        item('Protein Boost Combo', 8500, false, 'Scrambled Eggs or Omelette + Banana Yoghurt Smoothie'),
+        item('Power Lunch Combo', 11500, false, 'Grilled Chicken Salad + Pineapple Energy Rush'),
+        item('Buddy Combo', 16000, false, 'Chicken Platter + 1 Fruity Smoothie')
       ]
     }
   ]),
@@ -163,8 +163,8 @@ var MENUS = {
         item('Chicken Medium', 8500, true),
         item('Chicken Big', 10000),
         item('Turkey', 10000),
-        item('Peppered Gizzard', 6000),
-        item('Peppered Snail', 15000)
+        item('Peppered Gizzard', 6000, false, '3 pieces'),
+        item('Peppered Snail', 15000, false, '3 pieces')
       ]
     },
     {
@@ -195,20 +195,20 @@ var MENUS = {
     {
       title: 'Platters',
       items: [
-        item('Side Chick', 15500),
-        item('Side Turks', 18000),
-        item('Full Chicken', 17000),
-        item('Ahead Classic', 32000),
-        item('Family Combo', 62000)
+        item('Side Chick', 15500, false, '2 medium chicken · coleslaw & chips'),
+        item('Side Turks', 18000, false, '2 turkey · coleslaw & chips'),
+        item('Full Chicken', 17000, false, 'Yam chips · sweet potato chips · coleslaw'),
+        item('Ahead Classic', 32000, false, '1 big catfish · 1 turkey · 1 big chicken · coleslaw & chips'),
+        item('Family Combo', 62000, false, 'Any medium grilled fish · 3 turkey · 3 medium chicken · 3 sides of your choice · coleslaw & chips')
       ]
     },
     {
       title: 'Shawarma',
       items: [
-        item('Chicken Shawarma', 4000, true),
+        item('Chicken Shawarma', 4000, true, 'No sausage'),
         item('Chicken Shawarma + 1 Sausage', 4500),
         item('Chicken Shawarma + 2 Sausage', 5000),
-        item('Beef Shawarma', 4000),
+        item('Beef Shawarma', 4000, false, 'No sausage'),
         item('Beef Shawarma + 1 Sausage', 4500),
         item('Beef Shawarma + 2 Sausage', 5000),
         item('Combo Shawarma', 5000),
