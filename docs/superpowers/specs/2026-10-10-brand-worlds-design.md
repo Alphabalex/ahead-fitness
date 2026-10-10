@@ -9,8 +9,8 @@ Keep one Ahead Fitness identity, and make each brand feel like its own place. Fo
 
 ## Locked decisions
 
-- Main menu is **Home, Train, Eat, Restore, Careers** on desktop and mobile, on every page.
-- Meal Plans live under **Eat**.
+- Main menu is **Home, Gym, Food, Spa & Salon, Careers** on desktop and mobile, on every page.
+- Meal Plans live under **Food**.
 - Subscribing is a call or WhatsApp to **08066203522**. There is no on-site checkout.
 - The logo, header structure, and footer stay shared. Colour, photography, and layout change per brand.
 - A dish photo is labeled only when the picture or its existing name identifies that dish. Menu text from the flyers can appear without a photo. Unidentified plates stay in the venue gallery.
@@ -19,7 +19,7 @@ Keep one Ahead Fitness identity, and make each brand feel like its own place. Fo
 
 Parent items open their submenu. They do not link to `#locations`.
 
-**Train**
+**Gym**
 
 - Danglo Plaza, Gwarinpa
 - All Female Gym, Gwarinpa
@@ -30,14 +30,14 @@ Parent items open their submenu. They do not link to `#locations`.
 - BMI → homepage `#bmi`
 - About → homepage `#about`
 
-**Eat**
+**Food**
 
 - Healthy Meals Kubwa
 - Healthy Meals Karu
 - Ahead Grills Karu
 - Meal Plans → new `meal-plans.html`
 
-**Restore**
+**Spa & Salon**
 
 - Ahead Fitness Spa Gwarinpa
 - Ahead Fitness Spa Dantata
@@ -47,7 +47,7 @@ Parent items open their submenu. They do not link to `#locations`.
 
 **Careers** stays a direct link. Contact stays on each page’s own contact area and is not a sixth top-level item.
 
-The homepage keeps its current About, gym services, pricing, and BMI sections. Those links move under Train so the bar stays short.
+The homepage keeps its current About, gym services, pricing, and BMI sections. Those links move under Gym so the bar stays short.
 
 There is no Healthy Meals Gwarinpa page yet. The flyer lists Gwarinpa as a kitchen, so the meals pages can name it. A new page waits until that location has its own photos and details.
 
@@ -104,7 +104,7 @@ The venue photo grid stays below the menu and keeps its current row-complete beh
 
 ## Meal Plans page
 
-`meal-plans.html`, linked from Eat and from the homepage Eat tile. Content and data live in `js/meal-plans.js`; prices stay in `PLANS` in `js/food-catalog.js`. `js/plan-switch.js` runs the Build/Lean switch.
+`meal-plans.html`, linked from Food and from the homepage Eat tile. Content and data live in `js/meal-plans.js`; prices stay in `PLANS` in `js/food-catalog.js`. `js/plan-switch.js` runs the Build/Lean switch.
 
 | | Build | Lean |
 |---|---|---|
@@ -144,7 +144,7 @@ Gym page interiors stay as they are in passes 1–3.
 
 The site is static HTML, CSS, and JS. Add a Node test file that checks:
 
-- Every page’s desktop and mobile menus contain Train, Eat, and Restore, and Eat contains Meal Plans.
+- Every page’s desktop and mobile menus contain Gym, Food, and Spa & Salon, and Food contains Meal Plans.
 - No menu parent still points at `#locations`.
 - Build and Lean prices match the figures in this spec, and each week of the rotation adds up to the flyer's weekly total.
 - Every carousel slide has a name, a price, and an image path that exists.

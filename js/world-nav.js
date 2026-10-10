@@ -19,7 +19,7 @@ function worldsFor(currentFile) {
   return [
     {
       id: 'train',
-      label: 'Train',
+      label: 'Gym',
       links: [
         { href: './danglo-plaza.html', label: 'Danglo Plaza, Gwarinpa, Abuja' },
         { href: './female-gym-gwarinpa.html', label: 'All Female Gym, Gwarinpa, Abuja' },
@@ -33,7 +33,7 @@ function worldsFor(currentFile) {
     },
     {
       id: 'eat',
-      label: 'Eat',
+      label: 'Food',
       links: [
         { href: './healthy-meals-kubwa.html', label: 'Healthy Meals Kubwa' },
         { href: './healthy-meals-karu.html', label: 'Healthy Meals Karu' },
@@ -43,7 +43,7 @@ function worldsFor(currentFile) {
     },
     {
       id: 'restore',
-      label: 'Restore',
+      label: 'Spa & Salon',
       links: [
         { href: './spa-gwarinpa.html', label: 'Ahead Fitness Spa Gwarinpa' },
         { href: './spa-dantata.html', label: 'Ahead Fitness Spa Dantata' },
