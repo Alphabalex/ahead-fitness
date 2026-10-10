@@ -11,7 +11,11 @@ const {
   renderFoodLead,
   renderSalonHero,
   renderSalonVisit,
-  renderTicker
+  renderTicker,
+  SPA_PAGES,
+  renderSpaHero,
+  renderSpaFilms,
+  renderSpaRitual
 } = require('../js/brand-pages');
 
 const root = path.join(__dirname, '..');
@@ -114,6 +118,17 @@ function applySalon(html, filename) {
     next = next.replace('<!-- Contact Section Begin -->', SALON_VISIT_BEGIN + '\n' + SALON_VISIT_END + '\n\n    <!-- Contact Section Begin -->');
   }
   return replaceBetween(next, SALON_VISIT_BEGIN, SALON_VISIT_END, renderSalonVisit(filename), filename);
+}
+
+function applySpa(html, filename) {
+  if (!SPA_PAGES[filename]) {
+    return html;
+  }
+  const spec = SPA_PAGES[filename];
+  let next = replaceBetween(html, '<!-- Hero Section Begin -->', '<!-- Hero Section End -->', renderSpaHero(filename), filename);
+  next = replaceBetween(next, '<!-- Hero Section End -->', '<!-- Gallery Section Begin -->', renderTicker(spec.ticker), filename);
+  next = replaceBetween(next, '<!-- Videos Section Begin -->', '<!-- Videos Section End -->', renderSpaFilms(), filename);
+  return replaceBetween(next, '<!-- Pricing Section Begin -->', '<!-- Pricing Section End -->', renderSpaRitual(filename), filename);
 }
 
 function applyWorlds(html, filename) {
@@ -228,6 +243,7 @@ htmlFiles.forEach((filename) => {
   html = applyBrand(html, filename);
   html = applyFood(html, filename);
   html = applySalon(html, filename);
+  html = applySpa(html, filename);
   html = applyWorlds(html, filename);
   fs.writeFileSync(fullPath, html);
   console.log('updated', filename);

@@ -361,9 +361,227 @@ function renderSalonVisit(filename) {
   ].join('');
 }
 
+var SPA_RITUALS = [
+  {
+    id: 'face',
+    title: 'Face',
+    note: 'A clear, calm finish.',
+    items: [
+      { name: 'Deep cleansing facials', price: 25000 },
+      { name: 'Acne facials', price: 15000 },
+      { name: 'Hydra facials', price: 12000 }
+    ]
+  },
+  {
+    id: 'body',
+    title: 'Hands and body',
+    word: 'Body',
+    note: 'Waxing, plus a neat finish for hands and feet.',
+    items: [
+      { name: 'Full body waxing', price: 40000 },
+      { name: 'Brazilian waxing', price: 20000 },
+      { name: 'Bikini waxing', price: 12000 },
+      { name: 'Underarm waxing', price: 8000 },
+      { name: 'Pedicure', price: 10000 },
+      { name: 'Manicure', price: 7000 }
+    ]
+  },
+  {
+    id: 'massage',
+    title: 'Massage',
+    note: 'The longer hours on the menu.',
+    items: [
+      { name: 'Swedish massage', time: '45–60', price: 25000 },
+      { name: 'Deep tissue', time: '45–60', price: 30000 },
+      { name: 'Thigh massage', time: '25', price: 15000 },
+      { name: 'Hot stone massage', time: '45–60', price: 40000 },
+      { name: 'Four hand massage', time: '45–60', price: 45000 }
+    ]
+  }
+];
+
+var SPA_PAGES = {
+  'spa-gwarinpa.html': {
+    place: 'Ahead Fitness Spa · Gwarinpa',
+    shortPlace: 'Ahead Fitness Spa Gwarinpa',
+    headline: ['Breathe', 'in.', 'Let go.'],
+    lede: 'Facials, massage, waxing, and nail care at 301 Palmall, 4th Avenue, Gwarinpa. Book the hour, and leave the day outside.',
+    photo: 'img/Gwarimpa_Spa/GWS1.webp',
+    photoAlt: 'Reception at Ahead Fitness Spa Gwarinpa',
+    photoPosition: 'center 18%',
+    phone: '08025310435',
+    phoneLabel: '08025310435',
+    facts: [['From ₦7,000', 'Manicures and more'], ['Up to 60 min', 'On the massage menu'], ['301 Palmall', '4th Avenue, Gwarinpa']],
+    directionsQuery: '301 Palmall, 4th Ave, Gwarinpa, Abuja',
+    ticker: ['Facials', 'Massage', 'Hot stone', 'Waxing', 'Manicure', 'Pedicure', 'Deep tissue']
+  },
+  'spa-dantata.html': {
+    place: 'Ahead Fitness Spa · Dantata',
+    shortPlace: 'Ahead Fitness Spa Dantata',
+    headline: ['The city', 'stays', 'outside.'],
+    lede: 'A quiet treatment room opposite Dantata Estate in Kubwa. Facials, massage, waxing, and nails, booked on WhatsApp.',
+    photo: 'img/Dantata_Spa/DTS3.webp',
+    photoAlt: 'Massage bed at Ahead Fitness Spa Dantata',
+    photoPosition: 'center',
+    whatsapp: '2348160701693',
+    phoneLabel: '08160701693',
+    facts: [['From ₦7,000', 'Hands, face, and body'], ['WhatsApp', '08160701693'], ['Dantata Estate', 'Kubwa, Abuja']],
+    directionsQuery: 'Eminond Plaza, Byazhin Road, opposite Dantata Estate, Kubwa, Abuja',
+    ticker: ['Facials', 'Massage', 'Hot stone', 'Waxing', 'Manicure', 'Pedicure', 'Deep tissue']
+  },
+  'spa-karu.html': {
+    place: 'Ahead Fitness Spa · Karu',
+    shortPlace: 'Ahead Fitness Spa Karu',
+    headline: ['One hour.', 'Nothing', 'else.'],
+    lede: 'Treatment rooms on George Akume Way, Karu. Facials, massage, waxing, and nails, with an hour that belongs to you.',
+    photo: 'img/Spa_Karu/KRS1.webp',
+    photoAlt: 'Treatment room at Ahead Fitness Spa Karu',
+    photoPosition: 'center',
+    whatsapp: '2349135825499',
+    phoneLabel: '09135825499',
+    facts: [['From ₦12,000', 'Facials'], ['Up to 60 min', 'On the massage menu'], ['Akume Way', 'Karu, Abuja']],
+    directionsQuery: '2 George Akume Way, Karu, Abuja',
+    ticker: ['Facials', 'Massage', 'Hot stone', 'Waxing', 'Manicure', 'Pedicure', 'Deep tissue']
+  }
+};
+
+function spaSpec(filename) {
+  var spec = SPA_PAGES[filename];
+  if (!spec) {
+    throw new Error('No spa page design for ' + filename);
+  }
+  return spec;
+}
+
+function mapsHref(query) {
+  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
+}
+
+function bookHref(spec, treatmentName) {
+  if (spec.whatsapp) {
+    return 'https://wa.me/' + spec.whatsapp + '?text=' + encodeURIComponent(
+      'Hello Ahead Fitness, I would like to book ' + treatmentName + ' at ' + spec.shortPlace + '.'
+    );
+  }
+  if (!spec.phone) {
+    throw new Error(spec.shortPlace + ' has no booking number');
+  }
+  return 'tel:' + spec.phone;
+}
+
+function bookAnchor(spec, treatmentName, className) {
+  var href = bookHref(spec, treatmentName);
+  var label = spec.whatsapp ? 'Book' : 'Call';
+  var icon = spec.whatsapp ? 'fa-whatsapp' : 'fa-phone';
+  var attrs = href.indexOf('tel:') === 0 ? 'href="' + escapeHtml(href) + '"' : external(href);
+  return '<a class="' + className + '" ' + attrs + ' aria-label="' + escapeHtml(label + ' to book ' + treatmentName) +
+    '"><i class="fa ' + icon + '" aria-hidden="true"></i> ' + label + '</a>';
+}
+
+function renderSpaHero(filename) {
+  var spec = spaSpec(filename);
+  var facts = spec.facts.map(function (fact) {
+    return '<li><strong>' + escapeHtml(fact[0]) + '</strong><span>' + escapeHtml(fact[1]) + '</span></li>';
+  }).join('');
+  var book = spec.whatsapp
+    ? '<a class="ghost-btn" ' + external(bookHref(spec, 'a spa treatment')) + '><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp ' + escapeHtml(spec.phoneLabel) + '</a>'
+    : '<a class="ghost-btn" href="tel:' + escapeHtml(spec.phone) + '"><i class="fa fa-phone" aria-hidden="true"></i> Call ' + escapeHtml(spec.phoneLabel) + '</a>';
+  return [
+    '<section class="spa-hero">',
+    '<div class="spa-hero__copy">',
+    '<p class="brand-kicker"><span aria-hidden="true"></span>' + escapeHtml(spec.place) + '</p>',
+    '<h1><span>' + escapeHtml(spec.headline[0]) + '</span> <span>' + escapeHtml(spec.headline[1]) + '</span> <em>' + escapeHtml(spec.headline[2]) + '</em></h1>',
+    '<p class="spa-hero__lede">' + escapeHtml(spec.lede) + '</p>',
+    '<div class="brand-actions"><a class="primary-btn" href="#pricing">See the ritual</a>' + book + '</div>',
+    '<ul class="spa-hero__facts">' + facts + '</ul>',
+    '</div>',
+    '<div class="spa-hero__ripple">',
+    '<span class="spa-ring" aria-hidden="true"></span><span class="spa-ring" aria-hidden="true"></span><span class="spa-ring" aria-hidden="true"></span>',
+    '<figure class="spa-hero__photo"><img src="' + escapeHtml(spec.photo) + '" alt="' + escapeHtml(spec.photoAlt) + '" style="object-position:' + escapeHtml(spec.photoPosition) + '" /></figure>',
+    '<p class="spa-hero__seal"><span>Book</span> the hour</p>',
+    '</div>',
+    '</section>'
+  ].join('');
+}
+
+function renderSpaFilms() {
+  var clips = [
+    ['videos/SV1.mp4', 'img/hero/spa2.jpg', 'A look inside Ahead Fitness Spa'],
+    ['videos/SV2.mp4', 'img/hero/spa3.jpg', 'Another look inside Ahead Fitness Spa']
+  ].map(function (clip) {
+    return '<figure><video controls preload="none" poster="' + clip[1] + '" aria-label="' + escapeHtml(clip[2]) + '">' +
+      '<source src="' + clip[0] + '" type="video/mp4" />Your browser does not support the video tag.</video>' +
+      '<figcaption>' + escapeHtml(clip[2]) + '</figcaption></figure>';
+  }).join('');
+  return [
+    '<section class="spa-films" id="about" aria-labelledby="spa-films-title">',
+    '<div class="brand-heading"><p class="brand-kicker"><span aria-hidden="true"></span>Before you book</p>',
+    '<h2 id="spa-films-title">See the <em>room</em></h2></div>',
+    '<div class="spa-films__pair">' + clips + '</div>',
+    '</section>'
+  ].join('');
+}
+
+function renderRitualRow(spec, item, index) {
+  var mark = item.time
+    ? '<p class="ritual-row__time">' + escapeHtml(item.time) + '<span>min</span></p>'
+    : '<p class="ritual-row__index">' + String(index + 1).padStart(2, '0') + '</p>';
+  return '<li class="ritual-row">' + mark +
+    '<h3>' + escapeHtml(item.name) + '</h3>' +
+    '<strong>' + catalog.formatNaira(item.price) + '</strong>' +
+    bookAnchor(spec, item.name, 'ritual-row__book') + '</li>';
+}
+
+function renderSpaRitual(filename) {
+  var spec = spaSpec(filename);
+  if (!SPA_RITUALS.length) {
+    throw new Error('Spa rituals are empty');
+  }
+  var jumps = SPA_RITUALS.map(function (group) {
+    return '<a href="#ritual-' + group.id + '">' + escapeHtml(group.title) + '</a>';
+  }).join('');
+  var chapters = SPA_RITUALS.map(function (group) {
+    if (!group.items.length) {
+      throw new Error('Spa group has no treatments: ' + group.title);
+    }
+    var rows = group.items.map(function (item, index) {
+      if (!item.name || typeof item.price !== 'number' || item.price <= 0) {
+        throw new Error('Invalid spa treatment: ' + item.name);
+      }
+      return renderRitualRow(spec, item, index);
+    }).join('');
+    var display = group.word || group.title;
+    var heading = display === group.title
+      ? '<h3 id="ritual-title-' + group.id + '" class="spa-chapter__word">' + escapeHtml(group.title) + '</h3>'
+      : '<p class="spa-chapter__word" aria-hidden="true">' + escapeHtml(display) + '</p>' +
+        '<h3 id="ritual-title-' + group.id + '">' + escapeHtml(group.title) + '</h3>';
+    return '<section class="spa-chapter" id="ritual-' + group.id + '" aria-labelledby="ritual-title-' + group.id + '">' +
+      '<header class="spa-chapter__label">' + heading + '<p>' + escapeHtml(group.note) + '</p></header>' +
+      '<ol class="spa-chapter__list">' + rows + '</ol></section>';
+  }).join('');
+  var bandBook = spec.whatsapp
+    ? '<a class="order-band__btn" ' + external(bookHref(spec, 'a spa treatment')) + '><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp ' + escapeHtml(spec.phoneLabel) + '</a>'
+    : '<a class="order-band__btn" href="tel:' + escapeHtml(spec.phone) + '"><i class="fa fa-phone" aria-hidden="true"></i> Call ' + escapeHtml(spec.phoneLabel) + '</a>';
+  return [
+    '<section class="spa-ritual" id="pricing">',
+    '<div class="brand-heading brand-heading--split"><div><p class="brand-kicker"><span aria-hidden="true"></span>' + escapeHtml(spec.shortPlace) + '</p>',
+    '<h2>Choose the <em>hour</em></h2></div>',
+    '<nav class="spa-jump" aria-label="Treatments">' + jumps + '</nav></div>',
+    chapters,
+    '</section>',
+    '<section class="spa-book">',
+    '<p class="spa-book__line">The table is <em>ready.</em></p>',
+    '<div class="spa-book__actions">' + bandBook +
+    '<a class="order-band__btn order-band__btn--outline" ' + external(mapsHref(spec.directionsQuery)) + '><i class="fa fa-map-marker" aria-hidden="true"></i> Get directions</a>',
+    '</div></section>'
+  ].join('');
+}
+
 module.exports = {
   FOOD_PAGES: FOOD_PAGES,
   SALON_PAGES: SALON_PAGES,
+  SPA_PAGES: SPA_PAGES,
+  SPA_RITUALS: SPA_RITUALS,
   slugify: slugify,
   renderTicker: renderTicker,
   renderKitchenHero: function (filename) {
@@ -372,5 +590,8 @@ module.exports = {
   renderFoodLead: renderFoodLead,
   renderPictureMenu: renderPictureMenu,
   renderSalonHero: renderSalonHero,
-  renderSalonVisit: renderSalonVisit
+  renderSalonVisit: renderSalonVisit,
+  renderSpaHero: renderSpaHero,
+  renderSpaFilms: renderSpaFilms,
+  renderSpaRitual: renderSpaRitual
 };

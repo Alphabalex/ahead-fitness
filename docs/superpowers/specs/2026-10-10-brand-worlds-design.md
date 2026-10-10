@@ -71,7 +71,7 @@ A class on `body` switches the skin. Headlines stay in Oswald and body text stay
 | Healthy Meals | `brand-meals` | Site palette (red `#ed3331`, black, white). Kitchen hero with floating plates and price stickers, red ticker, picture menu. |
 | Ahead Grills | `brand-grills` | Same kitchen system, with a lower red glow and ember sparks in the hero. |
 | Meal Plans | `brand-plans` | Site palette. Build is a black card; Lean is a white card with a red top rule. |
-| Spa | `brand-spa` | Stone and warm cream, more space, quieter type scale. |
+| Spa | `brand-spa` | Site palette. A ripple around one treatment-room photo, then the real ritual menu (face, body, massage) with each location’s own booking number. |
 | Salon | `brand-salon` | Site palette. Arched photo frames echoing the salon mirrors, a barber-pole edge, numbered services, and a three-step visit band. |
 
 `brand-meals` is applied on `healthy-meals-kubwa.html` and `healthy-meals-karu.html`. `brand-grills` is applied on `ahead-fitness-grills-karu.html`. `brand-plans` is applied on `meal-plans.html`. `brand-spa` is applied on the three spa pages. `brand-salon` is applied on the two salon pages. Every other page stays `brand-gym`.
