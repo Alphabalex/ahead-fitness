@@ -1421,5 +1421,22 @@
                 "text": "Track classes, bookings, and manage your membership on the go. Available on Google Play and the App Store. GET IT ON GOOGLE PLAY DOWNLOAD ON THE APP STORE At Ahead Fitness, we believe fitness is a journey, not a destination. Our mission is to inspire, support, and empower you to achieve your health and wellness goals through world-class facilities, expert guidance, and a thriving community. Together, let’s redefine your limits. Useful links About Services Pricing Privacy Policy Terms and conditions Support Login My account Careers Copyright © All rights reserved | Ahead Fitness ×"
             }
         ]
+    },
+    {
+        "title": "Meal Plans | Ahead Fitness",
+        "href": "meal-plans.html",
+        "text": "Meal Plans The Build Plan The Lean Plan muscle protein weight loss delivered meals WhatsApp 08066203522",
+        "sections": [
+            {
+                "title": "The Build Plan",
+                "href": "meal-plans.html#plans",
+                "text": "Muscle and protein. ₦290,000 for 2 weeks. ₦550,000 for 4 weeks."
+            },
+            {
+                "title": "The Lean Plan",
+                "href": "meal-plans.html#plans",
+                "text": "Weight loss and fat reduction. ₦270,000 for 2 weeks. ₦530,000 for 4 weeks."
+            }
+        ]
     }
 ]

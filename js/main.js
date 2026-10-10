@@ -150,6 +150,10 @@
     }
 
     var currentPagePath = normalizeNavigationPath(window.location.pathname);
+    $('.nav-menu').on('click', '.nav-world > a[href="#"]', function (event) {
+        event.preventDefault();
+    });
+
     var $navigationLinks = $('.nav-menu a[href], #mobile-menu-wrap a[href]');
     $navigationLinks.closest('li').removeClass('active').end().removeAttr('aria-current');
     $navigationLinks.each(function () {
