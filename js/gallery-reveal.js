@@ -17,54 +17,31 @@
     'use strict';
 
     var ROWS_PER_BATCH = 4;
+    var DESKTOP_COLUMNS = 4;
+    var MAX_SAME_ROWS_IN_A_ROW = 2;
 
-    function normalizePlacement(placement, columns) {
-        if (typeof placement === 'number') {
-            return { span: Math.max(1, Math.min(columns, placement)), startColumn: null };
-        }
-        return {
-            span: Math.max(1, Math.min(columns, placement.span || 1)),
-            startColumn: Number.isInteger(placement.startColumn) ? placement.startColumn : null
-        };
-    }
-
-    // Model the balanced gallery's grid-auto-flow: row dense placement algorithm.
+    // Model grid-auto-flow: row dense placement so tests can check markup-only layouts.
     function simulateRows(placements, columns) {
         var rows = [];
         var tilePositions = [];
 
-        placements.forEach(function (rawPlacement) {
-            var placement = normalizePlacement(rawPlacement, columns);
+        placements.forEach(function (rawSpan) {
+            var span = Math.max(1, Math.min(columns, rawSpan));
             var placed = false;
             for (var rowIndex = 0; rowIndex < rows.length && !placed; rowIndex += 1) {
                 var row = rows[rowIndex];
-                var firstColumn = placement.startColumn === null ? 0 : placement.startColumn;
-                var lastColumn = placement.startColumn === null ? columns - placement.span : placement.startColumn;
-                for (var startColumn = firstColumn; startColumn <= lastColumn; startColumn += 1) {
-                    var fits = true;
-                    for (var column = startColumn; column < startColumn + placement.span; column += 1) {
-                        if (row[column]) {
-                            fits = false;
-                            break;
-                        }
-                    }
+                for (var startColumn = 0; startColumn <= columns - span && !placed; startColumn += 1) {
+                    var fits = row.slice(startColumn, startColumn + span).every(function (cell) { return !cell; });
                     if (fits) {
-                        for (column = startColumn; column < startColumn + placement.span; column += 1) {
-                            row[column] = true;
-                        }
-                        tilePositions.push({ row: rowIndex, startColumn: startColumn, span: placement.span });
+                        row.fill(true, startColumn, startColumn + span);
+                        tilePositions.push({ row: rowIndex, startColumn: startColumn, span: span });
                         placed = true;
-                        break;
                     }
                 }
             }
             if (!placed) {
-                var newRow = new Array(columns).fill(false);
-                var newStart = placement.startColumn === null ? 0 : placement.startColumn;
-                for (var newColumn = newStart; newColumn < newStart + placement.span; newColumn += 1) {
-                    newRow[newColumn] = true;
-                }
-                tilePositions.push({ row: rows.length, startColumn: newStart, span: placement.span });
+                var newRow = new Array(columns).fill(false).fill(true, 0, span);
+                tilePositions.push({ row: rows.length, startColumn: 0, span: span });
                 rows.push(newRow);
             }
         });
@@ -72,26 +49,71 @@
         return { rows: rows, tilePositions: tilePositions };
     }
 
-    function getVisibleTileCount(placements, columns, targetRows) {
-        if (!Array.isArray(placements) || !placements.length || columns < 1 || targetRows < 1) {
-            return 0;
+    function hashSeed(text) {
+        var hash = 2166136261;
+        for (var i = 0; i < text.length; i += 1) {
+            hash ^= text.charCodeAt(i);
+            hash = Math.imul(hash, 16777619);
         }
-        columns = Math.floor(columns);
-        targetRows = Math.floor(targetRows);
-        var visibleCount = 0;
+        return hash >>> 0;
+    }
 
-        for (var count = 1; count <= placements.length; count += 1) {
-            var layout = simulateRows(placements.slice(0, count), columns);
-            if (layout.rows.length > targetRows) {
-                break;
-            }
-            var lastRowComplete = layout.rows.length > 0 && layout.rows[layout.rows.length - 1].every(Boolean);
-            var earlierRowsComplete = layout.rows.slice(0, -1).every(function (row) { return row.every(Boolean); });
-            if (lastRowComplete && earlierRowsComplete) {
-                visibleCount = count;
-            }
+    // Seeded so a gallery keeps the same arrangement across reloads and resizes.
+    function seededRandom(seedText) {
+        var state = hashSeed(String(seedText));
+        return function () {
+            state = (state + 0x6D2B79F5) >>> 0;
+            var t = state;
+            t = Math.imul(t ^ (t >>> 15), t | 1);
+            t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+    }
+
+    // Returns how many photos sit in each row. Desktop rows hold 2 or 4 photos; narrower grids
+    // fill every column. An odd photo left over becomes one full-width tile on the last row.
+    function planRows(count, columns, random) {
+        if (!Number.isInteger(count) || count < 0) {
+            throw new RangeError('Photo count must be a whole number of zero or more');
         }
-        return visibleCount;
+        if (!Number.isInteger(columns) || columns < 1) {
+            throw new RangeError('Column count must be a whole number of one or more');
+        }
+        var pick = typeof random === 'function' ? random : Math.random;
+        var rows = [];
+        var remaining = count;
+
+        while (remaining > 0) {
+            var size;
+            if (columns !== DESKTOP_COLUMNS) {
+                size = Math.min(columns, remaining);
+            } else if (remaining < 4) {
+                size = remaining >= 2 ? 2 : 1;
+            } else {
+                size = pick() < 0.5 ? 2 : 4;
+                var recent = rows.slice(-MAX_SAME_ROWS_IN_A_ROW);
+                if (recent.length === MAX_SAME_ROWS_IN_A_ROW && recent.every(function (row) { return row === size; })) {
+                    size = size === 4 ? 2 : 4;
+                }
+            }
+            rows.push(size);
+            remaining -= size;
+        }
+        return rows;
+    }
+
+    function tileSpans(rows, columns) {
+        var spans = [];
+        rows.forEach(function (size) {
+            for (var i = 0; i < size; i += 1) {
+                spans.push(columns / size);
+            }
+        });
+        return spans;
+    }
+
+    function visibleCount(rows, rowLimit) {
+        return rows.slice(0, Math.max(0, rowLimit)).reduce(function (total, size) { return total + size; }, 0);
     }
 
     function getColumns(gallery) {
@@ -99,21 +121,6 @@
             .split(/\s+/)
             .filter(Boolean);
         return Math.max(1, columns.length);
-    }
-
-    function getPlacement(tile, columns) {
-        var style = window.getComputedStyle(tile);
-        var start = style.gridColumnStart;
-        var end = style.gridColumnEnd;
-        var spanMatch = end.match(/^span\s+(\d+)/);
-        if (start === '1' && end === '-1') {
-            return { span: columns, startColumn: 0 };
-        }
-        var absoluteStart = /^\d+$/.test(start) ? Number(start) - 1 : null;
-        return {
-            span: spanMatch ? Number(spanMatch[1]) : 1,
-            startColumn: absoluteStart
-        };
     }
 
     function initialize(document) {
@@ -130,65 +137,52 @@
                 return;
             }
 
-            var targetRows = ROWS_PER_BATCH;
-            var previousVisibleCount = 0;
+            var rowLimit = ROWS_PER_BATCH;
+            var plans = {};
             var resizeTimer;
-            var initialGridRules = tiles.map(function (tile) {
-                return {
-                    rowStart: tile.style.gridRowStart,
-                    columnStart: tile.style.gridColumnStart,
-                    columnEnd: tile.style.gridColumnEnd
-                };
-            });
 
-            function updateGallery() {
-                var columns = getColumns(gallery);
-                tiles.forEach(function (tile, index) {
-                    tile.style.gridRowStart = initialGridRules[index].rowStart;
-                    tile.style.gridColumnStart = initialGridRules[index].columnStart;
-                    tile.style.gridColumnEnd = initialGridRules[index].columnEnd;
-                });
-                var placements = tiles.map(function (tile) {
-                    return getPlacement(tile, columns);
-                });
-                var visibleCount = getVisibleTileCount(placements, columns, targetRows);
-                if (visibleCount === 0) {
-                    visibleCount = getVisibleTileCount(placements, columns, targetRows + ROWS_PER_BATCH);
-                    if (visibleCount === 0) {
-                        visibleCount = tiles.length;
-                    }
+            function planFor(columns) {
+                if (!plans[columns]) {
+                    plans[columns] = planRows(tiles.length, columns, seededRandom(gallery.id + ':' + columns));
                 }
-                if (targetRows > ROWS_PER_BATCH && visibleCount <= previousVisibleCount && visibleCount < tiles.length) {
-                    visibleCount = tiles.length;
-                }
-
-                var visibleLayout = simulateRows(placements.slice(0, visibleCount), columns);
-                var lastRow = visibleLayout.rows[visibleLayout.rows.length - 1];
-                if (lastRow && lastRow.some(function (cell) { return !cell; })) {
-                    var lastPosition = visibleLayout.tilePositions[visibleCount - 1];
-                    var lastTile = tiles[visibleCount - 1];
-                    lastTile.style.gridRowStart = String(lastPosition.row + 1);
-                    lastTile.style.gridColumnStart = String(lastPosition.startColumn + 1);
-                    lastTile.style.gridColumnEnd = '-1';
-                }
-
-                tiles.forEach(function (tile, index) {
-                    tile.classList.toggle('gallery-reveal__item--hidden', index >= visibleCount);
-                });
-                button.hidden = visibleCount >= tiles.length;
-                previousVisibleCount = visibleCount;
-                status.textContent = 'Showing ' + visibleCount + ' of ' + tiles.length + ' photos.';
-                control.hidden = button.hidden;
+                return plans[columns];
             }
 
+            function updateGallery(focusFrom) {
+                var columns = getColumns(gallery);
+                var rows = planFor(columns);
+                var spans = tileSpans(rows, columns);
+                var shown = Math.min(tiles.length, visibleCount(rows, rowLimit));
+
+                tiles.forEach(function (tile, index) {
+                    tile.style.gridColumn = 'span ' + spans[index];
+                    tile.style.gridRowStart = '';
+                    tile.classList.toggle('gallery-reveal__item--hidden', index >= shown);
+                });
+
+                button.hidden = shown >= tiles.length;
+                control.hidden = button.hidden;
+                status.textContent = 'Showing ' + shown + ' of ' + tiles.length + ' photos.';
+
+                if (typeof focusFrom === 'number' && tiles[focusFrom]) {
+                    var link = tiles[focusFrom].querySelector('a');
+                    if (link) {
+                        link.focus({ preventScroll: true });
+                    }
+                }
+            }
+
+            gallery.classList.add('gallery--planned');
+
             button.addEventListener('click', function () {
-                targetRows += ROWS_PER_BATCH;
-                updateGallery();
+                var firstNew = visibleCount(planFor(getColumns(gallery)), rowLimit);
+                rowLimit += ROWS_PER_BATCH;
+                updateGallery(firstNew);
             });
 
             window.addEventListener('resize', function () {
                 window.clearTimeout(resizeTimer);
-                resizeTimer = window.setTimeout(updateGallery, 120);
+                resizeTimer = window.setTimeout(function () { updateGallery(); }, 120);
             });
 
             updateGallery();
@@ -196,8 +190,12 @@
     }
 
     return {
+        ROWS_PER_BATCH: ROWS_PER_BATCH,
         simulateRows: simulateRows,
-        getVisibleTileCount: getVisibleTileCount,
+        seededRandom: seededRandom,
+        planRows: planRows,
+        tileSpans: tileSpans,
+        visibleCount: visibleCount,
         initialize: initialize
     };
 }));

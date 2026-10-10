@@ -1250,14 +1250,6 @@ h6 {
   appearance: none;
 }
 
-.tiktok-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.125em;
-  fill: currentColor;
-}
-
 .gallery .gs-item.gallery-reveal__item--hidden {
   display: none !important;
 }
@@ -1651,6 +1643,17 @@ h6 {
 
 .fs-about .fa-social a:last-child {
   margin-right: 0;
+}
+
+.footer-section .text-center > .fa-social {
+  margin-bottom: 16px;
+}
+
+.footer-section .text-center > .fa-social a {
+  display: inline-block;
+  margin: 0 8px;
+  color: #ffffff;
+  font-size: 16px;
 }
 
 .fs-widget {

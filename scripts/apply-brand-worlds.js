@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { renderNavItems, brandClassFor } = require('../js/world-nav');
+const { renderSocialLinks } = require('../js/social-links');
 const { renderWorlds, renderMealPlansMain } = require('../js/food-catalog');
 const {
   FOOD_PAGES,
@@ -131,6 +132,31 @@ function applySpa(html, filename) {
   return replaceBetween(next, '<!-- Pricing Section Begin -->', '<!-- Pricing Section End -->', renderSpaRitual(filename), filename);
 }
 
+function fillSocial(html, className, inner, filename) {
+  const pattern = new RegExp('(<div class="' + className + '">)[\\s\\S]*?(</div>)');
+  if (!pattern.test(html)) {
+    throw new Error(filename + ' is missing ' + className);
+  }
+  return html.replace(pattern, '$1' + inner + '$2');
+}
+
+function applySocial(html, filename) {
+  const spots = ['canvas-social', 'to-social', 'fa-social'];
+  const missing = spots.some((className) => !html.includes('class="' + className + '"'));
+  if (missing) {
+    if (filename === 'meal-plans.html') {
+      return html;
+    }
+    throw new Error(filename + ' is missing a social link spot');
+  }
+  const links = renderSocialLinks(filename);
+  const footer = html.match(/<div class="fa-social">([\s\S]*?)<\/div>/);
+  const mail = (footer[1].match(/<a\b[^>]*href="mailto:[^"]*"[^>]*>[\s\S]*?<\/a>/g) || []).join('');
+  let next = fillSocial(html, 'canvas-social', links, filename);
+  next = fillSocial(next, 'to-social', links, filename);
+  return fillSocial(next, 'fa-social', links + mail, filename);
+}
+
 function applyWorlds(html, filename) {
   if (filename !== 'index.html') {
     return html;
@@ -173,6 +199,7 @@ ${nav}
       </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
+    <div class="canvas-social">${renderSocialLinks('meal-plans.html')}</div>
   </div>
   <header class="header-section">
     <div class="container-fluid">
@@ -190,6 +217,7 @@ ${nav}
         <div class="col-lg-2">
           <div class="top-option">
             <button type="button" class="to-search search-switch" aria-label="Search the website" aria-controls="site-search"><i class="fa fa-search"></i></button>
+            <div class="to-social">${renderSocialLinks('meal-plans.html')}</div>
           </div>
         </div>
       </div>
@@ -203,6 +231,7 @@ ${renderMealPlansMain()}
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
+          <div class="fa-social">${renderSocialLinks('meal-plans.html')}</div>
           <div class="copyright-text"><p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Ahead Fitness</p></div>
         </div>
       </div>
@@ -244,6 +273,7 @@ htmlFiles.forEach((filename) => {
   html = applyFood(html, filename);
   html = applySalon(html, filename);
   html = applySpa(html, filename);
+  html = applySocial(html, filename);
   html = applyWorlds(html, filename);
   fs.writeFileSync(fullPath, html);
   console.log('updated', filename);
