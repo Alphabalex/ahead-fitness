@@ -61,9 +61,10 @@
             <li class="location-category" data-location-category="SPA">
               <a href="#">SPA</a>
               <ul class="location-submenu">
-                <li><a href="./spa-karu.html">Ahead Fitness Spa Karu</a></li>
-                <li><a href="./spa-gwarinpa.html">Ahead Fitness Spa Gwarinpa</a></li>
-                <li><a href="./spa-dantata.html">Ahead Fitness Spa Dantata</a></li>
+
+<li><a href="./spa-gwarinpa.html">Ahead Fitness Spa Gwarinpa</a></li>
+<li><a href="./spa-dantata.html">Ahead Fitness Spa Dantata</a></li>
+<li><a href="./spa-karu.html">Ahead Fitness Spa Karu</a></li>
               </ul>
             </li>
             <li class="location-category" data-location-category="FOOD">
@@ -125,10 +126,11 @@
                   <li class="location-category" data-location-category="SPA">
                     <a href="#">SPA</a>
                     <ul class="location-submenu">
-                      <li><a href="./spa-karu.html">Ahead Fitness Spa Karu</a></li>
-                      <li><a href="./spa-gwarinpa.html">Ahead Fitness Spa Gwarinpa</a></li>
-                      <li><a href="./spa-dantata.html">Ahead Fitness Spa Dantata</a></li>
-                    </ul>
+
+<li><a href="./spa-gwarinpa.html">Ahead Fitness Spa Gwarinpa</a></li>
+<li><a href="./spa-dantata.html">Ahead Fitness Spa Dantata</a></li>
+<li><a href="./spa-karu.html">Ahead Fitness Spa Karu</a></li>
+              </ul>
                   </li>
                   <li class="location-category" data-location-category="FOOD">
                     <a href="#">FOOD</a>
@@ -194,7 +196,7 @@
 
   <!-- Gallery Section Begin -->
   <div class="gallery-section" id="gallery">
-    <div class="gallery gallery--balanced gallery--nadrem">
+    <div class="gallery gallery--balanced gallery--nadrem" id="gallery-ahead-barbers-nadrem">
       <div class="grid-sizer"></div>
       <div class="gs-item"><img src="img/Nadrem_Salon/NDS1.webp" alt="Ahead Barbers Unisex Salon Nadrem NDS1"
           loading="lazy" decoding="async" /><a href="img/Nadrem_Salon/NDS1.webp" class="thumb-icon image-popup"
@@ -229,8 +231,12 @@
       <div class="gs-item grid-wide"><img src="img/Nadrem_Salon/NDS11.webp"
           alt="Ahead Barbers Unisex Salon Nadrem NDS11" loading="lazy" decoding="async" /><a
           href="img/Nadrem_Salon/NDS11.webp" class="thumb-icon image-popup" aria-label="Open salon image NDS11 of 11"><i
-            class="fa fa-picture-o" aria-hidden="true"></i></a></div>
+            class="fa fa-picture-o" aria-hidden="true"></i></a>
     </div>
+    </div>
+    <div class="gallery-reveal" aria-controls="gallery-ahead-barbers-nadrem" hidden>
+    <button type="button" class="primary-btn gallery-reveal__button" aria-controls="gallery-ahead-barbers-nadrem">See more photos</button>
+    <span class="gallery-reveal__status" aria-live="polite" aria-atomic="true"></span>
   </div>
   <!-- Gallery Section End -->
 
@@ -436,6 +442,7 @@
   <script src="js/jquery.barfiller.js"></script>
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/owl.carousel.min.js"></script>
+  <script src="js/gallery-reveal.js"></script>
   <script src="js/main.js"></script>
   <script src="js/search.js"></script>
 </body>

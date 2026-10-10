@@ -1233,6 +1233,47 @@ h6 {
   overflow: hidden;
 }
 
+.gallery-reveal {
+  padding: 10px 10px 40px;
+  text-align: center;
+}
+
+.gallery-reveal[hidden],
+.gallery-reveal__button[hidden] {
+  display: none !important;
+}
+
+.gallery-reveal__button {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  appearance: none;
+}
+
+.tiktok-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+
+.gallery .gs-item.gallery-reveal__item--hidden {
+  display: none !important;
+}
+
+.gallery-reveal__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .gallery-section.gallery-page {
   padding-top: 10px;
 }
