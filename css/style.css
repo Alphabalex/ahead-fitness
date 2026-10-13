@@ -721,6 +721,26 @@ h6 {
   content: "";
 }
 
+/* Real branch photos are brighter than the old stock; darken behind the right-hand hero copy. */
+.hero-section.hero-section--branches .hs-item {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-section.hero-section--branches .hs-item::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .5) 45%, rgba(0, 0, 0, .78));
+  content: "";
+}
+
+@media (max-width: 991px) {
+  .hero-section.hero-section--branches .hs-item::before {
+    background: rgba(0, 0, 0, .6);
+  }
+}
+
 /*---------------------
   ChoseUs Section
 -----------------------*/

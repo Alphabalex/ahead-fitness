@@ -295,7 +295,7 @@ function renderWorlds() {
   return [
     '<section class="worlds-section" id="worlds" aria-label="Ahead Fitness worlds">',
     '<a class="world-tile world-tile--train" href="./danglo-plaza.html">',
-    '<img src="img/hero/hero-1.jpg" alt="" />',
+    '<img src="img/hero/gyms-karu-coaching.webp" alt="" />',
     '<span class="world-tile__copy"><small>Train</small><strong>The gyms</strong><em>Five gyms across Abuja</em></span></a>',
     '<div class="world-tile world-tile--eat">',
     '<img src="img/Food_Pictures/FD14.webp" alt="" />',
