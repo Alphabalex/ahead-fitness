@@ -354,7 +354,7 @@ function renderMeal(key, slot, item) {
   var photo = photoForDish(item.name);
   var drinkFact = key === 'lean' ? item.drinkValue + ' cal' : item.drinkValue + 'g protein';
   return '<div class="plan-meal' + (photo ? ' has-photo' : '') + '">' +
-    (photo ? '<img src="' + photo + '" alt="" loading="lazy" />' : '') +
+    (photo ? '<img src="' + photo + '" alt="' + escapeHtml(item.name) + '" loading="lazy" />' : '') +
     '<div><p class="plan-meal__slot">' + slot + (item.grill ? '<span class="plan-meal__grill"><i class="fa-solid fa-fire" aria-hidden="true"></i> Grill night</span>' : '') + '</p>' +
     '<h5>' + escapeHtml(item.name) + '</h5>' +
     '<p class="plan-meal__facts">' + formatNumber(item.cal) + ' cal · ' + item.protein + 'g protein</p>' +

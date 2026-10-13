@@ -295,10 +295,10 @@ function renderWorlds() {
   return [
     '<section class="worlds-section" id="worlds" aria-label="Ahead Fitness worlds">',
     '<a class="world-tile world-tile--train" href="./danglo-plaza.html">',
-    '<img src="img/hero/gyms-karu-coaching.webp" alt="" />',
+    '<img src="img/hero/gyms-karu-coaching.webp" alt="Coach guiding a member at Ahead Fitness Karu" />',
     '<span class="world-tile__copy"><small>Train</small><strong>The gyms</strong><em>Five gyms across Abuja</em></span></a>',
     '<div class="world-tile world-tile--eat">',
-    '<img src="img/Food_Pictures/FD14.webp" alt="" />',
+    '<img src="img/Food_Pictures/FD14.webp" alt="Plated meal from Ahead Fitness" />',
     '<div class="world-tile__copy"><small>Eat</small><strong>Food worth coming back for</strong>',
     '<span class="world-tile__links">',
     '<a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a>',
@@ -307,7 +307,7 @@ function renderWorlds() {
     '<a href="./meal-plans.html">Meal Plans</a>',
     '</span></div></div>',
     '<a class="world-tile world-tile--restore" href="./spa-gwarinpa.html">',
-    '<img src="img/Gwarimpa_Spa/GWS1.webp" alt="" />',
+    '<img src="img/Gwarimpa_Spa/GWS1.webp" alt="Ahead Fitness Spa Gwarinpa" />',
     '<span class="world-tile__copy"><small>Restore</small><strong>Spa and salon</strong><em>Slow down, then step out</em></span></a>',
     '</section>'
   ].join('');
