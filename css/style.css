@@ -1137,6 +1137,15 @@ h6 {
   border-color: #ffffff;
 }
 
+.ps-item--new,
+.ps-item--new:hover {
+  border-color: #ed3331;
+}
+
+.ps-item:hover h3 .plan-new {
+  color: #ffffff;
+}
+
 .ps-item:hover h3 {
   color: #111111;
 }
@@ -1169,6 +1178,23 @@ h6 {
   transform: skewY(4deg);
 }
 
+.ps-item--new {
+  border-color: #ed3331;
+}
+
+.ps-item h3 .plan-new {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #ed3331;
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
 .ps-item .pi-price {
   margin-bottom: 30px;
   -webkit-transform: skewY(4deg);
@@ -1180,6 +1206,12 @@ h6 {
   font-size: 60px;
   color: #ed3331;
   font-weight: 600;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .ps-item .pi-price h2 {
+    font-size: 46px;
+  }
 }
 
 .ps-item .pi-price span {
