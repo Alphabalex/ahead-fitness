@@ -6481,6 +6481,13 @@ body.brand-salon .salon-service-card h3 {
   white-space: nowrap;
 }
 
+.ritual-row__books {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
 .ritual-row__book {
   display: inline-flex;
   align-items: center;
@@ -8032,6 +8039,7 @@ body.brand-plans {
     font-size: 20px;
   }
 
+  .ritual-row__books,
   .ritual-row__book {
     grid-column: 2;
     justify-self: end;

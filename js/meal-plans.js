@@ -270,7 +270,7 @@ function renderChoice(key) {
     '<div><dt>4 weeks<small>24 days</small></dt><dd>' + formatNaira(plan.fourWeek) + '<small>Save ' + formatNaira(fourWeekSaving(key)) + '</small></dd></div>',
     '</dl>',
     '<div class="plan-choice__actions">',
-    '<a class="primary-btn" href="' + escapeHtml(catalog.subscribeHref(plan.name)) + '" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Subscribe</a>',
+    '<a class="primary-btn" href="' + escapeHtml(catalog.subscribeHref(plan.name)) + '" target="_blank" rel="noopener noreferrer"><i class="fa fa-whatsapp" aria-hidden="true"></i> Subscribe</a>',
     '<a class="plan-choice__menu" href="#rotation" data-plan-choice="' + key + '">See the menu</a>',
     '</div>',
     '</article>'
@@ -474,9 +474,9 @@ function renderSubscribe() {
     '<div class="plans-subscribe__actions">',
     PLAN_KEYS.map(function (key) {
       var plan = catalog.PLANS[key];
-      return '<a class="plans-subscribe__btn plans-subscribe__btn--' + key + '" href="' + escapeHtml(catalog.subscribeHref(plan.name)) + '" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> ' + escapeHtml(plan.name) + '</a>';
+      return '<a class="plans-subscribe__btn plans-subscribe__btn--' + key + '" href="' + escapeHtml(catalog.subscribeHref(plan.name)) + '" target="_blank" rel="noopener noreferrer"><i class="fa fa-whatsapp" aria-hidden="true"></i> ' + escapeHtml(plan.name) + '</a>';
     }).join(''),
-    '<a class="plans-subscribe__btn plans-subscribe__btn--call" href="tel:' + PHONE + '"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call ' + PHONE + '</a>',
+    '<a class="plans-subscribe__btn plans-subscribe__btn--call" href="tel:' + PHONE + '"><i class="fa fa-phone" aria-hidden="true"></i> Call ' + PHONE + '</a>',
     '</div></div>',
     '<div class="plans-subscribe__kitchens"><h3>Our kitchens</h3><ul>',
     locations.map(function (entry) {

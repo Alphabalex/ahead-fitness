@@ -5,6 +5,7 @@ var catalog = require('./food-catalog');
 var escapeHtml = catalog.escapeHtml;
 var WHATSAPP_DISPLAY = '08066203522';
 var SALON_PHONE = '08025310435';
+var SALON_WHATSAPP = '2348025310435';
 
 function slide(file, name, price) {
   return { image: 'img/Food_Pictures/' + file, name: name, price: price };
@@ -126,6 +127,12 @@ function slugify(value) {
 
 function external(href) {
   return 'href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer"';
+}
+
+function salonWhatsappHref(place) {
+  return 'https://wa.me/' + SALON_WHATSAPP + '?text=' + encodeURIComponent(
+    'Hello Ahead Fitness, I would like to book an appointment at ' + place + '.'
+  );
 }
 
 function renderHeadline(parts) {
@@ -330,6 +337,7 @@ function renderSalonHero(filename) {
     '<h1><span>' + escapeHtml(spec.headline[0]) + '</span> <span>' + escapeHtml(spec.headline[1]) + '</span> <em>' + escapeHtml(spec.headline[2]) + '</em></h1>',
     '<p class="salon-hero__lede">' + escapeHtml(spec.lede) + '</p>',
     '<div class="brand-actions"><a class="primary-btn" href="tel:' + SALON_PHONE + '"><i class="fa fa-phone" aria-hidden="true"></i> Call ' + SALON_PHONE + '</a>',
+    '<a class="ghost-btn" ' + external(salonWhatsappHref(spec.place)) + '><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp ' + SALON_PHONE + '</a>',
     '<a class="ghost-btn" href="' + spec.servicesHref + '">See the salon</a></div>',
     '<ul class="salon-hero__facts">' + facts + '</ul>',
     '</div>',
@@ -357,6 +365,7 @@ function renderSalonVisit(filename) {
     '<h2 id="salon-visit-title">Three steps to <em>fresh</em></h2><ol>' + steps + '</ol></div>',
     '<div class="salon-visit__cta"><p class="salon-visit__big">Your chair is <em>waiting.</em></p>',
     '<a class="order-band__btn" href="tel:' + SALON_PHONE + '"><i class="fa fa-phone" aria-hidden="true"></i> Call ' + SALON_PHONE + '</a>',
+    '<a class="order-band__btn" ' + external(salonWhatsappHref(spec.place)) + '><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp ' + SALON_PHONE + '</a>',
     '<a class="order-band__btn order-band__btn--outline" ' + external(spec.directions) + '><i class="fa fa-map-marker" aria-hidden="true"></i> Get directions</a>',
     '</div></section>'
   ].join('');
@@ -412,6 +421,7 @@ var SPA_PAGES = {
     photoPosition: 'center 18%',
     phone: '08025310435',
     phoneLabel: '08025310435',
+    whatsapp: '2348025310435',
     facts: [['From ₦7,000', 'Manicures and more'], ['Up to 60 min', 'On the massage menu'], ['301 Palmall', '4th Avenue, Gwarinpa']],
     directionsQuery: '301 Palmall, 4th Ave, Gwarinpa, Abuja',
     ticker: ['Facials', 'Massage', 'Hot stone', 'Waxing', 'Manicure', 'Pedicure', 'Deep tissue']
@@ -424,6 +434,7 @@ var SPA_PAGES = {
     photo: 'img/Dantata_Spa/DTS3.webp',
     photoAlt: 'Massage bed at Ahead Fitness Spa Dantata',
     photoPosition: 'center',
+    phone: '08160701693',
     whatsapp: '2348160701693',
     phoneLabel: '08160701693',
     facts: [['From ₦7,000', 'Hands, face, and body'], ['WhatsApp', '08160701693'], ['Dantata Estate', 'Kubwa, Abuja']],
@@ -438,6 +449,7 @@ var SPA_PAGES = {
     photo: 'img/Spa_Karu/KRS1.webp',
     photoAlt: 'Treatment room at Ahead Fitness Spa Karu',
     photoPosition: 'center',
+    phone: '09135825499',
     whatsapp: '2349135825499',
     phoneLabel: '09135825499',
     facts: [['From ₦12,000', 'Facials'], ['Up to 60 min', 'On the massage menu'], ['Akume Way', 'Karu, Abuja']],
@@ -458,25 +470,44 @@ function mapsHref(query) {
   return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
 }
 
-function bookHref(spec, treatmentName) {
-  if (spec.whatsapp) {
-    return 'https://wa.me/' + spec.whatsapp + '?text=' + encodeURIComponent(
-      'Hello Ahead Fitness, I would like to book ' + treatmentName + ' at ' + spec.shortPlace + '.'
-    );
+function whatsappBookHref(spec, treatmentName) {
+  if (!spec.whatsapp) {
+    throw new Error(spec.shortPlace + ' has no WhatsApp number');
   }
-  if (!spec.phone) {
-    throw new Error(spec.shortPlace + ' has no booking number');
-  }
-  return 'tel:' + spec.phone;
+  return 'https://wa.me/' + spec.whatsapp + '?text=' + encodeURIComponent(
+    'Hello Ahead Fitness, I would like to book ' + treatmentName + ' at ' + spec.shortPlace + '.'
+  );
 }
 
 function bookAnchor(spec, treatmentName, className) {
-  var href = bookHref(spec, treatmentName);
-  var label = spec.whatsapp ? 'Book' : 'Call';
-  var icon = spec.whatsapp ? 'fa-whatsapp' : 'fa-phone';
-  var attrs = href.indexOf('tel:') === 0 ? 'href="' + escapeHtml(href) + '"' : external(href);
-  return '<a class="' + className + '" ' + attrs + ' aria-label="' + escapeHtml(label + ' to book ' + treatmentName) +
-    '"><i class="fa ' + icon + '" aria-hidden="true"></i> ' + label + '</a>';
+  var links = [];
+  if (spec.phone) {
+    links.push('<a class="' + className + '" href="tel:' + escapeHtml(spec.phone) + '" aria-label="' +
+      escapeHtml('Call to book ' + treatmentName) + '"><i class="fa fa-phone" aria-hidden="true"></i> Call</a>');
+  }
+  if (spec.whatsapp) {
+    var label = spec.phone ? 'WhatsApp' : 'Book';
+    links.push('<a class="' + className + '" ' + external(whatsappBookHref(spec, treatmentName)) + ' aria-label="' +
+      escapeHtml(label + ' to book ' + treatmentName) + '"><i class="fa fa-whatsapp" aria-hidden="true"></i> ' + label + '</a>');
+  }
+  if (!links.length) {
+    throw new Error(spec.shortPlace + ' has no booking number');
+  }
+  return links.length === 1 ? links[0] : '<span class="ritual-row__books">' + links.join('') + '</span>';
+}
+
+function contactActions(spec, treatmentName, className) {
+  var links = [];
+  if (spec.phone) {
+    links.push('<a class="' + className + '" href="tel:' + escapeHtml(spec.phone) + '"><i class="fa fa-phone" aria-hidden="true"></i> Call ' + escapeHtml(spec.phoneLabel) + '</a>');
+  }
+  if (spec.whatsapp) {
+    links.push('<a class="' + className + '" ' + external(whatsappBookHref(spec, treatmentName)) + '><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp ' + escapeHtml(spec.phoneLabel) + '</a>');
+  }
+  if (!links.length) {
+    throw new Error(spec.shortPlace + ' has no booking number');
+  }
+  return links.join('');
 }
 
 function renderSpaHero(filename) {
@@ -484,9 +515,7 @@ function renderSpaHero(filename) {
   var facts = spec.facts.map(function (fact) {
     return '<li><strong>' + escapeHtml(fact[0]) + '</strong><span>' + escapeHtml(fact[1]) + '</span></li>';
   }).join('');
-  var book = spec.whatsapp
-    ? '<a class="ghost-btn" ' + external(bookHref(spec, 'a spa treatment')) + '><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp ' + escapeHtml(spec.phoneLabel) + '</a>'
-    : '<a class="ghost-btn" href="tel:' + escapeHtml(spec.phone) + '"><i class="fa fa-phone" aria-hidden="true"></i> Call ' + escapeHtml(spec.phoneLabel) + '</a>';
+  var book = contactActions(spec, 'a spa treatment', 'ghost-btn');
   return [
     '<section class="spa-hero">',
     '<div class="spa-hero__copy">',
@@ -560,9 +589,7 @@ function renderSpaRitual(filename) {
       '<header class="spa-chapter__label">' + heading + '<p>' + escapeHtml(group.note) + '</p></header>' +
       '<ol class="spa-chapter__list">' + rows + '</ol></section>';
   }).join('');
-  var bandBook = spec.whatsapp
-    ? '<a class="order-band__btn" ' + external(bookHref(spec, 'a spa treatment')) + '><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp ' + escapeHtml(spec.phoneLabel) + '</a>'
-    : '<a class="order-band__btn" href="tel:' + escapeHtml(spec.phone) + '"><i class="fa fa-phone" aria-hidden="true"></i> Call ' + escapeHtml(spec.phoneLabel) + '</a>';
+  var bandBook = contactActions(spec, 'a spa treatment', 'order-band__btn');
   return [
     '<section class="spa-ritual" id="pricing">',
     '<div class="brand-heading brand-heading--split"><div><p class="brand-kicker"><span aria-hidden="true"></span>' + escapeHtml(spec.shortPlace) + '</p>',
