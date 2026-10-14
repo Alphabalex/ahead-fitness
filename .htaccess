@@ -1,3 +1,10 @@
+# Every www request, over HTTP or HTTPS, goes to the canonical HTTPS domain.
+RewriteEngine on
+
+RewriteOptions inherit
+RewriteCond %{HTTP_HOST} ^www\.aheadfitness\.ng$ [NC]
+RewriteRule ^(.*)$ "https\:\/\/aheadfitness\.ng\/$1" [R=301,L]
+
 # Pages, styles, scripts and the search index revalidate on every visit, so an
 # upload shows up on the next load. Unchanged files come back as a small 304.
 # Images, videos and fonts keep a short cache; replace one in place and it can
