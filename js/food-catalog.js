@@ -35,7 +35,7 @@ function cover(file, alt) {
 var DRINKS = [
   {
     title: 'Smoothies',
-    cover: cover('FD3.webp', 'Tropical Blast smoothie'),
+    cover: cover('HM/BANANA_YOGHURT_SMOOTHIE.webp', 'Banana Yoghurt Smoothie'),
     items: [
       item('Flat Tummy Flush', 3000, false, 'Watermelon, cucumber, lemon, mint · 91 cal · Plant-based'),
       item('Tropical Blast', 3000, false, 'Banana, watermelon, pineapple, dates · 450 cal · Plant-based'),
@@ -73,7 +73,7 @@ var MENUS = {
   meals: [
     {
       title: 'Breakfast',
-      cover: cover('FD27.webp', 'Avocado and egg sandwich'),
+      cover: cover('HM/AVOCADO_AND_EGG_SANDWICH.webp', 'Avocado and egg sandwich'),
       items: [
         item('Scrambled Eggs with Veggies', 5000, false, '315 cal · 15g protein · Contains egg'),
         item('Omelette', 6000, false, '343 cal · 20g protein · Contains egg'),
@@ -88,7 +88,7 @@ var MENUS = {
     },
     {
       title: 'Salads',
-      cover: cover('FD23.webp', 'Green salad'),
+      cover: cover('HM/AHEAD_COMBO_SALAD.webp', 'Ahead Combo Salad'),
       items: [
         item('Grilled Chicken Salad', 9000, false, '362 cal · 47g protein · 5g fiber'),
         item('Chicken Salad', 6000, true, '324 cal · 47g protein'),
@@ -102,7 +102,7 @@ var MENUS = {
     },
     {
       title: 'Mains',
-      cover: cover('FD26.webp', 'Jollof rice with chicken'),
+      cover: cover('HM/CHICKEN_PLATTER.webp', 'Chicken platter'),
       items: [
         item('Chicken Stir Fry', 10000, false, '735 cal · 41g protein · 8g fiber'),
         item('Quinoa Stir Fry', 12500, false, 'Chicken or fish · 917 cal · 58g protein · 15g fiber'),
@@ -159,6 +159,7 @@ var MENUS = {
     {
       title: 'Chicken & turkey',
       note: 'Comes with 1 companion of your choice.',
+      cover: cover('Grills/GRILLED_CHICKEN.webp', 'Grilled chicken'),
       items: [
         item('Chicken Medium', 8500, true),
         item('Chicken Big', 10000),
@@ -170,7 +171,7 @@ var MENUS = {
     {
       title: 'Grilled fish',
       note: 'Comes with 1 companion of your choice.',
-      cover: cover('FD19.webp', 'Grilled fish with quinoa and broccoli'),
+      cover: cover('Grills/CATFISH_AND_CHIPS.webp', 'Catfish and chips'),
       items: [
         item('Catfish Medium', 10000, true),
         item('Catfish Big', 15000),
@@ -204,6 +205,7 @@ var MENUS = {
     },
     {
       title: 'Shawarma',
+      cover: cover('Grills/SHAWARMA.webp', 'Shawarma'),
       items: [
         item('Chicken Shawarma', 4000, true, 'No sausage'),
         item('Chicken Shawarma + 1 Sausage', 4500),
@@ -232,22 +234,91 @@ function slide(image, name, price, detail, brands, priceLabel) {
   };
 }
 
+function hmPhoto(file) {
+  return 'img/Food_Pictures/HM/' + file;
+}
+
+function grillPhoto(file) {
+  return 'img/Food_Pictures/Grills/' + file;
+}
+
+// Picture filenames are the dish names. CROCKER is the filename for croaker.
+var MEAL_PHOTO_FILES = {
+  'Protein Pancake': 'PROTEIN_PANCAKE.webp',
+  'Ahead Protein Rice': 'AHEAD_PROTEIN_RICE.webp',
+  'Ahead Combo Salad': 'AHEAD_COMBO_SALAD.webp',
+  'Plantain Porridge': 'PLANTAIN_PORRIDGE.webp',
+  'Sweet Potato Porridge': 'SWEET_POTATO_PORRIDGE.webp',
+  'Avocado & Egg Sandwich': 'AVOCADO_AND_EGG_SANDWICH.webp',
+  'Banana Yoghurt Smoothie': 'BANANA_YOGHURT_SMOOTHIE.webp',
+  'Pineapple Yoghurt Smoothie': 'PINEAPPLE_YOGHURT_SMOOTHIE.webp',
+  'Chicken Platter': 'CHICKEN_PLATTER.webp',
+  'Greek Salad': 'GREEK_SALAD.webp',
+  'Quinoa Stir Fry': 'QUINOA_STIR_FRY.webp',
+  'Stir Fried Basmati Rice': 'BASMATI_STIR_FRY.webp'
+};
+
+var GRILL_PHOTO_FILES = {
+  'Chicken Medium': 'GRILLED_CHICKEN.webp',
+  'Chicken Big': 'GRILLED_CHICKEN.webp',
+  'Turkey': 'GRILLED_TURKEY.webp',
+  'Peppered Snail': 'PEPPERED_SNAIL.webp',
+  'Catfish Medium': 'CATFISH_AND_CHIPS.webp',
+  'Catfish Big': 'CATFISH_AND_CHIPS.webp',
+  'Tilapia Medium': 'TILAPIA_AND_CHIPS.webp',
+  'Tilapia Big': 'TILAPIA_AND_CHIPS.webp',
+  'Croaker Medium': 'CROCKER_AND_CHIPS.webp',
+  'Croaker Big': 'CROCKER_AND_CHIPS.webp'
+};
+
+function namedPhoto(brand, dishName) {
+  if (brand === 'meals' && MEAL_PHOTO_FILES[dishName]) {
+    return hmPhoto(MEAL_PHOTO_FILES[dishName]);
+  }
+  if (brand === 'grills') {
+    if (GRILL_PHOTO_FILES[dishName]) {
+      return grillPhoto(GRILL_PHOTO_FILES[dishName]);
+    }
+    if (dishName.indexOf('Shawarma') !== -1) {
+      return grillPhoto('SHAWARMA.webp');
+    }
+  }
+  return null;
+}
+
 var DISH_SLIDES = [
   slide('img/Food_Pictures/FD14.webp', 'Grilled Chicken Salad', 9000, '47g protein', ['meals']),
   slide('img/Food_Pictures/FD15.webp', 'Chicken Salad', 6000, 'Best seller · 47g protein', ['meals']),
-  slide('img/Food_Pictures/FD19.webp', 'Grilled fish', 10000, 'Catfish, tilapia, or croaker', ['meals', 'grills'], 'From ₦10,000'),
+  slide(hmPhoto('AHEAD_COMBO_SALAD.webp'), 'Ahead Combo Salad', 9000, 'Best seller · 41g protein', ['meals']),
+  slide(hmPhoto('GREEK_SALAD.webp'), 'Greek Salad', 7500, 'Plant-based', ['meals']),
+  slide('img/Food_Pictures/FD19.webp', 'Grilled fish', 10000, 'Catfish, tilapia, or croaker', ['meals'], 'From ₦10,000'),
   slide('img/Food_Pictures/FD16.webp', 'Boiled Plantain & Veggie Sauce', 9500, 'Best seller', ['meals']),
+  slide(hmPhoto('PLANTAIN_PORRIDGE.webp'), 'Plantain Porridge', 10000, '98g protein', ['meals']),
+  slide(hmPhoto('SWEET_POTATO_PORRIDGE.webp'), 'Sweet Potato Porridge', 7000, 'Best seller · 60g protein', ['meals']),
   slide('img/Food_Pictures/FD20.webp', 'Fried Rice & Mixed Veggies', 12000, '53g protein', ['meals']),
   slide('img/Food_Pictures/FD12.webp', 'Chicken Stir Fry', 10000, '41g protein', ['meals']),
-  slide('img/Food_Pictures/FD27.webp', 'Avocado & Egg Sandwich', 5000, '21g protein', ['meals']),
+  slide(hmPhoto('QUINOA_STIR_FRY.webp'), 'Quinoa Stir Fry', 12500, '58g protein', ['meals']),
+  slide(hmPhoto('BASMATI_STIR_FRY.webp'), 'Stir Fried Basmati Rice', 10000, '50g protein', ['meals']),
+  slide(hmPhoto('CHICKEN_PLATTER.webp'), 'Chicken Platter', 10000, '67g protein', ['meals']),
+  slide(hmPhoto('AHEAD_PROTEIN_RICE.webp'), 'Ahead Protein Rice', 10000, '60g protein', ['meals']),
+  slide(hmPhoto('PROTEIN_PANCAKE.webp'), 'Protein Pancake', 6000, '27g protein', ['meals']),
+  slide(hmPhoto('AVOCADO_AND_EGG_SANDWICH.webp'), 'Avocado & Egg Sandwich', 5000, '21g protein', ['meals']),
   slide('img/Food_Pictures/FD10.webp', 'Scrambled Eggs with Veggies', 5000, '15g protein', ['meals']),
   slide('img/Food_Pictures/FD30.webp', 'Boiled Sweet Potatoes & Vegetable Sauce', 9000, '48g protein', ['meals']),
-  slide('img/Food_Pictures/FD5.webp', 'Banana Yoghurt Smoothie', 3000, 'Best seller', ['meals', 'grills']),
+  slide(grillPhoto('GRILLED_CHICKEN.webp'), 'Grilled Chicken', 8500, 'With a companion', ['grills'], 'From ₦8,500'),
+  slide(grillPhoto('GRILLED_TURKEY.webp'), 'Grilled Turkey', 10000, 'With a companion', ['grills']),
+  slide(grillPhoto('CATFISH_AND_CHIPS.webp'), 'Catfish and Chips', 10000, 'Medium or big', ['grills'], 'From ₦10,000'),
+  slide(grillPhoto('TILAPIA_AND_CHIPS.webp'), 'Tilapia and Chips', 10000, 'Medium or big', ['grills'], 'From ₦10,000'),
+  slide(grillPhoto('CROCKER_AND_CHIPS.webp'), 'Croaker and Chips', 12000, 'Medium or big', ['grills'], 'From ₦12,000'),
+  slide(grillPhoto('PEPPERED_SNAIL.webp'), 'Peppered Snail', 15000, '3 pieces', ['grills']),
+  slide(grillPhoto('SNAIL_AND_CHIPS.webp'), 'Snail and Chips', 15000, '3 pieces, with chips', ['grills']),
+  slide(grillPhoto('SHAWARMA.webp'), 'Shawarma', 4000, 'Chicken or beef', ['grills'], 'From ₦4,000'),
+  slide(hmPhoto('BANANA_YOGHURT_SMOOTHIE.webp'), 'Banana Yoghurt Smoothie', 3000, 'Best seller', ['meals', 'grills']),
   slide('img/Food_Pictures/FD13.webp', 'Power Booster', 4000, 'Best seller · 21g protein', ['meals', 'grills']),
   slide('img/Food_Pictures/FD1.webp', 'Beet Berry Boost', 3000, '422 cal', ['meals', 'grills']),
   slide('img/Food_Pictures/FD3.webp', 'Tropical Blast', 3000, '450 cal', ['meals', 'grills']),
   slide('img/Food_Pictures/FD2.webp', 'Flat Tummy Flush', 3000, '91 cal', ['meals', 'grills']),
-  slide('img/Food_Pictures/FD9.webp', 'Pineapple Yoghurt Smoothie', 3000, '10g protein', ['meals', 'grills']),
+  slide(hmPhoto('PINEAPPLE_YOGHURT_SMOOTHIE.webp'), 'Pineapple Yoghurt Smoothie', 3000, '10g protein', ['meals', 'grills']),
   slide('img/Food_Pictures/FD18.webp', 'Pineapple Energy Rush', 3000, 'Pre-workout', ['meals', 'grills']),
   slide('img/Food_Pictures/FD21.webp', 'Watermelon Mix', 3000, '478 cal', ['meals', 'grills']),
   slide('img/Food_Pictures/FD7.webp', 'Yoghurt Coconut', 4000, '35cl', ['meals', 'grills']),
@@ -283,11 +354,38 @@ function assertBrand(brand) {
   }
 }
 
+function findMenuItem(brand, dishName) {
+  var found = null;
+  MENUS[brand].forEach(function (group) {
+    group.items.forEach(function (entry) {
+      if (entry.name === dishName) {
+        found = entry;
+      }
+    });
+  });
+  return found;
+}
+
 function photoFor(brand, dishName) {
   assertBrand(brand);
+  var image = namedPhoto(brand, dishName);
   var match = slidesFor(brand).filter(function (entry) {
     return entry.name === dishName;
   })[0];
+  if (image && match) {
+    return Object.assign({}, match, { image: image });
+  }
+  if (image) {
+    var menuItem = findMenuItem(brand, dishName);
+    return {
+      image: image,
+      name: dishName,
+      price: menuItem ? menuItem.price : 0,
+      priceLabel: menuItem ? formatNaira(menuItem.price) : '',
+      detail: menuItem ? menuItem.detail : '',
+      brands: [brand]
+    };
+  }
   return match || null;
 }
 

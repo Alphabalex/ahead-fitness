@@ -21,9 +21,9 @@ var FOOD_PAGES = {
     backdrop: 'FRESH',
     ring: 'FRESH DAILY ✦ HIGH PROTEIN ✦ MADE TO ORDER ✦ ',
     plates: [
-      slide('FD14.webp', 'Grilled Chicken Salad', '₦9,000'),
-      slide('FD5.webp', 'Banana Yoghurt Smoothie', '₦3,000'),
-      slide('FD12.webp', 'Chicken Stir Fry', '₦10,000')
+      slide('HM/AHEAD_COMBO_SALAD.webp', 'Ahead Combo Salad', '₦9,000'),
+      slide('HM/BANANA_YOGHURT_SMOOTHIE.webp', 'Banana Yoghurt Smoothie', '₦3,000'),
+      slide('HM/CHICKEN_PLATTER.webp', 'Chicken Platter', '₦10,000')
     ],
     facts: [
       ['7am–7:30pm', 'Open and delivering daily'],
@@ -41,9 +41,9 @@ var FOOD_PAGES = {
     backdrop: 'FUEL',
     ring: 'FRESH DAILY ✦ HIGH PROTEIN ✦ MADE TO ORDER ✦ ',
     plates: [
-      slide('FD15.webp', 'Chicken Salad', '₦6,000'),
-      slide('FD3.webp', 'Tropical Blast', '₦3,000'),
-      slide('FD16.webp', 'Boiled Plantain & Veggie Sauce', '₦9,500')
+      slide('HM/GREEK_SALAD.webp', 'Greek Salad', '₦7,500'),
+      slide('HM/PINEAPPLE_YOGHURT_SMOOTHIE.webp', 'Pineapple Yoghurt Smoothie', '₦3,000'),
+      slide('HM/QUINOA_STIR_FRY.webp', 'Quinoa Stir Fry', '₦12,500')
     ],
     facts: [
       ['7am–7:30pm', 'Open and delivering daily'],
@@ -61,9 +61,9 @@ var FOOD_PAGES = {
     backdrop: 'GRILL',
     ring: 'OFF THE GRILL ✦ HOT AND FRESH ✦ KARU ✦ ',
     plates: [
-      slide('FD19.webp', 'Grilled fish', 'From ₦10,000'),
-      slide('FD13.webp', 'Power Booster', '₦4,000'),
-      slide('FD21.webp', 'Watermelon Mix', '₦3,000')
+      slide('Grills/GRILLED_CHICKEN.webp', 'Grilled Chicken', 'From ₦8,500'),
+      slide('Grills/CATFISH_AND_CHIPS.webp', 'Catfish and Chips', 'From ₦10,000'),
+      slide('Grills/SHAWARMA.webp', 'Shawarma', 'From ₦4,000')
     ],
     facts: [
       ['From ₦8,500', 'Chicken with a companion'],

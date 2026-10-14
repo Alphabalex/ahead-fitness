@@ -1,0 +1,24 @@
+# Pages, styles, scripts and the search index revalidate on every visit, so an
+# upload shows up on the next load. Unchanged files come back as a small 304.
+# Images, videos and fonts keep a short cache; replace one in place and it can
+# take up to that long to reach returning visitors, so give new art a new name.
+
+<IfModule mod_expires.c>
+  ExpiresActive Off
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header unset Expires
+
+  <FilesMatch "\.(html?|css|js|json|webmanifest|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+
+  <FilesMatch "\.(jpe?g|png|gif|webp|avif|svg|ico|mp4|webm)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+
+  <FilesMatch "\.(woff2?|ttf|eot|otf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>

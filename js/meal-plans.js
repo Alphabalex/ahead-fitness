@@ -94,17 +94,32 @@ var ROTATIONS = {
   ]
 };
 
-// Only dishes whose photo is already identified in the food catalog get a picture.
+// Dishes with a named Healthy Meals or Grills photo use that file. The rest keep
+// the earlier kitchen photo where one was already identified.
 var DISH_PHOTOS = {
   'Grilled Chicken Salad': 'img/Food_Pictures/FD14.webp',
   'Chicken Salad': 'img/Food_Pictures/FD15.webp',
   'Chicken Stir Fry': 'img/Food_Pictures/FD12.webp',
-  'Avocado & Egg Sandwich': 'img/Food_Pictures/FD27.webp',
+  'Avocado & Egg Sandwich': 'img/Food_Pictures/HM/AVOCADO_AND_EGG_SANDWICH.webp',
   'Scrambled Eggs & Veggies': 'img/Food_Pictures/FD10.webp',
   'Fried Rice & Mixed Veggies': 'img/Food_Pictures/FD20.webp',
-  'Boiled Sweet Potatoes & Veg Sauce': 'img/Food_Pictures/FD30.webp'
+  'Boiled Sweet Potatoes & Veg Sauce': 'img/Food_Pictures/FD30.webp',
+  'Protein Pancake': 'img/Food_Pictures/HM/PROTEIN_PANCAKE.webp',
+  'Ahead Protein Rice': 'img/Food_Pictures/HM/AHEAD_PROTEIN_RICE.webp',
+  'Ahead Combo Salad': 'img/Food_Pictures/HM/AHEAD_COMBO_SALAD.webp',
+  'Plantain Porridge': 'img/Food_Pictures/HM/PLANTAIN_PORRIDGE.webp',
+  'Sweet Potato Porridge': 'img/Food_Pictures/HM/SWEET_POTATO_PORRIDGE.webp',
+  'Quinoa Stir Fry': 'img/Food_Pictures/HM/QUINOA_STIR_FRY.webp',
+  'Stir Fried Basmati Rice': 'img/Food_Pictures/HM/BASMATI_STIR_FRY.webp',
+  'Peppered Snail': 'img/Food_Pictures/Grills/PEPPERED_SNAIL.webp'
 };
-var GRILLED_FISH_PHOTO = 'img/Food_Pictures/FD19.webp';
+var GRILL_PLAN_PHOTOS = [
+  [/^Grilled Catfish/, 'img/Food_Pictures/Grills/CATFISH_AND_CHIPS.webp'],
+  [/^Grilled Tilapia/, 'img/Food_Pictures/Grills/TILAPIA_AND_CHIPS.webp'],
+  [/^Grilled Croaker/, 'img/Food_Pictures/Grills/CROCKER_AND_CHIPS.webp'],
+  [/^Grilled Chicken/, 'img/Food_Pictures/Grills/GRILLED_CHICKEN.webp'],
+  [/^Grilled Turkey/, 'img/Food_Pictures/Grills/GRILLED_TURKEY.webp']
+];
 
 var PLAN_COPY = {
   build: {
@@ -112,7 +127,7 @@ var PLAN_COPY = {
     aim: 'Muscle and protein',
     flags: ['Low skeletal muscle', 'Low protein'],
     promises: ['A fresh whey protein shake every day', 'Protein-forward breakfasts and dinners', '120g daily protein target'],
-    heroPhoto: { src: 'img/Food_Pictures/FD14.webp', alt: 'Grilled chicken salad from the Build Plan' },
+    heroPhoto: { src: 'img/Food_Pictures/HM/SWEET_POTATO_PORRIDGE.webp', alt: 'Sweet potato porridge from the Build Plan' },
     chartTitle: 'Protein, every day',
     chartNote: 'Bars show each day’s protein, meals and drinks together. The line is the 120g daily target. Muscle builds gradually, so pair the plan with strength training and re-scan every 2–4 weeks.'
   },
@@ -121,7 +136,7 @@ var PLAN_COPY = {
     aim: 'Weight loss and fat reduction',
     flags: ['High body fat', 'Excess visceral fat', 'High metabolic age'],
     promises: ['Every meal paired with a light drink', 'Full calorie data on every plate', 'No calorie counting on your side'],
-    heroPhoto: { src: 'img/Food_Pictures/FD19.webp', alt: 'Grilled fish with quinoa and broccoli from the Lean Plan' },
+    heroPhoto: { src: 'img/Food_Pictures/Grills/CATFISH_AND_CHIPS.webp', alt: 'Catfish and chips from the Lean Plan' },
     chartTitle: 'Calories, every day',
     chartNote: 'Bars show each day’s calories, meals and drinks together. The line is a 2,500 kcal day. Estimates are from diet alone at 7,700 kcal per kg. Training speeds results up, and results vary.'
   }
@@ -203,7 +218,10 @@ function photoForDish(name) {
   if (DISH_PHOTOS[name]) {
     return DISH_PHOTOS[name];
   }
-  return /^Grilled (Catfish|Tilapia|Croaker)/.test(name) ? GRILLED_FISH_PHOTO : null;
+  var grill = GRILL_PLAN_PHOTOS.filter(function (entry) {
+    return entry[0].test(name);
+  })[0];
+  return grill ? grill[1] : null;
 }
 
 function planAttr(key) {
