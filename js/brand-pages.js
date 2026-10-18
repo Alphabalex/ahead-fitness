@@ -57,7 +57,7 @@ var FOOD_PAGES = {
     place: 'Healthy Meals · Gwarinpa',
     shortPlace: 'Healthy Meals Gwarinpa',
     headline: ['Eat like', 'you ', 'train.'],
-    lede: 'Protein-packed plates, crisp salads, and blended smoothies, cooked fresh at Clever Plaza Besides Classic Supermarket, Plot 1123 6th Ave, Gwarinpa. Pick up, eat in, or get it delivered.',
+    lede: 'Protein-packed plates, crisp salads, and blended smoothies, cooked fresh at Clever Plaza Besides Classic Supermarket, Plot 1123 6th Ave, Gwarinpa. Pick up, or get it delivered.',
     backdrop: 'FRESH',
     ring: 'FRESH DAILY ✦ HIGH PROTEIN ✦ MADE TO ORDER ✦ ',
     plates: [
