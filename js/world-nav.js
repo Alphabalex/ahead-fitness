@@ -27,6 +27,9 @@ function worldsFor(currentFile) {
         { href: './kubwa-dantata.html', label: 'Kubwa (Dantata), Abuja' },
         { href: './karu.html', label: 'Karu, Abuja' },
         { href: homeHref('pricing', currentFile), label: 'Membership' },
+        { href: homeHref('guest-pass', currentFile), label: 'Guest Pass' },
+        { href: homeHref('rewards', currentFile), label: 'Loyalty points' },
+        { href: homeHref('pause-plan', currentFile), label: 'Pause plan' },
         { href: homeHref('bmi', currentFile), label: 'BMI' },
         { href: homeHref('about', currentFile), label: 'About' }
       ]

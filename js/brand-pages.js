@@ -36,7 +36,7 @@ var FOOD_PAGES = {
     brand: 'meals',
     place: 'Healthy Meals · Karu',
     shortPlace: 'Healthy Meals Karu',
-    headline: ['Fuel that', '', 'tastes good.'],
+    headline: ['Healthy Meals', '', 'that taste good.'],
     lede: 'Fresh plates, crisp salads, and cold smoothies from our Karu kitchen on Sen George Akume Way. Pick up, eat in, or get it delivered.',
     backdrop: 'FUEL',
     ring: 'FRESH DAILY ✦ HIGH PROTEIN ✦ MADE TO ORDER ✦ ',
