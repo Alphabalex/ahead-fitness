@@ -4703,13 +4703,14 @@ body.search-open {
   }
 }
 
+/* Translate only. A counter-skew here uses the wide track as its origin and lifts the words off the red bar. */
 @keyframes af-marquee {
   from {
-    transform: translateX(0) skewY(1.2deg);
+    transform: translateX(0);
   }
 
   to {
-    transform: translateX(-50%) skewY(1.2deg);
+    transform: translateX(-50%);
   }
 }
 
@@ -4888,6 +4889,7 @@ body.search-open {
   font-family: "Oswald", sans-serif;
   font-size: 22px;
   font-weight: 600;
+  line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
