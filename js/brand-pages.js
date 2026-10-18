@@ -52,6 +52,26 @@ var FOOD_PAGES = {
     ],
     ticker: ['High protein', 'Fresh daily', 'Salads', 'Plantain & veggie sauce', 'Smoothies', 'Delivery 7am–7:30pm', 'Glovo', 'Chowdeck']
   },
+  'healthy-meals-gwarinpa.html': {
+    brand: 'meals',
+    place: 'Healthy Meals · Gwarinpa',
+    shortPlace: 'Healthy Meals Gwarinpa',
+    headline: ['Eat like', 'you ', 'train.'],
+    lede: 'Protein-packed plates, crisp salads, and blended smoothies, cooked fresh at Clever Plaza Besides Classic Supermarket, Plot 1123 6th Ave, Gwarinpa. Pick up, eat in, or get it delivered.',
+    backdrop: 'FRESH',
+    ring: 'FRESH DAILY ✦ HIGH PROTEIN ✦ MADE TO ORDER ✦ ',
+    plates: [
+      slide('HM/AHEAD_COMBO_SALAD.webp', 'Ahead Combo Salad', '₦9,000'),
+      slide('HM/BANANA_YOGHURT_SMOOTHIE.webp', 'Banana Yoghurt Smoothie', '₦3,000'),
+      slide('HM/CHICKEN_PLATTER.webp', 'Chicken Platter', '₦10,000')
+    ],
+    facts: [
+      ['7am–7:30pm', 'Open and delivering daily'],
+      ['47g', 'Protein in a Chicken Salad'],
+      ['Glovo · Chowdeck', 'Also on your apps']
+    ],
+    ticker: ['High protein', 'Fresh daily', 'Salads', 'Stir fries', 'Smoothies', 'Delivery 7am–7:30pm', 'Glovo', 'Chowdeck']
+  },
   'ahead-fitness-grills-karu.html': {
     brand: 'grills',
     place: 'Ahead Grills · Karu',

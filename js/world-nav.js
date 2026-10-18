@@ -37,6 +37,7 @@ function worldsFor(currentFile) {
       links: [
         { href: './healthy-meals-kubwa.html', label: 'Healthy Meals Kubwa' },
         { href: './healthy-meals-karu.html', label: 'Healthy Meals Karu' },
+        { href: './healthy-meals-gwarinpa.html', label: 'Healthy Meals Gwarinpa' },
         { href: './ahead-fitness-grills-karu.html', label: 'Ahead Grills Karu' },
         { href: './meal-plans.html', label: 'Meal Plans' }
       ]
@@ -94,6 +95,7 @@ function renderNavItems(currentFile) {
 var BRAND_CLASS = {
   'healthy-meals-kubwa.html': 'brand-meals',
   'healthy-meals-karu.html': 'brand-meals',
+  'healthy-meals-gwarinpa.html': 'brand-meals',
   'ahead-fitness-grills-karu.html': 'brand-grills',
   'meal-plans.html': 'brand-plans',
   'spa-gwarinpa.html': 'brand-spa',

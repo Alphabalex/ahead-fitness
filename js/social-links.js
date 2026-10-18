@@ -26,6 +26,7 @@ var ACCOUNTS = {
 var PAGE_ACCOUNT = {
   'healthy-meals-kubwa.html': 'meals',
   'healthy-meals-karu.html': 'meals',
+  'healthy-meals-gwarinpa.html': 'meals',
   'meal-plans.html': 'meals',
   'ahead-fitness-grills-karu.html': 'grills',
   'spa-gwarinpa.html': 'spa',

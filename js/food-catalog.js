@@ -401,6 +401,7 @@ function renderWorlds() {
     '<span class="world-tile__links">',
     '<a href="./healthy-meals-kubwa.html">Healthy Meals Kubwa</a>',
     '<a href="./healthy-meals-karu.html">Healthy Meals Karu</a>',
+    '<a href="./healthy-meals-gwarinpa.html">Healthy Meals Gwarinpa</a>',
     '<a href="./ahead-fitness-grills-karu.html">Ahead Grills</a>',
     '<a href="./meal-plans.html">Meal Plans</a>',
     '</span></div></div>',
