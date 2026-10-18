@@ -5141,12 +5141,15 @@ body.search-open {
 .plate--side-a figcaption,
 .plate--side-b figcaption {
   bottom: -16px;
-  max-width: 220px;
+  flex-wrap: wrap;
+  max-width: min(100%, 220px);
   padding: 6px 12px;
   background: #fff;
   color: var(--af-ink);
   font-size: 12px;
   letter-spacing: 0.06em;
+  line-height: 1.2;
+  white-space: normal;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
@@ -5160,6 +5163,7 @@ body.search-open {
 
 .plate--side-a figcaption b,
 .plate--side-b figcaption b {
+  min-width: 0;
   font-weight: 500;
 }
 
