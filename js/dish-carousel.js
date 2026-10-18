@@ -2,8 +2,8 @@
   'use strict';
 
   document.querySelectorAll('[data-dish-carousel]').forEach(function (carousel) {
-    var track = carousel.querySelector('.dish-carousel__track');
-    var slides = track ? track.querySelectorAll('.dish-slide') : [];
+    var track = carousel.querySelector('.dish-carousel__track, .kitchen-wall__track');
+    var slides = track ? track.children : [];
     var previous = carousel.querySelector('.dish-carousel__nav--prev');
     var next = carousel.querySelector('.dish-carousel__nav--next');
     if (!track || !slides.length || !previous || !next) {
@@ -12,7 +12,7 @@
 
     function step() {
       var gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
-      return slides[0].getBoundingClientRect().width + gap;
+      return slides[0].offsetWidth + gap;
     }
 
     function go(direction) {

@@ -316,7 +316,11 @@ function renderKitchenWall() {
   return '<section class="kitchen-wall" aria-labelledby="kitchen-wall-title">' +
     '<div class="brand-heading"><p class="brand-kicker"><span aria-hidden="true"></span>Real plates, real kitchen</p>' +
     '<h2 id="kitchen-wall-title">More from <em>the kitchen</em></h2></div>' +
-    '<div class="kitchen-wall__track">' + frames + '</div></section>';
+    '<div class="dish-carousel" data-dish-carousel>' +
+    '<button type="button" class="dish-carousel__nav dish-carousel__nav--prev" aria-label="Previous photo"><i class="fa fa-angle-left" aria-hidden="true"></i></button>' +
+    '<div class="kitchen-wall__track">' + frames + '</div>' +
+    '<button type="button" class="dish-carousel__nav dish-carousel__nav--next" aria-label="Next photo"><i class="fa fa-angle-right" aria-hidden="true"></i></button>' +
+    '</div></section>';
 }
 
 function renderOrderBand(spec) {
