@@ -8,6 +8,13 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;');
 }
 
+function renderAppStoreLinks(placement) {
+  return '<div class="app-store-links app-store-links--' + placement + '" aria-label="Download the Ahead Fitness app">' +
+    '<a href="https://play.google.com/store/apps/details?id=ng.aheadfitness.app" data-app-store="google-play" target="_blank" rel="noopener noreferrer" aria-label="Get Ahead Fitness on Google Play" title="Google Play"><i class="fa-brands fa-google-play" aria-hidden="true"></i></a>' +
+    '<a href="https://apps.apple.com/ng/app/ahead-fitness/id6749767378" data-app-store="app-store" target="_blank" rel="noopener noreferrer" aria-label="Download Ahead Fitness on the App Store" title="App Store"><i class="fa-brands fa-apple" aria-hidden="true"></i></a>' +
+    '</div>';
+}
+
 function homeHref(hash, currentFile) {
   if (!hash) {
     return './index.html';
@@ -25,18 +32,17 @@ function worldsFor(currentFile) {
         { href: './female-gym-gwarinpa.html', label: 'All Female Gym, Gwarinpa, Abuja' },
         { href: './kubwa.html', label: 'Kubwa (Chikakore), Abuja' },
         { href: './kubwa-dantata.html', label: 'Kubwa (Dantata), Abuja' },
-        { href: './karu.html', label: 'Karu, Abuja' },
-        { href: homeHref('pricing', currentFile), label: 'Membership' },
-        { href: homeHref('guest-pass', currentFile), label: 'Guest Pass' },
-        { href: homeHref('rewards', currentFile), label: 'Loyalty points' },
-        { href: homeHref('pause-plan', currentFile), label: 'Pause plan' },
-        { href: homeHref('bmi', currentFile), label: 'BMI' },
-        { href: homeHref('about', currentFile), label: 'About' }
+        { href: './karu.html', label: 'Karu, Abuja' }
       ]
     },
     {
+      id: 'membership-extras',
+      label: 'Membership Extras',
+      links: [{ href: './membership-extras.html', label: 'Membership Extras' }]
+    },
+    {
       id: 'eat',
-      label: 'Food',
+      label: 'Healthy Meals',
       links: [
         { href: './healthy-meals-kubwa.html', label: 'Healthy Meals Kubwa' },
         { href: './healthy-meals-karu.html', label: 'Healthy Meals Karu' },
@@ -46,12 +52,18 @@ function worldsFor(currentFile) {
       ]
     },
     {
-      id: 'restore',
-      label: 'Spa & Salon',
+      id: 'spa',
+      label: 'Spa',
       links: [
         { href: './spa-gwarinpa.html', label: 'Ahead Fitness Spa Gwarinpa' },
         { href: './spa-dantata.html', label: 'Ahead Fitness Spa Dantata' },
-        { href: './spa-karu.html', label: 'Ahead Fitness Spa Karu' },
+        { href: './spa-karu.html', label: 'Ahead Fitness Spa Karu' }
+      ]
+    },
+    {
+      id: 'salon',
+      label: 'Salon',
+      links: [
         { href: './ahead-barbers-nadrem.html', label: 'Ahead Barbers Unisex Salon, Nadrem' },
         { href: './ahead-barbers-beauty-kubwa.html', label: 'Ahead Barbers & Beauty Salon, Kubwa' }
       ]
@@ -67,12 +79,19 @@ function linkIsCurrent(href, currentFile) {
 function renderNavItems(currentFile) {
   var homeCurrent = currentFile === 'index.html';
   var careersCurrent = currentFile === 'careers.html';
+  var extrasCurrent = currentFile === 'membership-extras.html';
   var items = [
     '<li' + (homeCurrent ? ' class="active"' : '') + '><a href="./index.html"' +
       (homeCurrent ? ' aria-current="page"' : '') + '>Home</a></li>'
   ];
 
   worldsFor(currentFile).forEach(function (world) {
+    if (world.id === 'membership-extras') {
+      items.push('<li' + (extrasCurrent ? ' class="active"' : '') + '><a href="' + escapeHtml(world.links[0].href) + '"' +
+        (extrasCurrent ? ' aria-current="page"' : '') + '>' + escapeHtml(world.label) + '</a></li>');
+      return;
+    }
+    var menuLabel = world.label;
     var childCurrent = world.links.some(function (link) {
       return linkIsCurrent(link.href, currentFile);
     });
@@ -83,7 +102,7 @@ function renderNavItems(currentFile) {
     }).join('');
     items.push(
       '<li class="nav-world' + (childCurrent ? ' active' : '') + '">' +
-      '<a href="#" aria-haspopup="true">' + escapeHtml(world.label) + '</a>' +
+      '<a href="#" aria-haspopup="true">' + escapeHtml(menuLabel) + '</a>' +
       '<ul class="dropdown">' + links + '</ul></li>'
     );
   });
@@ -114,6 +133,7 @@ function brandClassFor(filename) {
 
 module.exports = {
   renderNavItems: renderNavItems,
+  renderAppStoreLinks: renderAppStoreLinks,
   brandClassFor: brandClassFor,
   worldsFor: worldsFor
 };

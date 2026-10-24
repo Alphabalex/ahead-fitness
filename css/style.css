@@ -569,6 +569,31 @@ h6 {
   padding: 9px 0;
 }
 
+.app-store-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-store-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.app-store-links a:hover,
+.app-store-links a:focus-visible {
+  color: #ed3331;
+}
+
+.top-option .app-store-links--desktop {
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
 .top-option .to-search {
   display: inline-block;
   padding-right: 20px;
@@ -613,6 +638,200 @@ h6 {
 /*---------------------
   Hero Section
 -----------------------*/
+
+.gym-locations {
+  min-height: 100vh;
+  padding: clamp(36px, 7vw, 88px) max(24px, calc((100vw - 1240px) / 2));
+  background: #101010;
+  color: #fff;
+}
+
+.gym-locations__header {
+  max-width: 720px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.gym-locations__back {
+  display: inline-block;
+  margin-bottom: 34px;
+  color: #c4c4c4;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.gym-locations__back:hover,
+.gym-locations__back:focus-visible {
+  color: #ed3331;
+}
+
+.gym-locations__eyebrow {
+  margin-bottom: 8px;
+  color: #ed3331;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.gym-locations__header h1 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(44px, 7vw, 76px);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.gym-locations__header h1 em {
+  color: #ed3331;
+  font-style: normal;
+}
+
+.gym-locations__intro {
+  color: #aaa;
+  font-size: 16px;
+}
+
+.gym-locations__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.gym-location-card {
+  position: relative;
+  grid-column: span 2;
+  min-height: 340px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #252525;
+  color: #fff;
+  text-decoration: none;
+}
+
+.gym-location-card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.gym-location-card::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .04) 25%, rgba(0, 0, 0, .86) 100%);
+  content: "";
+}
+
+.gym-location-card img {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.gym-location-card:hover img,
+.gym-location-card:focus-visible img {
+  transform: scale(1.045);
+}
+
+.gym-location-card:focus-visible {
+  outline: 3px solid #ed3331;
+  outline-offset: 4px;
+}
+
+.gym-location-card__copy {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  left: 24px;
+}
+
+.gym-location-card__area {
+  display: block;
+  margin-bottom: 7px;
+  color: #ff7772;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.gym-location-card__copy h2 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(23px, 2.6vw, 32px);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.gym-location-card__action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 11px;
+  border-top: 1px solid rgba(255, 255, 255, .38);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.gym-location-card__action span {
+  color: #ed3331;
+  font-size: 20px;
+}
+
+@media (max-width: 760px) {
+  .gym-locations__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .gym-location-card,
+  .gym-location-card:nth-child(4) {
+    grid-column: auto;
+    min-height: 280px;
+  }
+
+  .gym-location-card:last-child {
+    grid-column: 1 / -1;
+    min-height: 320px;
+  }
+
+  .gym-location-card__copy {
+    right: 16px;
+    bottom: 17px;
+    left: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .gym-locations {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .gym-locations__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gym-location-card,
+  .gym-location-card:nth-child(4),
+  .gym-location-card:last-child {
+    grid-column: auto;
+    min-height: 300px;
+  }
+}
 
 .hs-slider.owl-carousel .owl-item.active .hs-item .hi-text span {
   position: relative;
@@ -780,6 +999,21 @@ h6 {
   font-weight: 600;
   margin-top: 24px;
   margin-bottom: 16px;
+}
+
+.cs-item h4 a {
+  color: inherit;
+  transition: color .2s ease;
+}
+
+.cs-item h4 a:hover,
+.cs-item h4 a:focus-visible {
+  color: #ed3331;
+}
+
+.choseus-section .cs-item {
+  height: calc(100% - 30px);
+  padding: 0 8px;
 }
 
 /*---------------------
@@ -4150,6 +4384,48 @@ h6 {
     color: #ff7774;
   }
 
+  .offcanvas-menu-wrapper .app-store-links--mobile {
+    justify-content: center;
+    margin: 0 0 20px;
+  }
+
+  .offcanvas-menu-wrapper .app-store-links--mobile a {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #dedede;
+    border-radius: 50%;
+    background: #fff;
+    color: #151515;
+    font-size: 22px;
+  }
+
+  .offcanvas-menu-wrapper .app-store-links--mobile a:hover,
+  .offcanvas-menu-wrapper .app-store-links--mobile a:focus-visible {
+    border-color: #ed3331;
+    color: #ed3331;
+  }
+
+  .offcanvas-menu-wrapper .app-store-links--mobile {
+    justify-content: center;
+    margin: 0 0 20px;
+  }
+
+  .offcanvas-menu-wrapper .app-store-links--mobile a {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #dedede;
+    border-radius: 50%;
+    background: #fff;
+    color: #151515;
+    font-size: 22px;
+  }
+
+  .offcanvas-menu-wrapper .app-store-links--mobile a:hover,
+  .offcanvas-menu-wrapper .app-store-links--mobile a:focus-visible {
+    border-color: #ed3331;
+    color: #ed3331;
+  }
+
   .offcanvas-menu-wrapper .canvas-menu {
     display: none;
   }
@@ -4693,6 +4969,27 @@ body.search-open {
   color: #fff;
 }
 
+.world-tile__service {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.world-tile__links a.world-tile__booking {
+  padding: 5px 8px;
+  background: #ed3331;
+  color: #fff;
+  font-family: "Muli", sans-serif;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+.world-tile__links a.world-tile__booking:hover,
+.world-tile__links a.world-tile__booking:focus {
+  background: #c4201e;
+}
+
 :root {
   --af-red: #ed3331;
   --af-red-deep: #c4201e;
@@ -4701,6 +4998,63 @@ body.search-open {
   --af-graphite: #252525;
   --af-paper: #f5f5f3;
   --af-muted: #a9a9a9;
+}
+
+/* Membership extras hero */
+
+.membership-extras-hero {
+  padding: 170px 6vw 70px;
+  background:
+    radial-gradient(circle at 78% 26%, rgba(237, 51, 49, 0.3), transparent 44%),
+    var(--af-ink);
+  color: #fff;
+}
+
+.membership-extras-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(52px, 8vw, 116px);
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.membership-extras-hero h1 em {
+  font-style: normal;
+  color: var(--af-red);
+}
+
+.membership-extras-hero > p:not(.brand-kicker) {
+  max-width: 560px;
+  margin: 22px 0 0;
+  color: #c8c8c8;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.membership-extras-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.membership-extras-jump a {
+  padding: 12px 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.membership-extras-jump a:hover,
+.membership-extras-jump a:focus-visible {
+  border-color: var(--af-red);
+  background: var(--af-red);
+  color: #fff;
 }
 
 .gym-perks {

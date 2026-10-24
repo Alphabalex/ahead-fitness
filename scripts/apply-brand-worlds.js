@@ -2,10 +2,11 @@
 
 const fs = require('fs');
 const path = require('path');
-const { renderNavItems, brandClassFor } = require('../js/world-nav');
+const { renderNavItems, renderAppStoreLinks, brandClassFor } = require('../js/world-nav');
 const { renderSocialLinks } = require('../js/social-links');
 const { renderWorlds } = require('../js/food-catalog');
 const { renderMealPlansMain } = require('../js/meal-plans');
+const { renderMembershipExtrasPage } = require('../js/membership-extras');
 const {
   FOOD_PAGES,
   SALON_PAGES,
@@ -51,10 +52,22 @@ function replaceListInner(html, openPattern, inner) {
   throw new Error('Unclosed list');
 }
 
+function replaceOnce(html, pattern, replacement, filename, description) {
+  if (!pattern.test(html)) {
+    throw new Error(filename + ' is missing ' + description);
+  }
+  return html.replace(pattern, replacement);
+}
+
 function applyNav(html, filename) {
   const items = renderNavItems(filename);
   let next = replaceListInner(html, /<nav id="mobile-menu"[^>]*>\s*<ul>/, items);
   next = replaceListInner(next, /<ul class="nav">/, items);
+  next = next.replace(/[ \t]*\n?[ \t]*<div class="app-store-links app-store-links--(?:mobile|desktop)"[^>]*>[\s\S]*?<\/div>[ \t]*\n?/g, '');
+  next = replaceOnce(next, /(<button type="button" class="canvas-search\b[^>]*>[\s\S]*?<\/button>)\s*(?=<nav id="mobile-menu")/,
+    '$1\n    ' + renderAppStoreLinks('mobile') + '\n    ', filename, 'mobile app-store placement');
+  next = replaceOnce(next, /(<div class="top-option">)/,
+    '$1' + renderAppStoreLinks('desktop'), filename, 'desktop app-store placement');
   return next;
 }
 
@@ -195,6 +208,7 @@ function mealPlansDocument() {
     <a class="mobile-menu-brand" href="./index.html" aria-label="Ahead Fitness home"><img src="img/logo2.png" alt="" /><span>AHEAD FITNESS<small>TRAIN · MOVE · THRIVE</small></span></a>
     <button type="button" class="canvas-close" aria-label="Close navigation menu"><i class="fa fa-close"></i></button>
     <button type="button" class="canvas-search search-switch" aria-label="Search the website" aria-controls="site-search"><i class="fa fa-search"></i></button>
+    ${renderAppStoreLinks('mobile')}
     <nav id="mobile-menu" class="canvas-menu mobile-menu" aria-label="Mobile navigation">
       <ul>
 ${nav}
@@ -218,6 +232,7 @@ ${nav}
         </div>
         <div class="col-lg-2">
           <div class="top-option">
+            ${renderAppStoreLinks('desktop')}
             <button type="button" class="to-search search-switch" aria-label="Search the website" aria-controls="site-search"><i class="fa fa-search"></i></button>
             <div class="to-social">${renderSocialLinks('meal-plans.html')}</div>
           </div>
@@ -267,7 +282,9 @@ ${renderMealPlansMain()}
 `;
 }
 
-const htmlFiles = fs.readdirSync(root).filter((name) => name.endsWith('.html'));
+const htmlFiles = fs.readdirSync(root).filter((name) =>
+  name.endsWith('.html') && name !== 'gyms.html' && name !== 'membership-extras.html'
+);
 htmlFiles.forEach((filename) => {
   const fullPath = path.join(root, filename);
   let html = fs.readFileSync(fullPath, 'utf8');
@@ -278,12 +295,21 @@ htmlFiles.forEach((filename) => {
   html = applySpa(html, filename);
   html = applySocial(html, filename);
   html = applyWorlds(html, filename);
+  if (filename === 'index.html') {
+    html = html.replace(/href="#guest-pass">Guest Passes/, 'href="./membership-extras.html#guest-pass">Guest Passes');
+    html = html.replace(/href="#rewards">Loyalty Points/, 'href="./membership-extras.html#rewards">Loyalty Points');
+    html = html.replace(/href="#pause-plan">Pause Your Subscription/, 'href="./membership-extras.html#pause-plan">Pause Your Subscription');
+    html = html.replace(/  <section class="gym-perks" id="perks"[\s\S]*?  <\/section>\n/, '');
+  }
   fs.writeFileSync(fullPath, html);
   console.log('updated', filename);
 });
 
 fs.writeFileSync(path.join(root, 'meal-plans.html'), mealPlansDocument());
 console.log('wrote meal-plans.html');
+
+fs.writeFileSync(path.join(root, 'membership-extras.html'), renderMembershipExtrasPage());
+console.log('wrote membership-extras.html');
 
 const indexPath = path.join(root, 'search-index.json');
 const searchIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
@@ -298,10 +324,30 @@ const mealPlansEntry = {
   ]
 };
 const existingIndex = searchIndex.findIndex((entry) => entry.href === 'meal-plans.html');
-const nextIndex = (existingIndex === -1
-  ? searchIndex.concat([mealPlansEntry])
-  : searchIndex.map((entry, index) => (index === existingIndex ? mealPlansEntry : entry))
+const membershipExtrasEntry = {
+  title: 'Membership Extras | Ahead Fitness',
+  href: 'membership-extras.html',
+  text: 'Membership extras Guest passes Loyalty points Pause your plan. Bring a friend to train with you. Monthly 1 pass, Quarterly 4 passes, Half Yearly 9 passes, Yearly 20 passes. Earn points for visits, renewals, and referrals. Activate in 7 days 1,000 pts, in 30 days 500 pts. Quarterly +1,500, Half-Yearly +4,000, Yearly +10,000 pts. Pause a subscription for a minimum of 5 consecutive days, and up to 30 days in a calendar year. Customer Service activates it within 24 hours.',
+  sections: [
+    { title: 'Guest passes', href: 'membership-extras.html#guest-pass', text: 'Bring a friend to train with you. Monthly 1 pass, Quarterly 4 passes, Half Yearly 9 passes, Yearly 20 passes. Complimentary Guest Passes in the app.' },
+    { title: 'Loyalty points', href: 'membership-extras.html#rewards', text: 'Earn points for visits, renewals, and referrals. Activate in 7 days 1,000 pts. Yearly +10,000 pts. Refer a friend for 5% of their first payment.' },
+    { title: 'Pause plan', href: 'membership-extras.html#pause-plan', text: 'Pause a subscription for a minimum of 5 consecutive days, and for up to 30 days within a calendar year. Customer Service activates it within 24 hours.' }
+  ]
+};
+const membershipExtrasIndex = searchIndex.findIndex((entry) => entry.href === 'membership-extras.html');
+const withExtras = (membershipExtrasIndex === -1
+  ? searchIndex.concat([membershipExtrasEntry])
+  : searchIndex.map((entry, index) => (index === membershipExtrasIndex ? membershipExtrasEntry : entry))
 ).map(withMenuSearch);
+const nextIndex = (existingIndex === -1
+  ? withExtras.concat([mealPlansEntry])
+  : withExtras.map((entry) => (entry.href === 'meal-plans.html' ? mealPlansEntry : entry))
+).map(withMenuSearch);
+const homepageIndex = nextIndex.find((entry) => entry.href === 'index.html');
+if (homepageIndex) {
+  homepageIndex.sections = homepageIndex.sections.filter((section) => section.href !== 'index.html#bmi');
+  homepageIndex.text = homepageIndex.text.replace(/ check your body BMI CALCULATOR CHART[\s\S]*? DOWNLOAD AHEAD FITNESS APP/, ' DOWNLOAD AHEAD FITNESS APP');
+}
 const serializedIndex = JSON.stringify(nextIndex, null, 4) + '\n';
 if (serializedIndex !== fs.readFileSync(indexPath, 'utf8')) {
   fs.writeFileSync(indexPath, serializedIndex);
